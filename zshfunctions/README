@@ -1,0 +1,8 @@
+SFA 22/04/09
+
+_subversion file here is a patch because existing one (with Apple's
+zsh installation) is broken for subversion 1.6.
+
+This fixed one came from
+http://gvn.googlecode.com/svn/trunk/contrib/zsh/_subversion.
+

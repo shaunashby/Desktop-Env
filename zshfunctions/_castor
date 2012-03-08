@@ -1,0 +1,41 @@
+#compdef rfcp rfdir
+
+_rfdir()
+{
+    local rfdiropts
+    rfdiropts=(
+	'-R[recursively list files]'
+	'*::specify directory:_show_castor_dirs'
+    )
+    
+    _arguments -s \
+	"$rfdiropts[@]"
+}
+
+(( $+functions[_show_castor_dirs] )) || 
+_show_castor_dirs()
+{
+    local expl
+    local _dirs
+    
+    basedir=''
+
+#    if (( $#words )); then
+#	_dirs=( $(_call_program cdirs nsls $words[1] 2>/dev/null) )
+#	_wanted cdirs expl 'CASTOR directory' compadd -p "$basedir/" $_dirs
+#    else
+	[[ -n "$CASTOR_HOME" ]] && basedir=$CASTOR_HOME
+	
+	_dirs=( $(_call_program cdirs nsls 2>/dev/null) )
+	
+	if [[ -n "$basedir" ]]; then       
+	    _wanted cdirs expl 'CASTOR directory' compadd -p "$basedir/" $_dirs	    
+	else
+	    _wanted cdirs expl 'CASTOR directory' compadd -a _dirs	    
+	fi
+#    fi
+}
+
+# Pass args down:
+_rfdir "$@"
+

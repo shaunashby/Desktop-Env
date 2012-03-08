@@ -1,0 +1,12 @@
+#compdef project
+
+_project()
+{
+    _arguments -s \
+	'*::CMS project name:(SCRAM SCRAMToolBox CMSSW IGUANA)'
+}
+
+##################################################### Main ####################################################
+# Run the function with args passed down:
+###############################################################################################################
+_project "$@"
