@@ -1,0 +1,39 @@
+/***************************************************************************\
+ *                                                                          *
+ *                                        --------------------------------- *
+ *                                        Copyright © 1993 Dialogos-Team Oy *
+ \**************************************************************************/
+// NB: This file must be processed with cpp!
+
+//#doc file	.uil
+//#doc hist	/LaT	File created.
+
+//<<<<<< MODULE INFORMATION                                             >>>>>>
+
+module		Foo
+version		= ""
+names		= case_sensitive
+character_set	= iso_latin1
+objects		= { XmLabel = gadget;
+		    XmCascadeButton = gadget;
+		    XmPushButton = gadget;
+		    XmSeparator = gadget;
+		    XmToggleButton = gadget; }
+
+//<<<<<< INCLUDES                                                       >>>>>>
+
+#include "uil-macro.h"
+#include "resource.h"
+
+//<<<<<< ICONS                                                          >>>>>>
+//<<<<<< CURSORS                                                        >>>>>>
+//<<<<<< COLORS                                                         >>>>>>
+//<<<<<< FONTS                                                          >>>>>>
+//<<<<<< FONT TABLES                                                    >>>>>>
+//<<<<<< APPLICATION DEFINED RESOURCES                                  >>>>>>
+//<<<<<< FLOATING MENUS                                                 >>>>>>
+//<<<<<< TOP LEVEL WINDOWS                                              >>>>>>
+//<<<<<< DIALOGS                                                        >>>>>>
+//<<<<<< STRINGS                                                        >>>>>>
+
+end module;

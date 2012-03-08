@@ -1,0 +1,92 @@
+From jpff@maths.bath.ac.UK Mon Jul 17 13:54:13 1995
+Path: nntp.hut.fi!news.funet.fi!news.kolumbus.fi!news.sprintlink.net!howland.reston.ans.net!math.ohio-state.edu!magnus.acs.ohio-state.edu!cis.ohio-state.edu!maths.bath.ac.UK!jpff
+From: jpff@maths.bath.ac.UK
+Newsgroups: gnu.emacs.sources
+Subject: Re: html mode for emacs
+Date: 14 Jul 1995 09:13:15 -0400
+Organization: Source only  Discussion and requests in gnu.emacs.help.
+Lines: 73
+Sender: daemon@cis.ohio-state.edu
+Distribution: gnu
+Message-ID: <9507141312.AA22397@life.ai.mit.edu>
+References: <9507122246.AA31002@piper.hamline.edu>
+X-IMAPbase: 1200940253 1
+Status: O
+X-Status: 
+X-Keywords:                       
+X-UID: 1
+
+I endorse html-helper-mode.el but I added a menu as I could never
+remember the commands.
+
+==John
+
+(autoload 'html-helper-mode "html-helper-mode" "HTML major mode." t)
+(setq auto-mode-alist (cons '("\\.html$" . html-helper-mode) auto-mode-alist))
+(setq html-helper-load-hook
+      '((lambda ()
+	  (setq html-helper-do-write-file-hooks t)
+	  (setq html-helper-build-new-buffer t)
+	  (setq html-helper-address-string "jpff@maths.bath.ac.uk")
+	  (define-key html-helper-mode-map [menu-bar html-style]
+	    (cons "HTML" (make-sparse-keymap "HTML")))
+	  (html-helper-add-cookie '(entity "\C-co" "&ouml;" "html-oumlaut" ("&ouml;")))
+	  (define-key html-helper-mode-map [menu-bar html-style oumlaut]
+	    '("o-Umlaut" . tempo-template-html-oumlaut))
+	  (define-key html-helper-mode-map [menu-bar html-style bold]
+	    '("Bold" . tempo-template-html-bold))
+	  (define-key html-helper-mode-map [menu-bar html-style italic]
+	    '("Italic" . tempo-template-html-italic))
+	  (define-key html-helper-mode-map [menu-bar html-style underline]
+	    '("Underline" . tempo-template-html-underline))
+	  (define-key html-helper-mode-map [menu-bar html-style fixed]
+	    '("Fixed" . tempo-template-html-fixed))
+	  (define-key html-helper-mode-map [menu-bar html-style ordered-list]
+	    '("Ordered list" . tempo-template-html-ordered-list))
+	  (define-key html-helper-mode-map [menu-bar html-style unordered-list]
+	    '("Unordered list" . tempo-template-html-unordered-list))
+	  (define-key html-helper-mode-map [menu-bar html-style paragraph]
+	    '("Paragraph" . tempo-template-html-paragraph))
+	  (define-key html-helper-mode-map [menu-bar html-style break]
+	    '("Break" . tempo-template-html-break))
+	  (define-key html-helper-mode-map [menu-bar html-style horizontal-rule]
+	    '("horizontal-rule" . tempo-template-html-horizontal-rule))
+	  (define-key html-helper-mode-map [menu-bar html-style header-6]
+	    '("Header 6" . tempo-template-html-header-6))
+	  (define-key html-helper-mode-map [menu-bar html-style header-5]
+	    '("Header 5" . tempo-template-html-header-5))
+	  (define-key html-helper-mode-map [menu-bar html-style header-4]
+	    '("Header 4" . tempo-template-html-header-4))
+	  (define-key html-helper-mode-map [menu-bar html-style header-3]
+	    '("Header 3" . tempo-template-html-header-3))
+	  (define-key html-helper-mode-map [menu-bar html-style header-2]
+	    '("Header 2" . tempo-template-html-header-2))
+	  (define-key html-helper-mode-map [menu-bar html-style header-1]
+	    '("Header 1" . tempo-template-html-header-1))
+	  (define-key html-helper-mode-map [menu-bar html-style title]
+	    '("Title" . tempo-template-html-title))
+	  (define-key html-helper-mode-map [menu-bar html-style anchor]
+	    '("Anchor" . tempo-template-html-anchor))
+	  ;;(define-key html-helper-mode-map [menu-bar html-style ]
+	  ;;  '("" . tempo-template-html-))
+	  (if (fboundp 'hilit-set-mode-patterns)
+	      (hilit-set-mode-patterns
+	       'html-helper-mode
+	       '(("<!--" "-->" comment)           
+		 ("<a\\b" ">" define)
+		 ("</a>" nil define)
+		 ("<img\\b" ">" include)
+		 ("<b>" "</b>" bold)
+		 ("<i>" "</i>" deleted)
+		 ("<u>" "</u>" type)
+		 ("<title>" "</title>" urgent)
+		 ("<h1>" "</h1>" special)
+		 ("<h2>" "</h2>" marked)
+		 ("&" ";" string)
+		 ("<" ">" keyword))
+	       nil 'case-insensitive)
+	    (hilit-install-line-hooks)
+	    nil)
+
+)))
+

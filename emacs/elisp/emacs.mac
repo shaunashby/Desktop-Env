@@ -1,0 +1,11 @@
+;; 
+(fset 'insert-gthan
+   [?> ?  escape ?x ?n ?e ?t ?x ?= backspace backspace backspace ?x ?t tab ?l ?i tab return])
+(fset 'testmac
+   [?> ?  ?s ?o ?m ?e ?  ?t ?e ?x ?t ?  ?h ?e ?t ?r backspace backspace ?r ?e return])
+(fset 'mail-indent
+   [?> ?  down ?\C-a])
+(fset 'arse
+   [down right right backspace backspace])
+
+

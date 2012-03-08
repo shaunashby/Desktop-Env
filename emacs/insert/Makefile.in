@@ -1,0 +1,321 @@
+#                                                                     
+#                 ----------------------------------------------------
+#                 Copyright © 1995 Lassi A. Tuura <Lassi.Tuura@hut.fi>
+######################################################################
+# $Header: /afs/cern.ch/user/s/sashby/w1/cvs/repositories/sashby/environment/emacs/insert/Makefile.in,v 1.1 2005/08/18 17:03:50 sashby Exp $
+
+
+# Targets built by this makefile
+TARGET_SUBDIRS	= src
+TARGET_PROGS	=
+TARGET_LIBS	= 
+TARGET		= $(TARGET_PROGS) $(TARGET_LIBS) fixdeps
+
+DIST_NAME	= project-archive-base-name
+DIST_FILES	= ChangeLog Makefile.in README NEWS configure bin config \
+		  doc include lib src test
+DIST_SUBDIRS	= src test
+DIST_VERSION	= 0.0
+
+# Path information
+prefix		= @prefix@
+exec_prefix	= @exec_prefix@
+bindir		= $(exec_prefix)/bin
+libdir		= $(exec_prefix)/lib
+datadir		= $(prefix)/lib
+statedir	= $(prefix)/lib
+includedir	= $(prefix)/include
+mandir		= ..
+man1dir		= $(mandir)/man1
+manext		= .1
+infodir		= $(prefix)/info
+top_srcdir	= @top_srcdir@
+srcdir		= @srcdir@
+src		= $(srcdir)/src
+srcinc		= $(srcdir)/include
+srclib		= $(srcdir)/lib
+srcincs		= $(top_srcdir)/include	$(srcdir)/include
+srclibs		= $(top_srcdir)/lib 	$(srcdir)/lib
+
+vpath %.cc $(src)
+vpath %.h  $(subst :, ,$(srcincs))
+vpath %.a  $(subst :, ,$(srclibs))
+vpath %.o  $(src)/objs/@sys
+
+# Grr...
+SHELL		= /bin/sh
+
+# Compiler settings
+CC		= @CC@
+CFLAGS		= @CFLAGS@
+CALLFLAGS	= $(CFLAGS)
+CPPFLAGS	= @CPPFLAGS@ @DEFS@ $(patsubst %,-I%,$(srcincs))
+CXX		= @CXX@
+# -MD removed from CXXFLAGS since it doesn't work correctly with
+#     -o option. Workaround is to use -Wp,-MD,outputfile.d, but
+#     unfortunately it has to be placed into the compilation rules
+#     below.  There is also the target `.fixdeps' that corrects the
+#     the remaining dependancy bugs.
+CXXFLAGS	= @CXXFLAGS@
+CXXALLFLAGS	= $(CXXFLAGS)
+# Note: -g and -funroll-loops may cause problems when used together
+#       -mcpu=r4000 -mips2 cannot be used with gas older than 2.5.2
+#                          due to some serious bugs in the assembler
+
+# Linker settings
+LD		= $(CXX)
+LIBS		= @LIBS@ -lm
+PRELIBS		=
+LDFLAGS		= @LDFLAGS@
+LDALLFLAGS	= $(LDFLAGS) -L$(srcdir) $(patsubst %,-L%,$(srclibs))
+
+# Archiver settings
+AR		= ar
+RANLIB		= @RANLIB@
+ARFLAGS		= ruvc
+ARXFLAGS	= xo
+
+# LEX
+LEX             = flex
+LEXFLAGS        = -d
+
+# YACC
+YACC            = bison
+YACCFLAGS       = -dtvl
+
+# UIL compiler
+UIL		= uil
+UILFLAGS	=
+UILCPP		= gcc -E
+
+# Installation
+INSTALL		= @INSTALL@
+INSTALL_PROGRAM	= $(INSTALL)
+INSTALL_DATA	= $(INSTALL) 
+
+# Default target. This will build all the libraries, but not the docs.
+all: subdirs $(TARGET)
+
+# Default rules 
+.SUFFIXES: .c .cc .uid .uil
+
+%.o: %.c
+	$(CC) $(CPPFLAGS) $(CALLFLAGS) -Wp,-MD,$(patsubst %.o,%.d,$@) -c $< -o $@
+
+%.o: %.cc
+	$(CXX) $(CPPFLAGS) $(CXXALLFLAGS) -Wp,-MD,$(patsubst %.o,%.d,$@) -c $< -o $@
+
+%.cc: %.l
+	prefix=`echo $< | sed 's/lex\.l//'`; \
+	$(LEX) $(LEXFLAGS) -P$${prefix:-yy} $< && \
+	mv lex.$${prefix:-yy}.c $@
+
+%.cc: %.y
+	prefix=`echo $< | sed 's/parse\.y//'`; \
+	$(YACC) $(YACCFLAGS) -p $${prefix:-yy} $< -o $*.c && \
+	mv $*.c $@
+
+%.uid: %.uil
+	$(UILCPP) $(CPPFLAGS) -P $< >/tmp/$(@F).; \
+	$(UIL) $(UILFLAGS) /tmp/$(@F). -o $@ ; rm  -f /tmp/$(@F).
+
+# Files in this project directory.
+
+SRC		=
+DEPLIBS		=
+H		=
+USRC		=
+UOBJS		= $(USRC:.uil=.uid)
+APPDEF		=
+
+OBJS		= $(patsubst %.l,%.o,		\
+		    $(patsubst %.y,%.o,		\
+		      $(patsubst %.c,%.o,	\
+		        $(patsubst %.cc,%.o,$(SRC)))))
+
+# Special rules
+# $(xxx_OBJS): %.o: %.cc
+#	$(CXX) $(CPPFLAGS) $(CXXALLFLAGS) -c $< -o $@
+
+# Targets
+
+.PHONY: subdirs
+subdirs:
+	@for dir in $(TARGET_SUBDIRS); do \
+	  cd $$dir; \
+	  $(MAKE) "CC=$(CC)" "CFLAGS=$(CFLAGS)" "CPPFLAGS=$(CPPFLAGS)" \
+		  "CXX=$(CXX)" "CXXFLAGS=$(CXXFLAGS)" "LD=$(LD)" "LIBS=$(LIBS)"\
+		  "LDFLAGS=$(LDFLAGS)" "AR=$(AR)" "RANLIB=$(RANLIB)" \
+		  "ARFLAGS=$(ARFLAGS)" "ARXFLAGS=$(ARXFLAGS)" "LEX=$(LEX)" \
+		  "LEXFLAGS=$(LEXFLAGS)" "YACC=$(YACC)" "YACCFLAGS=$(YACCFLAGS)" \
+		  "UIL=$(UIL)" "UILFLAGS=$(UILFLAGS)" "UILCPP=$(UILCPP)" all; \
+	done
+
+program-target: $(OBJS) $(DEPLIBS)
+	$(LD) $(CXXFLAGS) $(LDFLAGS) -o $@ $(OBJS) $(LIBS) $(DEPLIBS)
+
+stamp-merge-lib: $(srclib)/lib1.a $(srclib)/lib2.a $(srclib)/lib3.a
+	rm -fr $(subst stamp-merge-lib,merge-,$@)
+	mkdir $(subst stamp-merge-lib,merge-,$@)
+	( cd $(subst stamp-merge-lib,merge-,$@); \
+	  for a in $^; do $(AR) $(ARXFLAGS) ../$$a; done; \
+	  $(AR) $(ARFLAGS) $(subst stamp-merge-lib,../lib,$@) *.o; \
+	  rm *.o )
+	rm -fr $(subst stamp-merge-lib,merge-,$@)
+	touch $@
+
+stamp-prelink-lib: $(OBJS) prelink-main.o
+	@echo Generating templates, please hold...
+	$(LD) $(CXXFLAGS) $(LDFLAGS) -o /dev/null $^ $(LIBS) $(PRELIBS) || true
+	touch $@
+	@echo templates finished!
+
+libtarget.a: stamp-merge-lib stamp-prelink-lib
+	$(AR) $(ARFLAGS) $@ $(OBJS)
+
+# Fix the incorrect target that gcc puts into the dependancy files.
+# Make sure `fixdeps' is not built before all other targets are
+.PHONY: fixdeps
+fixdeps: $(wildcard *.d) $(filter-out fixdeps,$(TARGET))
+	for file in *.d; do \
+	    f=`echo $$file | sed -e 's/-dO\.d$$/.o/; s/-O\.d$$/.o/; s/-d\.d$$/.o/; s/\.d$$/.o/'`; \
+	    g=`echo $$file | sed 's/\.d$$/.o/'`; \
+	    sed 's/^'$$f'/'$$g'/' < $$file >$$file.tmp; \
+	    mv $$file.tmp $$file; \
+	done
+	touch $@
+
+# Rules for cleaning:
+#  - `clean' removes all files normally created by building, except the ones
+#    recording configuration and the ones that came in the distribution.
+#  - `distclean' remove all files created by building or configuring. This leaves
+#    everything into the state as if distribution was just opened.
+#  - `mostlyclean' is like `clean', but will not delete a few files that people
+#    normally don't want to recompile.
+#  - `realclean' deletes everything that can be reconstructed from the makefile.
+
+clean:
+	rm -f *.o *.a stamp*
+	@for dir in $(TARGET_SUBDIRS); do cd $$dir; $(MAKE) clean; done
+distclean: clean
+	rm -f $(TARGET) TAGS $(UOBJS) *.d
+	rm -f config.* Makefile
+	@for dir in $(TARGET_SUBDIRS); do cd $$dir; $(MAKE) distclean; done
+mostlyclean: clean
+	@for dir in $(TARGET_SUBDIRS); do cd $$dir; $(MAKE) mostlyclean; done
+realclean: distclean
+	rm -f *.rpo
+	@for dir in $(TARGET_SUBDIRS); do cd $$dir; $(MAKE) realclean; done
+
+# Rules for making the tags file.
+
+TAGS:
+	etags --c++ --defines --typedefs-and-c++ $(H) $(SRC)
+
+# Rules for making the info documents. The documentation is divided
+# into `reference-manual' and `emacs-info'.
+
+info: reference-manual emacs-info
+emacs-info:
+	@echo No info.
+reference-manual:
+	@echo No reference.
+
+# Rules for making a distribution .tar-file. The `dist'-target should
+# depend of all targets that need to be in the distribution.
+
+dist: distclean
+	rm -f archive-contents $(DIST_NAME)-$(DIST_VERSION)*
+	@for f in $(DIST_FILES); do \
+	  echo $(DIST_NAME)-$(DIST_VERSION)/$$f >> archive-contents; \
+	done
+	@for dir in $(DIST_SUBDIRS); do cd $$dir; $(MAKE) dist; done
+	ln -s $(DIST_NAME)-$(DIST_VERSION) .
+	tar -zcvf $(DIST_NAME)-$(DIST_VERSION).tar.gz --files-from archive-contents
+	rm -f $(DIST_NAME)-$(DIST_VERSION) archive-contents
+
+# Rules for installing and uninstalling the package.
+#  - `install' compiles everything and copies all the libraries,
+#    executables and so on to the file names where they should reside.
+#    It also runs a test that everything is ok.
+#  - `uninstall' removes everything that `install' would create.
+
+.PHONY: install install-subdirs install-bin install-lib install-info
+.PHONY: installcheck installdirs
+.PHONY: uninstall uninstall-bin uninstall-lib uninstall-info
+
+install: install-subdirs installcheck
+
+install-subdirs:
+	@for dir in $(TARGET_SUBDIRS); do \
+	  cd $$dir; \
+	  $(MAKE) "INSTALL=$(INSTALL)" "INSTALL_PROGRAM=$(INSTALL_PROGRAM)" \
+		  "INSTALL_DATA=$(INSTALL_DATA)" install; \
+	done
+
+install-bin: $(TARGET_PROGS) installdirs
+ifneq ($(strip $(TARGET_PROGS)),)
+	for file in $(TARGET_PROGS); do \
+	    $(INSTALL_PROGRAM) -c -m a=rx $$file $(bindir); \
+	done
+endif
+
+install-lib: $(TARGET_LIBS) installdirs 
+ifneq ($(strip $(TARGET_LIBS)),)
+	for file in $(TARGET_LIBS); do \
+	    $(INSTALL_DATA) -c -m a=r $$file $(libdir); \
+	done
+endif
+
+install-info: info installdirs
+
+installcheck: $(filter-out $(TARGET_LIBS) $(TARGET_PROGS),$(TARGET)) install-bin install-lib install-info
+	@echo Installation ok.
+
+installdirs:
+	@for f in $(bindir) \
+		$(datadir) \
+		$(statedir) \
+		$(libdir) \
+		$(infodir) \
+		$(mandir) \
+		$(man1dir) \
+		$(srclib); do \
+	  oIFS="$${IFS}"; IFS='/'; set - $${f}; IFS="$${oIFS}"; \
+	  pathcomp=''; test ".$${1}" = "." && shift; \
+	  test "$${1}" = ".." && pathcomp="$${1}" && shift; \
+	  while test $$# -ne 0 ; do \
+	    pathcomp="$${pathcomp}/$${1}"; shift; \
+	    if test ! -d "$${pathcomp}"; then \
+	      echo "making directory $$pathcomp" 1>&2 ; \
+	      mkdir "$${pathcomp}"; \
+	    fi; \
+	  done; \
+	done
+
+uninstall: uninstall-subdirs uninstall-bin uninstall-lib uninstall-info
+
+uninstall-subdirs:
+	@for dir in $(TARGET_SUBDIRS); do \
+	  cd $$dir; \
+	  $(MAKE) "INSTALL=$(INSTALL)" "INSTALL_PROGRAM=$(INSTALL_PROGRAM)" \
+		  "INSTALL_DATA=$(INSTALL_DATA)" uninstall; \
+	done
+
+uninstall-bin:
+ifneq ($(strip $(TARGET_PROGS)),)
+	for file in $(TARGET_PROGS); do rm -f $(bindir)/$$file; done
+endif
+
+uninstall-lib:
+ifneq ($(strip $(TARGET_LIBS)),)
+	for file in $(TARGET_LIBS); do rm -f $(libdir)/$$file; done
+endif
+
+uninstall-info:
+
+.PHONY:	all clean realclean distclean mostlyclean dist TAGS
+.PHONY:	emacs-info reference-manual info
+
+include $(wildcard *.d) /dev/null
+

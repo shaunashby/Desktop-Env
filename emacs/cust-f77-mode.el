@@ -1,0 +1,72 @@
+;;
+;; cust-f77-mode.el
+;;
+;; 
+(font-lock-add-keywords 
+ 'fortran-mode '(
+		 ("^ *\\(CHARACTER\\|[Cc]haracter\\).*$" 1 'Green3-face t)
+		 ("^ *\\(LOGICAL\\|[Ll]ogical\\).*$" 1 'DarkSlateGray2-face t)
+		 ("^ *\\(PROGRAM\\|[Pp]rogram\\)" 1 'CornflowerBlue-face t)
+		 ("\\(+deck\\|+DECK\\).*$" 0 'bold-LightSteelBlue2-face t)
+		 ("\\(+patch\\|+PATCH\\).*$" 0 'Patch-face t)
+		 ("\\(+?exe.\\|+?EXE.\\).*$" 1 'Magenta2-face t)
+		 ("^ *\\(+pam,\\|+PAM,\\|+use,\\|+USE,\\|+seq,\\|+SEQ,\\|+keep,\\|+KEEP,\\).*$" 1 'Wheat-face t)
+		 ("\\(,[Tt]\=\\|,[Pp]\=\\|,[Dd]\=\\|,[Rr]\=\\)" 1 'Wheat-face t)
+		 ("+EXE,P=\\([a-zA-Z0-9]*\\)" 1 'Cradle-face t)
+		 ("+USE,P=\\([a-zA-Z0-9]*\\)" 1 'Cradle-face t)
+		 ("+PAM,\\([0-9]*\\)" 1 'Coral2-face t)
+		 ("\\(ATTACH\\|CARDS\\)" 1 'Green-face t)
+		 ("+PAM.................................... *\\(.*\\)$" 1 'underline t)
+		 ("^ *\\(INCLUDE\\|[#]*include\\).*$" 1 'Wheat3-face t)  
+		 ("^ *\\(COMMON\\|common\\) */.*/" 1 'SeaGreen3-face t) 
+		 ("^ *\\(DATA\\|data\\)" 1 'PaleGreen2-face t)
+		 ("^ *\\(EXTERNAL\\|external\\|SAVE\\|save\\).*$" 1 'Orchid3-face t)
+		 ("^ *\\(PARAMETER\\|parameter\\).*$" 1 'Aquamarine3-face t)
+		 ("^ *\\( [Ii][Ff] \\)" 1 'MediumAquamarine-face t)  
+		 ("^ *\\([Ee][Ll][Ss][Ee][Ii][Ff]\\|[Ee][Ll][Ss][Ee]\\)" 1 'MediumAquamarine-face t)
+		 ("^ *\\([Ee][Nn][Dd][Ii][Ff]\\|[Ee][Nn][Dd] *[Ii][Ff]\\)" 0 'MediumAquamarine-face t)
+		 ("^ .*\\([Tt][Hh][Ee][Nn]\\)" 1 'MediumAquamarine-face t)  
+		 ("^ .*\\([Cc][Aa][Ll][Ll] \\)" 1 'Thistle-face t)  
+		 ("^ *\\(IMPLICIT.*$\\|implicit.*$\\|DECLARE.\\|declare.\\)" 1 'Goldenrod3-face t) 
+		 ("^[^a-zA-ZCc*]........................................................................ *\\(.*\\)$" 1 'Salmon-face t)
+		 ("^ *#.*$" 0 'bold-Orange3-face t)
+		 ("^\\( ? ? ? ?[123456789][0123456789]*\\) " 1 'SkyBlue2-face t) 
+		 ("[Ww][Rr][Ii][Tt][Ee] *(.*, *\\([0123456789]*\\) *)" 1 'SkyBlue2-face t)
+		 ("[Ww][Rr][Ii][Tt][Ee] *(.*, *\\(\*\\) *)" 1 'Gold-face t)
+		 ("[Ww][Rr][Ii][Tt][Ee] *(*\\([6]\\),.*)" 1 'Red2-face t)
+		 ("\\([Gg][Oo][Tt][Oo]\\|[Gg][Oo] *[Tt][Oo]\\) *[0123456789]*" 0 'Pink2-face t)
+		 ("[Gg][Oo][Tt][Oo] *\\([0123456789]*\\)" 1 'SkyBlue2-face t)
+		 ("^ *\\(+self.\\|+SELF.\\).*$" 1 'Orange-face t)                          
+		 ("![ a-z0-9A-Z._@#$%^&*()_+={}|\:;\"<>,.?/-]*$" 0 font-lock-comment-face t)
+		 ("^\\(\\(\\*\\|C\\|c[ c*=-]\\).*\\|c *\\)$" 0 font-lock-comment-face t)   
+		 ("^\\( \\|  \\|   \\|    \\|       *\\)\\*.*$" 0 font-lock-comment-face t)
+		 ("^ *\\(SET \\|OPT \\|IGSET \\|set \\|opt \\|igset \\).*$" 0 'option-face t) 
+		 ("^ *\\([Mm]essage \\|MESSAGE \\|ITX \\|itx \\).*$" 0 'message-face t)
+		 ("^ *[Ss][Hh][Ee][Ll][Ll] .*$" 0 'Pink2-face t)
+		 ("^ *\\([Hh][Ii]/[Pp][Ll].*$\\)" 1 'Goldenrod3-face t)
+		 ("^\\([Mm][Aa][Cc][Rr][Oo].*\\)$" 1 'bold-LightSteelBlue2-face t)
+		 ))
+;;
+(setq auto-mode-alist (cons '("\\.car\\'" . fortran-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.f77\\'" . fortran-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.F\\'"   . fortran-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.f\\'"   . fortran-mode) auto-mode-alist))
+;;
+(add-hook 'fortran-mode-hook
+	  (function (lambda ()
+		      (define-key fortran-mode-map [C-return] 'fortran-split-line)
+		      (setq fortran-do-indent 1)
+		      (setq fortran-if-indent 1)
+		      (setq fortran-blink-matching-if t)
+		      (setq fortran-electric-line-number t)
+		      (setq fortran-blink-matching-if t)
+		      (setq fortran-line-number-indent 4)
+		      (setq fortran-continuation-string "+")
+		      (setq fortran-comment-string "*-")
+		      (setq fortran-continuation-indent 2)
+		      ;; Modify couple of faces:	
+		      (make-face-bold 'Cradle-face)
+		      )))
+;;
+;; cust-f77-mode.el
+;;

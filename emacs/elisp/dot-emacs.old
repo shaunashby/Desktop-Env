@@ -1,0 +1,971 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;                                                                                                        ;;;;
+;;;; Modified: 31/10/00    SFA			                                                            ;;;;
+;;;;	       13/06/01    SFA Added Python and xrdb edit                                                   ;;;;
+;;;;			       modes.		                                                            ;;;;
+;;;;	       02/08/01    SFA Added gnuplot mode.                                                          ;;;;
+;;;;	       30/10/01    SFA Added class template for c++                                                 ;;;;
+;;;;                           Changed modeline format                                                      ;;;;
+;;;;                                                                                                        ;;;;
+;;;;--------------------------------------------------------------------------------------------------------;;;;
+;;;; Revision: $Id: dot-emacs.old,v 1.1 2003/04/29 15:49:40 sashby Exp $                                    ;;;;
+;;;;                                                                                                        ;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Define load-path: 
+
+(setq load-path (cons "~/emacs" load-path))
+
+;; ========= The full load path ========= 
+
+;; ("~/emacs"                                                ; "/usr/local/share/emacs/20.4/lisp/textmodes"      
+;; "/usr/local/share/emacs/site-lisp/replacements" 	     ; "/usr/local/share/emacs/20.4/lisp/progmodes"      
+;; "/usr/local/share/emacs/site-lisp/auctex/" 		     ; "/usr/local/share/emacs/20.4/lisp/play"           
+;; "/usr/local/share/emacs/20.4/site-lisp" 		     ; "/usr/local/share/emacs/20.4/lisp/mail"           
+;; "/usr/local/share/emacs/site-lisp" 			     ; "/usr/local/share/emacs/20.4/lisp/language"       
+;; "/usr/local/share/emacs/site-lisp/add-ons" 		     ; "/usr/local/share/emacs/20.4/lisp/international"  
+;; "/usr/local/share/emacs/site-lisp/auctex" 		     ; "/usr/local/share/emacs/20.4/lisp/gnus"           
+;; "/usr/local/share/emacs/site-lisp/calc" 		     ; "/usr/local/share/emacs/20.4/lisp/emulation"      
+;; "/usr/local/share/emacs/site-lisp/elib" 		     ; "/usr/local/share/emacs/20.4/lisp/emacs-lisp"     
+;; "/usr/local/share/emacs/site-lisp/modes" 		     ; "/usr/local/share/emacs/20.4/lisp/calendar"       
+;; "/usr/local/share/emacs/site-lisp/vm" 		     ; "/usr/local/share/emacs/site-lisp/elib"           
+;; "/usr/local/share/emacs/site-lisp/w3" 		     ; "/usr/local/share/emacs/site-lisp/calc"           
+;; "/usr/local/share/emacs/site-lisp/auctex/style" 	     ; "/usr/local/share/emacs/site-lisp/vm"             
+;; "/usr/local/share/emacs/site-lisp/vm/pixmaps" 	     ; "/usr/local/share/emacs/site-lisp/add-ons"        
+;; "/usr/local/share/emacs/20.4/leim" 			     ; "/usr/local/share/emacs/site-lisp/w3"             
+;; "/usr/local/share/emacs/20.4/lisp" 			     ; "/usr/local/share/emacs/site-lisp/psgml"          
+;; "/usr/local/share/emacs/site-lisp/modes")
+
+(load "my-site-start")   ;; My site-dependent stuff
+(load "myfaces")         ;; My face defs
+(load "timestamp")       ;; Timestamp files
+(load "date")            ;; Date utilities
+(load "goto-percent")    ;; Goto % of buffer
+(load "matrix")          ;; Create matrices 
+(load "color-mode")      ;; Play with this
+(load "flash-paren")     ;; Flashing bracket mode
+(load "ssh")             ;; Use SSH for remote connections
+(load "rfcview")         ;; For viewing RFC docs
+(load "gnuserv")         ;; GNUSERV for client/server editing
+(load "rotate")          ;; Rotating text utils
+(load "html-toc")        ;; Create a table of contents in html docs
+(load "eperiodic")       ;; Create a periodic table
+(load "crontab-mode")    ;; Mode for editing crontab files
+
+(require 'filladapt)     ;; Play with adaptive fill in text mode
+(require 'bar-cursor)    ;; Change block cursor to a bar
+(require 'idl-font-lock) ;; CORBA IDL editing mode
+(require 'table)         ;; Table editing support
+
+;; Define some shortcut keys:
+;; Need to define way of undoing "comment-region" so can create a keybinding:
+(fset 'uncomment-region
+   [?\C-u ?- ?1 escape ?x ?c ?o ?m ?m ?e ?n ?t ?- ?r ?e ?g ?i ?o ?n])
+;;
+(global-set-key "\C-cg" 'goto-line)
+(global-set-key "\C-r" nil)
+(global-set-key "\C-r" 'isearch-backward-regexp)
+(global-set-key "\C-s" nil)
+(global-set-key "\C-s" 'isearch-forward-regexp)
+(global-set-key [print] 'switch-to-buffer)
+(global-set-key [C-down-mouse-1] 'mouse-buffer-menu)
+(global-set-key [f1] 'kill-buffer)
+(global-set-key [f2] 'delete-frame)
+(global-set-key [f3] 'make-frame)
+(global-set-key [f4] 'query-replace)
+(global-set-key [f5] 'downcase-region)
+(global-set-key [f6] 'upcase-region)
+(global-set-key [f7] 'font-lock-fontify-buffer)
+(global-set-key [f8] 'font-lock-mode)
+(global-set-key [f9] 'comment-region)
+(global-set-key [f10] 'uncomment-region)
+(global-set-key [f11] 'scroll-up)
+(global-set-key [f12] 'scroll-down)
+(global-set-key [home] 'beginning-of-buffer)
+(global-set-key [end] 'end-of-buffer)
+;;
+(setq dired-listing-switches "-lat")
+;; Print command:
+(setq lpr-command "xprint")
+(setq lpr-switches '("-P40_5b_08"))
+;; Taken from CERN site start file:
+(setq mark-even-if-inactive t)
+;; Misc stuff:
+(global-unset-key "\C-x\C-c")            ;; Disable the shortcut that exits Emacs
+(global-font-lock-mode t)                ;; Turn on font-lock automatically
+;;
+(setq font-lock-support-mode 'lazy-lock-mode)
+(setq font-lock-maximum-decoration t)
+;;
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+
+;; Ignore case in completions:
+(setq completion-ignore-case t)
+
+;; Some modeline stuff:
+(setq mode-line-system-identification  
+      (substring (system-name) 0
+		 (string-match "\\..+" (system-name))))
+
+(setq default-mode-line-format
+      (list "  "
+            "< "
+            'mode-line-system-identification
+            " >"
+            "  %14b"
+            "      "
+            "%[(" 
+            'mode-name 
+            'minor-mode-alist 
+            "%n" 
+            'mode-line-process  
+            ")%]    " 
+	    "--L%l--"
+            '(-3 . "%P")
+            "-%-"))
+
+;; Start with new default:
+(setq mode-line-format default-mode-line-format)
+
+;; Modify the frame parameters:
+
+(setq initial-frame-alist 
+      '(
+	(background-color . "darkslategrey") 
+	(foreground-color . "wheat") 
+	(vertical-scroll-bars . right)
+	(scroll-bar-width . 15)
+	(top . 1) 
+	(left . 1) 
+	(height . 50)
+	(width . 90)
+	))
+
+(setq default-frame-alist 
+      '(
+	(vertical-scroll-bars . left)
+	(scroll-bar-width . 15)
+       	(top . 1) 
+	(left . 1) 
+	(height . 60)
+	(width . 110)
+	))
+
+(setq special-display-frame-alist
+      '((menu-bar-lines . 0)
+	(background-color . "indianred4") 
+	(foreground-color . "yellow")
+	(vertical-scroll-bars . nil)
+	(height . 20)
+	(width . 80)
+	))
+
+;; Turn on flash-paren mode:
+(flash-paren-mode t)
+(blink-cursor-mode 0)
+(tool-bar-mode 0)
+
+;; Give special buffers their own frames:
+(setq special-display-buffer-names '("*server*","Calendar","*term*"))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ==========  Colours for faces     ========= ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(set-face-background 'highlight "Yellow")
+(set-face-foreground 'highlight "Black")
+(set-face-foreground 'italic "Sienna2")
+(set-face-foreground 'bold "MediumSeaGreen")
+(set-face-underline-p 'underline nil)
+(set-face-foreground 'underline "White")
+(set-face-foreground 'mode-line "pink")
+(set-face-background 'mode-line "grey30")
+;;
+;; Change font for mode-line face:
+(set-face-font 'mode-line "-schumacher-clean-medium-r-normal--10-100-75-75-c-60-iso646.1991-irv")
+;; -schumacher-clean-medium-r-normal--10-100-75-75-c-50-iso646.1991-irv also OK but v.small...
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Change normal comment face to red (bright!)      ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(set-face-foreground 'font-lock-comment-face "red")
+;; Make the comment face bold:
+(make-face-bold 'font-lock-comment-face)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Set faces for flashing-bracket mode: ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(set-face-foreground 'flash-paren-face-on "Green")
+(set-face-background 'flash-paren-face-on "OrangeRed3")
+(set-face-foreground 'flash-paren-face-off "white")
+(set-face-background 'flash-paren-face-off "black")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Other stuff                                      ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq-default transient-mark-mode t)
+(setq mouse-scroll-delay 0.0)
+;; Enable DEL key for deleting marked areas:
+(delete-selection-mode t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ========== Settings for the modes ========= ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(font-lock-add-keywords 'text-mode '(
+				     ("\\<\\(Date   :\\)" 1 'font-lock-warning-face t)
+				     ("\\<\\(Date:\\)"    1 'font-lock-warning-face t)
+				     ("\\<\\(Subject:\\)" 1 'font-lock-keyword-face t)
+				     ("\\<\\(Comment:\\)" 1 'font-lock-comment-face t)
+				     ("\\<\\(Received:\\)" 1 'Patch-face t)
+				     ("\\<\\(From:\\)" 1 'secondary-selection t)
+				     ("\\<\\(To:\\)" 1 'Red-face t)
+				     ("\\<\\(Return-Path:\\)" 1 'Red2-face t)
+				     ))
+
+(defun add-log-entry ()
+  "Shortcut for adding Time/Date stamped entry to log file"
+  (interactive)
+  (insert-string
+   (concat (make-string 75 ?- ) "\n"
+	   (format "Date   : %-64s \n" (current-time-string))
+	   (make-string 75 ?- ) "\n"
+           "Subject: \n"
+	   (make-string 75 ?- ) "\n"
+           "Comment: \n"        "\n"
+	   (make-string 75 ?- ) "\n"
+	   )))
+
+(add-hook 'text-mode-hook
+	  (function (lambda ()
+		      (define-key text-mode-map "\C-cs" 'add-log-entry)
+		      (setq turn-on-auto-fill t)
+		      )))
+;; Enable table editing mode:
+(add-hook 'text-mode-hook 'table-recognize)
+
+(setq auto-mode-alist (cons '("\\.log\\'" . text-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.txt\\'" . text-mode) auto-mode-alist))
+
+;; ORCARC mode:
+
+(autoload 'orcarc-mode "orcarc-mode" "autoloaded" t)
+(add-to-list 'auto-mode-alist '("\\orcarc\\'" . orcarc-mode))
+(add-to-list 'auto-mode-alist '("\\.orcarc\\'" . orcarc-mode))
+
+;; FORTRAN:      
+
+;; cradle face:
+(make-face 'Cradle-face)
+(set-face-foreground 'Cradle-face "PaleGreen")  
+;; face for patchy patches:
+(make-face 'Patch-face)
+(set-face-foreground 'Patch-face "Black")
+(set-face-background 'Patch-face "PaleGreen")     
+;; PAW: messages/itx:
+(make-face 'message-face)
+(set-face-foreground 'message-face "DeepPink")
+;; PAW: plot options:
+(make-face 'option-face)
+(set-face-foreground 'option-face "Aquamarine3")
+;; end-of-line "\":
+(make-face 'backslash-eol-face)
+(set-face-foreground 'backslash-eol-face "Red")   
+;; Directories:
+(make-face 'Directory-face)
+(set-face-foreground 'Directory-face "Black")
+(set-face-background 'Directory-face "White")
+;; 
+(font-lock-add-keywords 'fortran-mode '(
+ 					("^ *\\(CHARACTER\\|[Cc]haracter\\).*$" 1 'Green3-face t)
+ 					("^ *\\(LOGICAL\\|[Ll]ogical\\).*$" 1 'DarkSlateGray2-face t)
+ 					("^ *\\(PROGRAM\\|[Pp]rogram\\)" 1 'CornflowerBlue-face t)
+ 					("\\(+deck\\|+DECK\\).*$" 0 'LightSteelBlue2-face t)
+ 					("\\(+patch\\|+PATCH\\).*$" 0 'Patch-face t)
+    					("\\(+?exe.\\|+?EXE.\\).*$" 1 'Magenta2-face t)
+ 					("^ *\\(+pam,\\|+PAM,\\|+use,\\|+USE,\\|+seq,\\|+SEQ,\\|+keep,\\|+KEEP,\\).*$" 1 'Wheat-face t)
+					("\\(,[Tt]\=\\|,[Pp]\=\\|,[Dd]\=\\|,[Rr]\=\\)" 1 'Wheat-face t)
+    					("+EXE,P=\\([a-zA-Z0-9]*\\)" 1 'Cradle-face t)
+ 					("+USE,P=\\([a-zA-Z0-9]*\\)" 1 'Cradle-face t)
+ 					("+PAM,\\([0-9]*\\)" 1 'Coral2-face t)
+ 					("\\(ATTACH\\|CARDS\\)" 1 'Green-face t)
+ 					("+PAM.................................... *\\(.*\\)$" 1 'underline t)
+ 					("^ *\\(INCLUDE\\|[#]*include\\).*$" 1 'Wheat3-face t)  
+ 					("^ *\\(COMMON\\|common\\) */.*/" 1 'SeaGreen3-face t) 
+ 					("^ *\\(DATA\\|data\\)" 1 'PaleGreen2-face t)
+ 					("^ *\\(EXTERNAL\\|external\\|SAVE\\|save\\).*$" 1 'Orchid3-face t)
+  					("^ *\\(PARAMETER\\|parameter\\).*$" 1 'Aquamarine3-face t)
+ 					("^ *\\( [Ii][Ff] \\)" 1 'MediumAquamarine-face t)  
+ 					("^ *\\([Ee][Ll][Ss][Ee][Ii][Ff]\\|[Ee][Ll][Ss][Ee]\\)" 1 'MediumAquamarine-face t)
+ 					("^ *\\([Ee][Nn][Dd][Ii][Ff]\\|[Ee][Nn][Dd] *[Ii][Ff]\\)" 0 'MediumAquamarine-face t)
+ 					("^ .*\\([Tt][Hh][Ee][Nn]\\)" 1 'MediumAquamarine-face t)  
+ 					("^ .*\\([Cc][Aa][Ll][Ll] \\)" 1 'Thistle-face t)  
+ 					("^ *\\(IMPLICIT.*$\\|implicit.*$\\|DECLARE.\\|declare.\\)" 1 'Goldenrod3-face t) 
+ 					("^[^a-zA-ZCc*]........................................................................ *\\(.*\\)$" 1 'Salmon-face t)
+ 					("^ *#.*$" 0 'Orange3-face t)
+ 					("^\\( ? ? ? ?[123456789][0123456789]*\\) " 1 'SkyBlue2-face t) 
+ 					("[Ww][Rr][Ii][Tt][Ee] *(.*, *\\([0123456789]*\\) *)" 1 'SkyBlue2-face t)
+ 					("[Ww][Rr][Ii][Tt][Ee] *(.*, *\\(\*\\) *)" 1 'Gold-face t)
+ 					("[Ww][Rr][Ii][Tt][Ee] *(*\\([6]\\),.*)" 1 'Red2-face t)
+ 					("\\([Gg][Oo][Tt][Oo]\\|[Gg][Oo] *[Tt][Oo]\\) *[0123456789]*" 0 'Pink2-face t)
+					("[Gg][Oo][Tt][Oo] *\\([0123456789]*\\)" 1 'SkyBlue2-face t)
+ 					("^ *\\(+self.\\|+SELF.\\).*$" 1 'Orange-face t)                          
+ 					("![ a-z0-9A-Z._@#$%^&*()_+={}|\:;\"<>,.?/-]*$" 0 font-lock-comment-face t)
+ 					("^\\(\\(\\*\\|C\\|c[ c*=-]\\).*\\|c *\\)$" 0 font-lock-comment-face t)   
+ 					("^\\( \\|  \\|   \\|    \\|       *\\)\\*.*$" 0 font-lock-comment-face t)
+ 					("^ *\\(SET \\|OPT \\|IGSET \\|set \\|opt \\|igset \\).*$" 0 'option-face t) 
+ 					("^ *\\([Mm]essage \\|MESSAGE \\|ITX \\|itx \\).*$" 0 'message-face t)
+ 					("^ *[Ss][Hh][Ee][Ll][Ll] .*$" 0 'Pink2-face t)
+ 					("^ *\\([Hh][Ii]/[Pp][Ll].*$\\)" 1 'Goldenrod3-face t)
+ 					("^\\([Mm][Aa][Cc][Rr][Oo].*\\)$" 1 'LightSteelBlue2-face t)
+ 					))
+;;
+(setq auto-mode-alist (cons '("\\.car\\'" . fortran-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.cra\\'" . fortran-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.f77\\'" . fortran-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.job\\'" . fortran-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.kumac\\'" . fortran-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.make\\'" . fortran-mode) auto-mode-alist))
+;;
+(add-hook 'fortran-mode-hook
+	  (function (lambda ()
+		      (define-key fortran-mode-map [C-return] 'fortran-split-line)
+		      (setq fortran-do-indent 1)
+		      (setq fortran-if-indent 1)
+		      (setq fortran-blink-matching-if t)
+		      (setq fortran-electric-line-number t)
+		      (setq fortran-blink-matching-if t)
+		      (setq fortran-line-number-indent 4)
+		      (setq fortran-continuation-string "+")
+		      (setq fortran-comment-string "*-")
+		      (setq fortran-continuation-indent 2)
+		      ;; Modify couple of faces:	
+		      (make-face-bold 'LightSteelBlue2-face)	
+		      (make-face-bold 'Orange3-face)
+		      (make-face-bold 'Cradle-face)
+		      )))
+;;
+
+;; SHELL:
+
+(font-lock-add-keywords 'sh-mode '(
+				   ("\\( -eq \\)" 1 'YellowGreen-face t)    
+				   ("\\( -ne \\)" 1 'YellowGreen-face t)    
+				   ("\\( -lt \\)" 1 'YellowGreen-face t) 
+				   ("\\( -gt \\)" 1 'YellowGreen-face t) 
+				   ("\\( -le \\)" 1 'YellowGreen-face t) 
+				   ("\\( -ge \\)" 1 'YellowGreen-face t) 
+				   ("\\(<<\\|>>\\) " 1 'IndianRed-face t)
+				   ("\\( < \\| > \\)" 1 'Wheat2-face t)  
+				   ("\\( = \\)"  1 'Wheat2-face t)
+				   ("\\( != \\)"  1 'Wheat2-face t)
+				   ("\\( && \\)" 1 'OrangeRed3-face t)
+				   ("\\( || \\)" 1 'OrangeRed3-face  t)
+				   ))
+;;
+(setq auto-mode-alist (cons '("\\.sh\\'" . sh-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.ksh\\'" . sh-mode) auto-mode-alist))
+;;
+(add-hook 'sh-mode-hook
+	  (function (lambda()
+		      ;; Modify couple of faces:	
+		      (make-face-bold 'YellowGreen-face)	
+		      (make-face-bold 'OrangeRed3-face)
+		      (make-face-bold 'Wheat2-face)
+		      (make-face-bold 'CadetBlue2-face)
+		      (make-face-bold 'Thistle2-face)
+		      ;;
+		      (cond ((not (file-exists-p (buffer-file-name)))
+			     (insert-string
+			      (concat "#!/bin/ksh\n"
+				      "#" (make-string 75 ?=) "#\n"
+				      (format "# NAME: %-67s #\n" (buffer-name))
+				      "#" (make-string 75 ?=) "#\n"
+				      "#" (make-string 75 ? ) "#\n"
+				      (format "# DATE: %-64s    #\n" (current-time-string))
+				      "#" (make-string 75 ? ) "#\n"
+				      "# AUTHOR: Shaun Ashby                                                       #\n"
+				      "#" (make-string 75 ? ) "#\n"
+				      "# MOD LOG:                                                                  #\n"
+				      "#" (make-string 75 ? ) "#\n"
+				      "#" (make-string 75 ? ) "#\n"
+				      "#" (make-string 75 ?=) "#\n"
+				      "# DESCRIPTION:                                                              #\n"
+				      "#" (make-string 75 ?=) "#\n"
+				      ))))
+		      )))
+;;
+
+
+;; PERL:
+(font-lock-add-keywords 'perl-mode '(
+				     ("(\\(\\sw+\\)," 1 'font-lock-constant-face t)           ;; Filehandle opening
+				     ("(\\(\\sw+\\))" 1 'font-lock-constant-face t)           ;; Filehandle closing
+ 				     ("\\(open\\|close\\)" 1 'font-lock-builtin-face t)       ;; Opening/closing filehandles
+ 				     ("\\(opendir\\|closedir\\)" 1 'font-lock-builtin-face t) ;; Opening/closing dirs
+ 				     ("\\(sysopen\\)" 1 'SkyBlue2-face t)                     ;; sysopen
+ 				     ("\\(dbmopen \\|dbmclose \\)" 1 'Orange-face t)          ;; dbmopen/dbmclose
+ 				     ("\\(tie \\)" 1 'Orchid-face t)                          ;; tie
+				     ("\\(print \\)" 1 'font-lock-warning-face t)             ;; Print commands
+				     ("\\(printf \\)" 1 'font-lock-warning-face t)            ;;
+				     ("\\(sprintf \\)" 1 'font-lock-warning-face t)           ;;
+				     ("\\( -> \\|->\\)" 1 'Yellow3-face t)                    ;; Perl operators
+				     ("\\( => \\|=>\\)" 1 'Yellow3-face t)                    ;;
+				     ("\\( <=> \\|<=>\\)" 1 'bold-italic t)                   ;;
+				     ("\\( eq \\)" 1 'YellowGreen-face t)                     ;;
+				     ("\\( ne \\)" 1 'YellowGreen-face t)                     ;;
+				     ("\\( lt \\)" 1 'YellowGreen-face t)                     ;;
+				     ("\\( gt \\)" 1 'YellowGreen-face t)                     ;;
+				     ("\\( le \\)" 1 'YellowGreen-face t)                     ;;
+				     ("\\( ge \\)" 1 'YellowGreen-face t)                     ;;
+				     ("\\(::\\)" 1 'Plum2-face t)                             ;;
+				     ("\\(! \\)" 1 'LightSteelBlue2-face t)                   ;;
+				     ("\\( =~ \\| !~ \\)" 1 'LightBlue3-face t)               ;;
+				     ("\\(<<\\|>>\\) " 1 'IndianRed-face t)                   ;;
+				     ("\\( < \\| > \\| <= \\| >= \\)" 1 'Wheat2-face t)       ;;
+				     ("\\( == \\)"  1 'Wheat2-face t)                         ;;
+				     ("\\( != \\)"  1 'Wheat2-face t)                         ;;
+				     ("\\( && \\| and \\)" 1 'OrangeRed3-face t)              ;;
+				     ("\\( || \\| or \\)" 1 'OrangeRed3-face  t)              ;;
+				     ("\\( and \\| or \\)" 1 'OrangeRed2-face  t)             ;;
+				     ("\\(\+=\\|-=\\|\*=\\)" 1 'Thistle2-face t)              ;;
+				     ("^#.*" 0 'font-lock-comment-face t)                     ;;
+				     ))
+;;
+(setq auto-mode-alist (cons '("\\.pl\\'" . perl-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.cgi\\'" . perl-mode) auto-mode-alist))
+;;
+(add-hook 'perl-mode-hook
+	  (function (lambda()
+		      (setq perl-indent-level 0)
+		      (setq perl-continued-statement-offset 3)
+		      (setq perl-continued-brace-offset -3)
+		      (setq perl-brace-offset 3)
+		      (setq perl-brace-imaginary-offset 0)
+		      (setq perl-label-offset -3)
+		      (define-key perl-mode-map "\C-m" 'newline-and-indent)
+		      (define-key perl-mode-map "\C-cs" 'insert-sub-header)
+		      ;; Modify couple of faces:
+		      (make-face-bold 'font-lock-constant-face)	
+		      (make-face-bold 'Yellow3-face)	
+		      (make-face-bold 'YellowGreen-face)	
+		      (make-face-bold 'OrangeRed3-face)
+		      (make-face-bold 'Wheat2-face)
+		      (make-face-bold 'LightSteelBlue2-face)
+		      (make-face-bold 'Thistle2-face)
+		      (make-face-bold 'LightBlue3-face)
+		      ;;
+		      (cond ((not (file-exists-p (buffer-file-name)))
+			     (insert-string
+			      (concat "#!/usr/bin/env perl\n"
+				      "#" (make-string 75 ?=) "#\n"
+				      (format "# NAME: %-67s #\n" (buffer-name))
+				      "#" (make-string 75 ?=) "#\n"
+				      "#" (make-string 75 ? ) "#\n"
+				      (format "# DATE: %-64s    #\n" (current-time-string))
+				      "#" (make-string 75 ? ) "#\n"
+				      "# AUTHOR: Shaun Ashby                                                       #\n"
+				      "#" (make-string 75 ? ) "#\n"
+				      "# MOD LOG:                                                                  #\n"
+				      "#" (make-string 75 ? ) "#\n"
+				      "#" (make-string 75 ? ) "#\n"
+				      "#" (make-string 75 ?=) "#\n"
+				      "# DESCRIPTION:                                                              #\n"
+				      "#" (make-string 75 ?=) "#\n"
+				      ))))
+		      )))
+;; C:
+(setq auto-mode-alist (cons '("\\.c\\'" . c-mode) auto-mode-alist))
+;; C++:
+(font-lock-add-keywords 'c++-mode '(
+				    ("\\(^public\\|^private\\|^protected\\):" 1 'LightSteelBlue2-face t) ;; public, private 
+				                                                                         ;; and protected keywords
+				    ("^class \\([a-zA-Z0-9]*\\)" 1 'underline t) ;; Class names
+				    ))
+
+(setq auto-mode-alist (append '(("\\.cpp\\'" . c++-mode) 
+				("\\.C\\'" . c++-mode)
+				("\\.icc\\'" . c++-mode)
+				("\\.h\\'"   . c++-mode)
+				)
+			      auto-mode-alist))
+
+;;
+(defconst shaun-c-style
+  '((c-tab-always-indent           . t)
+    (c-hanging-braces-alist        . ((substatement-open before after)
+                                      (brace-list-open)))
+    (c-hanging-colons-alist        . ((member-init-intro before)
+                                      (inher-intro)
+                                      (case-label after)
+                                      (label after)
+                                      (access-label after)))
+    (c-cleanup-list                . (scope-operator))
+    (c-offsets-alist         . ((arglist-close         . c-lineup-arglist)
+                                (defun-block-intro     . 1)
+                                (substatement-open     . 3)
+                                (statement-block-intro . 0)
+                                (topmost-intro         . -1)
+                                (case-label            . 0)
+                                (block-open            . 0)
+                                (knr-argdecl-intro     . -)))
+    )
+  "Shaun Programming Style")
+
+;; Customizations for all of c-mode, c++-mode, and objc-mode
+(defun shaun-c-mode-common-hook ()
+  ;; add my personal style and set it for the current buffer
+  (c-add-style "SHAUN" shaun-c-style t)
+  ;; offset customizations not in shaun-c-style
+  (c-set-offset 'member-init-intro '++)
+)
+;;
+(add-hook 'c-mode-common-hook 'shaun-c-mode-common-hook)
+;;
+(add-hook 'c-mode-hook
+	  (function (lambda ()
+		      (cond ((not (file-exists-p (buffer-file-name)))
+			     (insert-string
+			      (concat "/*" (make-string 75 ?*) "*/\n"
+				      "/*" (make-string 75 ? ) "*/\n"
+				      (format "/* File: %-67s */\n" (buffer-name))
+				      "/*" (make-string 75 ? ) "*/\n"
+				      (format "/* Created: %-64s */\n" (current-time-string))
+				      "/*" (make-string 75 ? ) "*/\n"
+				      "/* Author: Shaun Ashby                                                       */\n"
+				      "/*" (make-string 75 ? ) "*/\n"
+				      "/* Revision:                                                                 */\n"
+				      "/*" (make-string 75 ? ) "*/\n"
+				      "/* Description:                                                              */\n"
+				      "/*" (make-string 75 ? ) "*/\n"
+				      "/*" (make-string 75 ?*) "*/\n"
+				      "\n#include <stdio.h>\n"))))
+		      (or (file-exists-p "makefile")
+			  (file-exists-p "Makefile")
+			  (set (make-local-variable 'compile-command)
+			       (concat "gcc -o "
+				       (substring
+					(file-name-nondirectory buffer-file-name)
+					0
+					(string-match
+					 "\\.c$"
+					 (file-name-nondirectory buffer-file-name)))
+				       " "
+				       (file-name-nondirectory buffer-file-name)))))))
+
+(add-hook 'c++-mode-hook
+	  (function (lambda ()
+		      (define-key c++-mode-map "\C-m" 'newline-and-indent)
+		      (define-key c++-mode-map "\C-cs" 'insert-class) ;; Entry-point for setting up 
+		                                                      ;; a class-templ. insertion
+		      ;; Modify faces as necessary:
+		      (make-face-bold 'LightSteelBlue2-face)	
+		      ;;
+		      (cond ((not (file-exists-p (buffer-file-name)))
+			     (insert-string
+			      (concat "//" (make-string 75 ?=) "//\n"
+				      (format "// File: %-67s //\n" (buffer-name))
+				      "//" (make-string 75 ? ) "//\n"
+				      (format "// Created:   %-62s //\n" (current-time-string))
+				      "// Author:    Shaun Ashby                                                    //\n"
+				      "// Revision:                                                                 //\n"
+				      "//" (make-string 75 ? ) "//\n"
+				      (format "// Description: %-60s " "" ) "//\n"                                      
+				      "//" (make-string 75 ? ) "//\n"
+				      "//" (make-string 75 ?=) "//\n"
+				      "\n#include <iostream>\n"))))
+		      (or (file-exists-p "makefile")
+			  (file-exists-p "Makefile")
+			  (set (make-local-variable 'compile-command)
+			       (concat "g++ -o "
+				       (substring
+					(file-name-nondirectory buffer-file-name)
+					0
+					(string-match
+					 "\\.C$"
+					 (file-name-nondirectory buffer-file-name)))
+				       " "
+				       (file-name-nondirectory buffer-file-name)))))))
+
+;; JAVA:
+
+(setq java-mode-hook
+      '(lambda()
+	 (setq java-indent-level 0)
+	 (setq java-continued-statement-offset 3)
+	 (setq java-continued-brace-offset -4)
+	 (setq java-brace-offset 3)
+	 (setq java-brace-imaginary-offset 0)
+	 (setq java-label-offset -4)
+	 (setq java-statement-block-intro . +)
+	 (setq java-knr-argdecl-intro     . 3)
+	 (setq java-substatement-open     . 0)
+	 (setq java-label                 . 0)
+	 (setq java-statement-case-open   . 0)
+	 (setq java-statement-cont        . 0)
+	 (define-key java-mode-map "\C-m" 'newline-and-indent)
+	 )
+      )
+
+;; TEX/LATEX:
+
+(setq auto-mode-alist (cons '("\\.tex\\'" . latex-mode) auto-mode-alist))
+
+(add-hook 'LaTeX-mode-hook
+  (function (lambda ()
+    (auto-fill-mode 1)
+  )))
+
+;; HTML/SGML:
+
+;; Add some keywords for CMS configuration tags:
+(font-lock-add-keywords 'sgml-mode '(
+				     ("\\(bin\\|lib\\)" 1 'Sienna2-face t) 
+				     ("\\(select\\|deselect\\)" 1 'font-lock-keyword-face t) 
+				     ("\\(ignore\\|base\\|include\\|project\\|download\\)" 1 'Aquamarine3-face t) 
+				     ("\\([Ee]nvironment\\|[Ee]xternal?\\|[Gg]roup\\|[Uu]se\\)" 1 'Aquamarine2-face t) 
+				     ("\\(name\\|version\\|url\\|type\\|ref\\|[Uu]se\\|file\\)\=" 1 'SpringGreen3-face t)
+				     ("\\( version\\)\=[a-zA-Z0-9\._-]" 1 'SpringGreen3-face t)
+ 				     ("\\([Aa]rchitecture\\)" 1 'SteelBlue4-face  t)
+ 				     (".*\=\\([a-zA-Z0-9-_]*\\) " 1 'bold-italic t)
+ 				     (".*\=\\(.*[^>]\\)>.*<.*>$" 1 'Khaki3-face t)
+ 				     (".*\=\\([a-zA-Z0-9/-_]*\\)>" 1 'bold-italic t)
+				     (".*>\\(.*\\)<.*" 1 'secondary-selection t)
+				     ("^#.*" 0 'font-lock-comment-face t)             
+				     ))
+
+(setq auto-mode-alist (cons '("\\.html\\'" . html-mode) auto-mode-alist))
+(setq auto-mode-alist (append '(("\\BuildFile\\'" . sgml-mode)               ;; CMS stuff
+				("\\CMSconfiguration\\'" . sgml-mode)        ;;
+				("\\RequirementsDoc\\'" . sgml-mode)         ;;
+				("\\BootStrapFile\\'" . sgml-mode)           ;;
+				("\\BootStrapFileSRC\\'" . sgml-mode)        ;;
+				)
+			      auto-mode-alist))
+
+(add-hook 'sgml-mode-hook
+	  (function (lambda ()	
+		      (define-key sgml-mode-map "\C-cs" 'insert-cmsconf-tools) ;; Insert CMS conf tools
+		      )))
+
+(add-hook 'html-mode-hook
+	  (function (lambda ()	
+		      (define-key html-mode-map "\C-cs" 'insert-cmsconf-tools) ;; Insert CMS conf tools
+		      )))
+
+
+;; Python mode:
+
+(font-lock-add-keywords 'python-mode '(
+				       ("\\(print \\)" 1 'font-lock-warning-face t)      ;; Print commands
+				       ("^class \\([a-zA-Z0-9]*\\):" 1 'underline t)     ;; Class names
+				       ("\\(__name__\\)" 1 'font-lock-constant-face t)   ;;
+				       ("\\b\\(and\\|or\\|not\\)\\b" 1 'OrangeRed2-face t)  ;;
+				       ("\\(\\\\\n\\)" 1 'Tan2-face t)                   ;;
+				       ("\\( % \\)" 1 'Orange-face t)                    ;;
+				       ("\\(\\[\\|\\]\\)" 1 'Aquamarine-face t)          ;;
+				       ("\\(<<\\|>>\\) " 1 'IndianRed-face t)            ;;
+				       ("\\( < \\| > \\| <> \\|<>\\)" 1 'Wheat2-face t)  ;;
+				       ("\\( == \\|==\\)"  1 'Wheat2-face t)             ;;
+				       ("\\( != \\|!=\\)"  1 'Wheat2-face t)             ;;
+				       ("\\( & \\)" 1 'OrangeRed3-face t)                ;;
+				       ("\\( | \\)" 1 'YellowGreen-face t)               ;;
+				       ("\\({\\|}\\)" 1 'Thistle2-face t)                ;;
+				       ("\\(global \\)" 1 'Green3-face t)                ;;
+				       ("\\(del \\)" 1 'Brown3-face t)                   ;;
+				       ("\\(try\\|except\\|finally\\)" 1 'SpringGreen3-face t) ;;
+				       ("\\(pass \\|break \\)" 1 'SlateBlue2-face t)     ;;
+				       ("\\(raise \\)" 1 'Sienna2-face t)                ;;
+				       ("\\([rR]?'''[^']*\\(\\('[^']\\|''[^']\\)[^']*\\)*'''\\|[rR]?\"\"\"[^\"]*\\(\\(\"[^\"]\\|\"\"[^\"]\\)[^\"]*\\)*\"\"\"\\|[rR]?'\\([^'\n\\]\\|\\\\.\\)*'\\|[rR]?\"\\([^\"\n\\]\\|\\\\.\\)*\"\\)" 1 'font-lock-string-face t)     ;;
+				       ("^#.*" 0 'font-lock-comment-face t)              ;;
+				       ))
+
+(setq auto-mode-alist (cons '("\\.py\\'" . python-mode) auto-mode-alist))
+(setq auto-mode-alist (append '(("\\.i$" . python-mode)) 
+			      auto-mode-alist))
+
+(setq interpreter-mode-alist (cons '("python" . python-mode) interpreter-mode-alist))
+(autoload 'python-mode "python-mode" "python editing mode." t)
+
+(add-hook 'python-mode-hook
+	  (function (lambda()
+		      ;; Python keymap is called py-mode-map 
+		      ;; not python-mode map
+		      (define-key py-mode-map "\C-cs" 'insert-py-def)
+		      ;; Modify couple of faces:
+		      (make-face-bold 'font-lock-constant-face)	
+		      (make-face-bold 'YellowGreen-face)	
+		      (make-face-bold 'OrangeRed3-face)
+		      (make-face-bold 'Wheat2-face)
+		      (make-face-bold 'Thistle2-face)
+		      (make-face-bold 'Orange-face)
+		      (make-face-bold 'Sienna2-face)
+		      (make-face-bold 'Tan2-face)
+		      ;;
+		      (cond ((not (file-exists-p (buffer-file-name)))
+			     (insert-string
+			      (concat 
+			       "#!/usr/bin/env python \n"
+			       "##" (make-string 75 ?-) "##\n"
+			       (format "## File: %-67s ##\n" (buffer-name))
+			       "##" (make-string 75 ? ) "##\n"
+			       (format "## Created:   %-62s ##\n" (current-time-string))
+			       "## Author:    Shaun Ashby                                                    ##\n"
+			       "## Revision:                                                                 ##\n"
+			       "##" (make-string 75 ? ) "##\n"
+			       (format "## Description: %-60s " "" ) "##\n"                                      
+			       "##" (make-string 75 ? ) "##\n"
+			       "##" (make-string 75 ?-) "##\n"
+			       "\n\n"))))
+		      )))
+
+;; Xdefaults editing mode:
+
+(setq auto-mode-alist (append '(("\\.Xresources\\'" . xrdb-mode)
+				("\\xresources\\'"  . xrdb-mode)
+				("\\.Xdefaults\\'"  . xrdb-mode)
+				)
+			      auto-mode-alist))
+
+(autoload 'xrdb-mode "xrdb-mode" "Mode for editing X resource files." t)
+
+;; Gnuplot-mode:
+
+(autoload 'gnuplot-mode "gnuplot" "gnuplot major mode" t)
+(autoload 'gnuplot-make-buffer "gnuplot" "open a buffer in gnuplot mode" t)
+(setq auto-mode-alist (append '(("\\.gp$" . gnuplot-mode)) 
+			      auto-mode-alist))
+
+;; Path to info for gnuplot:
+(add-to-list 'Info-default-directory-list "~/emacs/info")
+
+;; Add some stuff for PSGML/XML modes:
+(autoload 'sgml-mode "psgml" "Major mode to edit SGML files." t)
+;;
+(setq auto-mode-alist (cons '("\\.xml\\'" . xml-mode) auto-mode-alist))
+(autoload 'xml-mode "psgml" "Major mode to edit XML files." t)
+
+;; Add mode-hook for XML mode:
+(add-hook 'xml-mode-hook
+	  (function (lambda()
+		      (auto-raise-mode 0)
+		      )))
+
+;; Stuff for PHP mode:
+(setq auto-mode-alist (cons '("\\.php\\'" . php-mode) auto-mode-alist))
+(autoload 'php-mode "php-mode-102" "Major mode to edit PHP files." t)
+
+;; Add mode hook for PHP mode:
+(add-hook 'php-mode-hook
+	  (function (lambda()
+		      (auto-raise-mode 0)
+		      )))
+
+;; PostScript mode:
+(setq auto-mode-alist (cons '("\\.ps\\'" . ps-mode) auto-mode-alist))
+(autoload 'ps-mode "ps-mode" "Major mode to edit PostScript files." t)
+
+;; RPM mode:
+(autoload 'rpm "rpm" "Shell for the rpm package management utility." t)
+
+(autoload 'rpm-dired-install "rpm" "Install all marked (or next ARG) rpm-files." t)
+(add-hook 'dired-load-hook
+	  '(lambda () (define-key dired-mode-map "I"
+			'rpm-dired-install)))
+
+;; RUBY mode:
+(setq auto-mode-alist (cons '("\\.rb\\'" . ruby-mode) auto-mode-alist))
+(autoload 'ruby-mode "ruby-mode" "Major mode for editing RUBY scripts." t)
+
+;; WGET:
+(autoload 'wget "wget" "WWW GET utility." t)
+
+;; Interface to /etc/services:
+(autoload 'services-lookup "services" "Perform a service lookup" t)
+
+;; CORBA IDL mode:
+(setq auto-mode-alist (cons '("\\.idl\\'" . idl-mode) auto-mode-alist))
+
+;; For editing Apache config files:
+(autoload 'apache-mode "apache-mode" "autoloaded" t)            
+(add-to-list 'auto-mode-alist '("\\.htaccess$"   . apache-mode))
+(add-to-list 'auto-mode-alist '("httpd\\.conf$"  . apache-mode))
+(add-to-list 'auto-mode-alist '("srm\\.conf$"    . apache-mode))
+(add-to-list 'auto-mode-alist '("access\\.conf$" . apache-mode))
+
+;; JavaScript mode:
+(autoload 'javascript-mode "javascript-mode" "JavaScript mode" t)
+(setq auto-mode-alist (append '(("\\.js$" . javascript-mode))
+			      auto-mode-alist))
+
+;;;;;;;; Some useful functions ;;;;;;;;;;
+
+(defun insert-class (classname)
+  "Add a new class description"
+  (interactive "sClass name: ")
+  (insert 
+   "\n#ifndef " (format "%-20s" (concat classname "_h"))
+   "\n#define " (format "%-20s" (concat classname "_h"))
+   "\n"
+   "\n// Define a new class:"
+   "\nclass " (format "%-20s" classname)
+   "\n{"
+   "\npublic:                          // Public parts"
+   "\n" (format "   %-30s" (concat classname "();")) "// Default constructor"
+   "\n" (format "   %-30s" (concat "~" classname "();")) "// Default destructor"
+   "\n\n   // Public methods"
+   "\n\n\n\n"
+   "\nprivate:                         // Private parts"
+   "\n\n\n\n"
+   "\nprotected:                       // Protected parts"
+   "\n\n"
+   "\n};"
+   "\n\n#endif\n"
+))
+
+
+(defun get-file-description (fdesc)
+  "File description"
+  (interactive "sDescription: ")
+  (insert "\n" (format "// Description: %-62s " fdesc ) " //\n" ))
+
+
+(defun insert-cmsconf-tools ()
+  "Add a block for the CMS Configuration that contains CMS OO tools."
+  (interactive)
+  (insert "<require name=CMSToolBox version=CMSToolBox_1_ url=\"cvs:\?module=SCRAMToolBox/CMS/Tools/CMSToolBox\">\n"
+	  "</require>\n"
+	  "<require name=COBRA version=COBRA_7_1_ url=\"cvs:\?module=SCRAMToolBox/CMS/Tools/COBRA\">\n"
+	  "</require>\n"
+	  "<require name=IGUANA version=IGUANA_4_1_ url=\"cvs:\?module=SCRAMToolBox/CMS/Tools/IGUANA\">\n"
+	  "</require>\n"
+	  "<require name=ORCA version=ORCA_7_ url=\"cvs:\?module=SCRAMToolBox/CMS/Tools/ORCA\">\n"
+	  "</require>\n"
+	  "<require name=OSCAR version=OSCAR_2_ url=\"cvs:\?module=SCRAMToolBox/CMS/Tools/OSCAR\">\n"
+	  "</require>\n"
+	  "<require name=FAMOS version=FAMOS_0_ url=\"cvs:\?module=SCRAMToolBox/CMS/Tools/FAMOS\">\n"
+	  "</require>\n"
+	  ))
+
+(defun insert-tool-template ()
+  "Add a template for a new tool file."
+  (interactive)
+  (insert "<doc type=BuildSystem::ToolDoc version=1.0>\n"
+	  "<Tool name=toolname version=1.0>\n"
+	  "<info url=URLSTRING> Web-based information.</info>\n"
+	  "<Lib name=   >\n"
+	  "<Client>\n"
+	  "<Environment name=toolname_BASE >\n"
+	  "Put some info here.\n"
+	  "</Environment>\n"
+	  "<Environment name=LIBDIR default=\" \" type=lib></Environment>\n"
+	  "<Environment name=INCLUDE default=\" \" ></Environment>\n"
+	  "</Client>\n"
+	  "<Environment name=LD_LIBRARY_PATH value=$LIBDIR type=Runtime_path></Environment>\n"
+	  "</Tool>\n"
+	  ))
+
+(defun insert-py-def (defname)
+  "Insert a Python def block with a description header"
+  (interactive "sdef name: ")
+  (insert 
+   (format "\ndef %-15s " (concat defname "( ):"))
+   "\n\"\"\""
+   "\n" (make-string 45 ?-) " "
+   (format "\n  Function:   %-30s   " defname)
+   (format "\n  Created:    %-30s   " (current-time-string))
+   (format "\n  Description: %-30s  " "")
+   "\n " (make-string 45 ?-) " "
+   "\n\"\"\""
+   ))
+
+(defun insert-sub-header (subname)
+  "Add a comment header block to a subroutine"
+  (interactive "sSubroutine name: ")
+  (insert "\n   " (make-string 63 ?# )
+	  "\n   #"(format " %-40s" subname) (make-string 20? ) "#"
+	  "\n   " (make-string 63 ?# )
+	  "\n   # modified : " (format "%-24s" (current-time-string)) " / SFA " (make-string 18? ) "#"
+	  "\n   # params   : " (make-string 49? ) "#\n   #          : " (make-string 49? ) "#" 
+	  "\n   #          : " (make-string 49? ) "#\n   #          : " (make-string 49? ) "#"
+	  "\n   # function : " (make-string 49? ) "#\n   #          : " (make-string 49? ) "#" 
+	  "\n   #          : " (make-string 49? ) "#\n   #          : " (make-string 49? ) "#" 
+	  "\n   " (make-string 63 ?# )"\n\n" ))
+
+
+(defun insert-percent-space ()
+   "insert percent and space at the start of line, then go to next line"
+   (interactive)
+   (beginning-of-line 1)
+   (insert "\% ")
+   (beginning-of-line 2)
+)
+
+(defun insert-pound-space () 
+  "insert pound-sign and space at the start of line, then go to next line" 
+  (interactive) (beginning-of-line 1)
+  (insert "\# ") (beginning-of-line 2) 
+)
+
+(defun insert-semicolon-space ()
+   "insert semi-colon and space at the start of line, then go to next line"
+   (interactive)
+   (beginning-of-line 1)
+   (insert "\; ")
+   (beginning-of-line 2)
+)
+
+(defun insert-Cspace ()
+   "insert C and space at the start of line, then go to next line"
+   (interactive)
+   (beginning-of-line 1)
+   (insert "C ")
+   (beginning-of-line 2)
+)
+
+(defun insert-2spaces ()
+   "insert two spaces at the start of line, then go to next line"
+   (interactive)
+   (beginning-of-line 1)
+   (insert "  ")
+   (beginning-of-line 2)
+)
+
+(defun delete-2chars ()
+   "delete 2 characters at the start of line, then go to next line"
+   (interactive)
+   (beginning-of-line 1)
+   (delete-char 2)
+   (beginning-of-line 2)
+)
+
+(defun insert-asterisk-space ()
+   "insert asterisk and space at the start of line, then go to next line"
+   (interactive)
+   (beginning-of-line 1)
+   (insert "\* ")
+   (beginning-of-line 2)
+)
+
+(defun insert-c-comment ()
+   "insert c comment, then go to next line"
+   (interactive)
+   (beginning-of-line 1)
+   (insert "/\* ")
+   (end-of-line 1)
+   (insert " \*/")
+   (beginning-of-line 2)
+)
+
+(defun search-gt72-columns ()
+   "find a line starting with a number or blank which is >72 characters long"
+   (interactive)
+   (search-forward-regexp "^[^Cc*].......................................................................")
+)
+
+
+;;;;;;;; Other functions ;;;;;;;;
+
+(defun yes-or-no-p (prompt)
+  (y-or-n-p prompt))
