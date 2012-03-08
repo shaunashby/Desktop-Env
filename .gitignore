@@ -1,3 +1,5 @@
+zshkit
+completions
 emacs/*.elc
 *~
 .zsh-history
