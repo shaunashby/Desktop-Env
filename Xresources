@@ -1,0 +1,400 @@
+*customization:                                  -color
+*ttyModes:	erase ^H intr ^C kill ^U start ^Q stop ^S swtch ^@
+
+MySQL*borderWidth:				 1
+MySQL*borderColor:				 red3
+MySQL*foreground:				 yellowgreen
+MySQL*background:				 grey20
+MySQL*cursorColor:				 red
+MySQL*font:					 7x13
+MySQL*fullCursor:                                true
+MySQL*pointerColor:				 green
+MySQL*jumpScroll:				 true
+MySQL*saveLines:				 5000
+MySQL*scrollBar:				 true
+MySQL*scrollKey:				 true
+MySQL*visualBell:				 true
+MySQL*geometry:		   		         80x30
+
+SQLiteDB*borderWidth:				 1
+SQLiteDB*borderColor:				 red3
+SQLiteDB*foreground:				 yellowgreen
+SQLiteDB*background:				 grey20
+SQLiteDB*cursorColor:				 red
+SQLiteDB*font:					 7x13
+SQLiteDB*fullCursor:                             true
+SQLiteDB*pointerColor:				 green
+SQLiteDB*jumpScroll:				 true
+SQLiteDB*saveLines:				 5000
+SQLiteDB*scrollBar:				 true
+SQLiteDB*scrollKey:				 true
+SQLiteDB*visualBell:				 true
+SQLiteDB*geometry:                               80x30
+
+Logger*borderWidth:				 1
+Logger*borderColor:				 red3
+Logger*foreground:				 plum
+Logger*background:				 darkslategrey
+Logger*cursorColor:				 red
+Logger*font:					 6x10
+Logger*fullCursor:                               true
+Logger*pointerColor:				 green
+Logger*jumpScroll:				 true
+Logger*saveLines:				 2000
+Logger*scrollBar:				 true
+Logger*scrollKey:				 true
+Logger*visualBell:				 true
+
+xterm*borderWidth:				 1
+xterm*borderColor:				 red3
+xterm*foreground:				 white
+xterm*background:				 black
+xterm*cursorColor:				 violetred
+xterm*font:					 6x10
+xterm*boldFont:                                  6x10
+xterm*fullCursor:                                true
+xterm*pointerColor:				 red
+xterm*jumpScroll:				 true
+xterm*saveLines:				 5120
+xterm*scrollBar:				 true
+xterm*scrollKey:				 true
+xterm*visualBell:				 true
+xterm.geometry:		   		         80x25
+xterm.termName:                                  vt100
+XTerm*Scrollbar.Thickness:                       8
+XTerm*Scrollbar.DrawBorder:                      0
+*VT100.Translations: #override \
+  Shift<Btn4Down>,<Btn4Up>:scroll-back(1,line)\n\
+  Shift<Btn5Down>,<Btn5Up>:scroll-forw(1,line)\n\
+   Ctrl<Btn4Down>,<Btn4Up>:scroll-back(1,page)\n\
+   Ctrl<Btn5Down>,<Btn5Up>:scroll-forw(1,page)\n\
+       <Btn4Down>,<Btn4Up>:scroll-back(1,halfpage)\n\
+       <Btn5Down>,<Btn5Up>:scroll-forw(1,halfpage)\n\
+		   <Key>F1: string("clear") string(0x0d) \n\
+		   <Key>F2: string("pwd") string(0x0d) \n\
+		   <Key>F3: string("ls -l --color") string(0x0d) \n\
+		   <Key>F4: string("df -k") string(0x0d) \n\
+		   <Key>F5: string("cd /home/sashby/work/CMS") string(0x0d)
+
+!# In the scrollbar we map buttons 5 & 4 to 1 and 2 otherwise, core dump
+!# This will move proportionnaly to cursor position but we dont know how to
+!# program the same exact behavior as in the text widget.
+XTerm.vt100.Scrollbar.translations: #override\n\
+			<Btn5Down>: StartScroll(Forward)\n\
+			<Btn4Down>: StartScroll(Backward)
+
+!## Athena text widgets
+*Paned.Text.translations: #override\n\
+Shift<Btn4Down>,<Btn4Up>: scroll-one-line-down()\n\
+Shift<Btn5Down>,<Btn5Up>: scroll-one-line-up()\n\
+Ctrl<Btn4Down>,<Btn4Up>: previous-page()\n\
+Ctrl<Btn5Down>,<Btn5Up>: next-page()\n\
+None<Btn4Down>,<Btn4Up>:scroll-one-line-down()scroll-one-line-down()scroll-one-line-down()scroll-one-line-down()scroll-one-line-down()\n\
+None<Btn5Down>,<Btn5Up>:scroll-one-line-up()scroll-one-line-up()scroll-one-line-up()scroll-one-line-up()scroll-one-line-up()\n\
+
+
+!pine*vt100.translations: #override\n\
+!      Shift<Btn4Down>,<Btn4Up>:string("\033OA")\n\
+!      Shift<Btn5Down>,<Btn5Up>:string("\033OB")\n\
+!      Ctrl<Btn4Down>,<Btn4Up>:string("\033OA\033OA\033OA\033OA\033OA")\n\
+!      Ctrl<Btn5Down>,<Btn5Up>:string("\033OB\033OB\033OB\033OB\033OB")\n\
+!      <Btn4Down>,<Btn4Up>: string("\033OA")\n\
+!      <Btn5Down>,<Btn5Up>: string("\033OB")\n\
+
+!pine.vt100.Scrollbar.translations: #override\n\
+!			<Btn5Down>: StartScroll(Forward)\n\
+!			<Btn4Down>: StartScroll(Backward)
+
+pine*borderWidth:                               1
+pine*borderColor:                               red3
+pine*foreground:                                lemonchiffon
+pine*background:                                black
+pine*cursorColor:                               violetred
+pine*font:                                      lucidasanstypewriter-bold-10
+pine*fullCursor:                                true
+pine*pointerColor:                              red
+pine*jumpScroll:                                true
+pine*saveLines:                                 5120
+pine*scrollBar:                                 false
+pine*scrollKey:                                 true
+pine*visualBell:                                true
+pine.termName:                                  vt100
+pine*geometry:                                  90x35+95+320
+Pine*Scrollbar.Thickness:                       8
+Pine*Scrollbar.DrawBorder:                      1
+pine*title:                                     pine [sashby@mailbox.cern.ch]
+
+POPMail*borderWidth:                            1
+POPMail*borderColor:                            black
+POPMail*foreground:                             indianred4
+POPMail*background:                             skyblue
+POPMail*cursorColor:                            yellow
+POPMail*font:                                   5x8
+POPMail*fullCursor:                             true
+POPMail*pointerColor:                           green
+POPMail*jumpScroll:                             true
+POPMail*saveLines:                              5120
+POPMail*scrollBar:                              false
+POPMail*scrollKey:                              true
+POPMail*visualBell:                             true
+POPMail.termName:                               vt100
+POPMail*geometry:                               80x45+580+95
+POPMail*Scrollbar.Thickness:                    8
+POPMail*Scrollbar.DrawBorder:                   1
+POPMail*title:                                  POP3@yahoo.com
+
+xclock*borderWidth:				 3
+xclock*update:					 1
+xclock*analog:					 true
+xclock*chime:					 false
+xclock*geometry:				 +730+0
+xclock*ReverseVideo:				 off
+
+xload*highlight:				 green
+xload*foreground:				 OrangeRed2
+xload*background:				 LightSkyBlue1
+xload*geometry:					 +885+530
+xload*font:					 -adobe-helvetica-bold-r-*-*-10-*-*-*-*-*-*-*
+
+xcalc*Foreground:				 Black
+xcalc*Background:				 LightBlue
+xcalc*NKeyFore:					 Black
+xcalc*NKeyBack:					 White
+xcalc*OKeyFore:					 Yellow
+xcalc*OKeyBack:					 White
+xcalc*FKeyFore:					 White
+xcalc*FKeyBack:					 #900
+xcalc*DispFore:					 Yellow
+xcalc*DispBack:					 #777
+xcalc*IconFore:					 Red
+xcalc*IconBack:					 White
+
+Ical.Reminder.geometry:				 +0+545
+Ical.Listing.geometry:				 +35+210
+Ical.apptLineColor:                              MediumPurple4
+Ical.weekdayColor:                               darkslategrey
+Ical.weekendColor:                               FireBrick
+Ical.weekendInterestColor: OrangeRed1
+Ical.fontFamily:                                 new century schoolbook
+!#Ical.fixedFontFamily: helvetica
+Ical.fontSize:                                   small
+Ical*Menu*font:                                  -adobe-helvetica-medium-r-*-*-10-*-*-*-*-*-*-*
+Ical*Menubutton*font:                            -adobe-helvetica-medium-r-*-*-10-*-*-*-*-*-*-*
+Ical*Label*font:                                 lucidasanstypewriter-bold-18
+Ical.Dayview.geometry:                           +30+470
+Ical.itemBg:                                     DarkSeaGreen1
+Ical.itemFg:                                     black
+Ical*itemFont: -adobe-helvetica-medium-r-*-*-10-*-*-*-*-*-*-*
+Ical.itemSelectFg: white
+Ical.itemSelectBg: red4
+Ical*background:                                 grey80
+Ical.interestColor: purple4
+!#Ical.smallHeadingFont: 6x10
+
+mxconns*iconic:					 false
+mxconns*background:				 black
+mxconns*foreground:				 white
+
+LogBook*popup.background:			 grey25
+LogBook*popup.foreground:			 yellow
+LogBook*popup.font:				 lucidasanstypewriter-bold-10
+LogBook*menubar.background:			 white
+LogBook*menubar.foreground:			 indianred4
+LogBook*menubar.font:				 lucidasanstypewriter-bold-10
+LogBook*EmacsScreen.foreground:			 white
+LogBook*EmacsScreen*cursorColor:		 violetred
+LogBook*EmacsScreen.borderWidth:		 2
+LogBook*EmacsScreen.background:			 black
+LogBook*EmacsScreen*pointerColor:		 goldenrod1
+LogBook*foreground:				 black
+LogBook*font:					 fixed
+LogBook*bitmapIcon:				 on
+LogBook*background:				 SeaGreen
+LogBook*.cursorColor:				 violetred
+LogBook*.pointerColor:				 goldenrod1
+LogBook*geometry:                                95x26+620+110
+
+Emacs*popup.background:				 steelblue
+Emacs*popup.foreground:				 yellow
+Emacs*popup.font:				 lucidasanstypewriter-bold-10
+Emacs.pane.menubar.*.background:		 darkslategrey
+Emacs.pane.menubar.*.foreground:	         burlywood1
+Emacs.pane.menubar.*.font:		         lucidasanstypewriter-bold-10
+Emacs*EmacsScreen.foreground:			 white
+Emacs*EmacsScreen*cursorColor:			 mediumorchid
+Emacs*EmacsScreen.borderWidth:			 2
+Emacs*EmacsScreen.background:			 black
+Emacs*EmacsScreen*pointerColor:			 goldenrod1
+Emacs*foreground:				 white
+Emacs*font:					 6x13
+Emacs.geometry:					 +0+30
+Emacs*background:				 black
+Emacs*.cursorColor:				 mediumorchid
+Emacs*.pointerColor:				 goldenrod1
+
+XClipboard*Command*Font:			 lucidasanstypewriter-bold-12
+XClipboard*Label*Font:				 lucidasanstypewriter-bold-12
+XClipboard*Text*Font:				 lucidasanstypewriter-bold-10
+XClipboard.geometry:				 340x150
+XClipboard*ShapeStyle:				 oval
+XClipboard*background:				 lightsteelblue
+XClipboard*foreground:				 darkblue
+
+xosview*font:					 5x8
+xosview*background:				 black
+xosview*foreground:				 white
+xosview*disk:					 False
+xosview*page:					 False
+xosview*net:					 False
+xosview*swap:					 False
+xosview*interrupts:				 False
+xosview*captions:				 False
+xosview*meterLabelColor:			 yellow
+xosview*usedlabels:				 False
+xosview*usedLabelColor:				 orange
+xosview*borderwidth:				 0
+xosview*netBandwidth:				 10000000
+xosview*geometry:				 140x65
+
+Netscape*drawingArea.translations:      #replace        \
+        <Btn1Down>:                     ArmLink()       \n\
+        <Btn2Down>:                     ArmLink()       \n\
+        ~Shift<Btn1Up>:                 ActivateLink()  \n\
+        ~Shift<Btn2Up>:                 ActivateLink(new-window)  \
+                                        DisarmLink()    \n\
+        Shift<Btn1Up>:                  ActivateLink(save-only)  \
+                                        DisarmLink()    \n\
+        Shift<Btn2Up>:                  ActivateLink(save-only)  \
+                                        DisarmLink()    \n\
+        <Btn1Motion>:                   DisarmLinkIfMoved()  \n\
+        <Btn2Motion>:                   DisarmLinkIfMoved()  \n\
+        <Btn3Motion>:                   DisarmLinkIfMoved()  \n\
+        <Motion>:                       DescribeLink()  \n\
+        <Btn3Down>:                     xfeDoPopup()    \n\
+        <Btn3Up>:                       ActivatePopup() \n\
+        Ctrl<Btn4Down>: PageUp()\n\
+        Ctrl<Btn5Down>: PageDown()\n\
+        Shift<Btn4Down>: LineUp()\n\
+        Shift<Btn5Down>: LineDown()\n\
+         ~Shift~Ctrl~Alt<Btn4Down>: LineUp()LineUp()LineUp()LineUp()LineUp()LineUp()\n\
+         ~Shift~Ctrl~Alt<Btn5Down>: LineDown()LineDown()LineDown()LineDown()LineDown()LineDown()\n\
+        Alt<Btn4Down>: xfeDoCommand(forward)\n\
+        Alt<Btn5Down>: xfeDoCommand(back)\n
+
+Netscape*globalNonTextTranslations: #override\n\
+ Shift<Btn4Down>: LineUp()\n\
+ Shift<Btn5Down>: LineDown()\n\
+ ~Shift~Ctrl~Alt<Btn4Down>:LineUp()LineUp()LineUp()LineUp()LineUp()LineUp()\n\
+ ~Shift~Ctrl~Alt<Btn5Down>:LineDown()LineDown()LineDown()LineDown()LineDown()LineDown()\n\
+ Alt<Btn4Down>: xfeDoCommand(forward)\n\
+ Alt<Btn5Down>: xfeDoCommand(back)\n
+
+xrn*background:					 SlateGray
+xrn*foreground:					 white
+xrn*borderWidth:				 1
+!xrn*borderColor:				 red3
+xrn*font:					 6x10
+xrn*geometry:					 635x650+0+83
+XRn*Scrollbar.Thickness:                         8
+XRn*Scrollbar.DrawBorder:                        0
+		xrn*cursorColor: red
+xrn.Gripe.geometry:	+50+50
+xrn.ngButtonList: ngQuit,ngRead,ngCatchUp,ngGoto,ngRescan,\
+			ngSubscribe,ngPost,ngGripe,ngAllGroups,ngExit
+xrn.artButtonList: artQuit,artNextUnread,artNext,artPrev,artCatchUp,artFedUp\
+			artPost,artGripe,artNextGroup
+xrn*index.accelerators: #override \n\
+		<Key>Down:	next-line() \n\
+ 		<Key>Up:	previous-line()
+xrn.ngBindings: \
+   <Key>Q:		ngQuit()	\n\
+   <Key>N:		ngRead()	\n\
+   <Key>P:		ngPrev()
+xrn.artBindings: \
+   <Key>Q:		artQuit()	\n\
+   <Key>N:		artNextUnread()	\n\
+   <Key>P:		artPrev()
+xrn*border:		LightGray
+xrn.Information.geometry: +400+400
+xrn*breakLength:		0
+xrn*Composition*Text*wrap:	never
+xrn*Composition*Text*autoFill:	true
+xrn*Composition.geometry:	660+0+0
+xrn*Text*background:	gray25
+xrn*Text*foreground:	white
+xrn*Text*Background:	gray25
+xrn*Text*Foreground:	yellow
+xrn.vpane.index.thickness: 22
+xrn.vpane.articleText.thickness: 10
+xrn*Label.background:		cyan
+xrn*Label.foreground:		black
+xrn*Label.font:			-adobe-helvetica-bold-r-*-*-10-*-*-*-*-*-*-*
+xrn*Command.foreground:		White
+xrn*Command.background:		darkblue
+xrn*Command.font:		-adobe-helvetica-medium-r-*-*-10-*-*-*-*-*-*-*
+xrn*Box.ngQuit.foreground:	Black
+xrn*Box.ngQuit.background:	red
+xrn*Box.ngExit.foreground:	Black
+xrn*Box.ngExit.background:	orange
+xrn*Box.ngRescan.foreground:	pink
+xrn*Box.ngRescan.background:	black
+xrn*Box.ngUnsub.foreground: green
+xrn*Box.ngUnsub.background: blue
+xrn*Box.ngSubscribe.foreground: blue
+xrn*Box.ngSubscribe.background:	green
+xrn*Box.artQuit.foreground:	Black
+xrn*Box.artQuit.background:	red
+xrn*Box.artSave.foreground:	NavyBlue
+xrn*Box.artSave.background:	Green
+xrn*Box.artNextUnread.font:	-adobe-helvetica-medium-r-*-*-10-*-*-*-*-*-*-*
+xrn*Box.addQuit.foreground:	Black
+xrn*Box.addQuit.background:	red
+xrn*dialog*font:		-adobe-helvetica-medium-r-*-*-10-*-*-*-*-*-*-*
+xrn*dialog*background:		Green
+xrn*dialog*foreground:		CornflowerBlue
+xrn*dialog*Label.foreground:	NavyBlue
+xrn*dialog*Command.foreground:	Black
+xrn*dialog*Command.background:	yellow
+xrn*dialog*Text*background:	white
+xrn*dialog*Text*foreground:	black
+xrn*dialog*borderWidth:		1
+
+Quota*geometry:                                  66x5+1196+1080
+Quota*font:                                      6x10
+Quota*foreground:                                white
+Quota*background:                                black
+Quota*scrollBar:                                 false
+
+zwgc*geometry:                                   80x15+1066+194
+zwgc.termName:                                   vt100
+zwgc*foreground:                                 black
+zwgc*background:                                 pink
+zwgc*font:                                       6x10
+zwgc*scrollBar:                                  false
+zwgc*cursorColor:                                violetred
+zwgc*pointerColor:                               red
+
+zwrite*geometry:                                 80x5+1066+350
+zwrite.termName:                                 vt100
+zwrite*foreground:                               white
+zwrite*background:                               grey15
+zwrite*font:                                     6x10
+zwrite*scrollBar:                                false
+zwrite*cursorColor:                              violetred
+zwrite*pointerColor:                             red
+
+xlock*nice:	                                 15
+
+XMAN*manualFontNormal:                           -adobe-helvetica-medium-r-*-*-12-*-*-*-*-*-*-*
+XMAN*manualFontBold:		                 lucidasanstypewriter-bold-12
+XMAN*manualFontItalic:		                 lucidasanstypewriter-bold-12
+XMAN*topBox:		               	         False
+XMAN*foreground:ivory
+XMAN*background:grey15
+XMAN.translations: #override \
+  Shift<Btn4Down>,<Btn4Up>:scroll-back(1,line)\n\
+  Shift<Btn5Down>,<Btn5Up>:scroll-forw(1,line)\n\
+   Ctrl<Btn4Down>,<Btn4Up>:scroll-back(1,page)\n\
+   Ctrl<Btn5Down>,<Btn5Up>:scroll-forw(1,page)\n\
+       <Btn4Down>,<Btn4Up>:scroll-back(1,halfpage)\n\
+       <Btn5Down>,<Btn5Up>:scroll-forw(1,halfpage)
