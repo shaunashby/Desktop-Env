@@ -1,0 +1,686 @@
+# -*-shell-script-*-
+#
+#
+# Fonts - one for window titles, another for icons, another for menus
+WindowFont	-*-helvetica-bold-*-*-*-10-*-*-*-*-*-*-*
+IconFont	-adobe-helvetica-medium-r-*-*-10-*-*-*-*-*-*-*
+MenuFont   	-adobe-helvetica-medium-r-*-*-10-*-*-*-*-*-*-*
+#
+# Set the default window colors. The syntax is:
+#  DefaultColors winforecolor winbackcolor titleforecolor titlebackcolor
+#  where:
+#  winforecolor    is used for the menu text
+#  winbackcolor    is the background (border) color of all windows,
+#                  including the menu windows 
+#  titleforecolor  is the color of the title text of non selected windows
+#
+#  titlebackcolor  is the background color used for title bars of 
+#                  non selected windows
+DefaultColors   black Honeydew black grey50
+#
+# Text and background color for the title bar of the active (selected) window
+#
+HilightColors   GoldenRod2 CadetBlue4
+#
+# Text and background color for the title bar of sticky windows
+#
+StickyColors    White Aquamarine3
+
+#========================================================================#
+
+#
+# Set up the major operating modes
+#
+
+# Comment the above and uncomment one of the following if you prefer
+# focus follow mouse. Also, if you want auto-raise enabled, uncomment
+# the appropiate line in InitFunction (see below).
+Style "*" MWMFunctions
+Style "*" HintOverride
+Style "*" MWMDecor
+Style "*" DecorateTransient, NoPPosition
+#Style "*" IconBox 0 1024 1024 -1
+Style "*" IconBox 0 975 975 -1
+Style "*" SloppyFocus
+
+OpaqueMoveSize 100
+EdgeScroll 100 100
+EdgeResistance 250 50
+
+#
+# RandomPlacement prevents user interaction while placing windows:
+# SmartPlacement allows the user to decide where to put down windows.
+#
+Style "*" RandomPlacement,SmartPlacement
+Style "*" NoPPosition
+
+#========================================================================#
+
+#
+# Set the desk top size.  The units are X by Y screens. (horiz by vert)
+#
+DeskTopSize 1x1
+
+#========================================================================#
+
+#
+# Module path and paths to the icons
+# Paths are a colon-separated list, just like regular unix PATH
+#
+ModulePath /usr/local/wm/fvwm95/lib/X11/fvwm95
+PixmapPath /usr/local/wm/fvwm95/lib/X11/pixmaps:/usr/local/wm/fvwm95/lib/X11/pixmaps/cern:/afs/cern.ch/user/s/sashby/pics/icons
+IconPath   /usr/local/wm/fvwm95/lib/X11/mini-icons
+
+#========================================================================#
+
+# Set the decoration styles and window options
+# If compatible styles are set for a single window in multiple Style
+# commands, then the styles are ORed together. If conflicting styles
+# are set, the last one specified is used.
+
+# These commands should command before any menus or functions are defined,
+# and before the internal pager is started.
+
+#
+# Default width.
+#
+Style "*" BorderWidth 0, HandleWidth 2
+Style "#60c0a0" Sticky
+
+Style "Fvwm*"       NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip, BorderWidth 0
+Style "FvwmPager"   StaysOnTop
+Style "FvwmBanner"  StaysOnTop
+Style "FvwmButtons"   NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip, BorderWidth 0, Icon toolbox.xpm
+
+Style "mxconns"     NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip, BorderWidth -1
+
+Style "xterm"       Icon rterm.xpm, TitleIcon mini-term.xpm
+#Style "xclock"      NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
+
+Style "xclock"      NoTitle, Sticky, WindowListSkip, CirculateSkip, BorderWidth 4
+
+Style "xload"       NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
+Style "xscreensaver"   NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
+Style "*clipboard"  NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
+Style "Calendar"    Icon datebook.xpm
+Style "Datebook*"   Icon datebook.xpm
+Style "Dayview*"    Icon datebook.xpm
+Style "xcalc"       Icon xcalc.xpm, NoButton 2
+
+Style "*biff"       Icon mail1.xpm, NoButton 2, NoTitle, Sticky, WindowListSkip, CirculateSkip, ClickToFocus
+Style "pine*"	    Icon mail2.xpm, NoButton 4, NoButton 2
+Style "POPMail*"    Icon email1.xpm, NoButton 4, NoButton 6 
+Style "mail*"	    Icon mail2.xpm
+Style "xwho"	    Icon phone.xpm
+Style "phone"	    Icon phone.xpm
+
+Style "man"         Icon xman.xpm
+Style "manual"	    Icon xman.xpm
+
+Style "*etscape*"   Handles,WindowListSkip,StartsOnDesk 1
+Style "emacs"       Icon emacs.xpm,TitleIcon mini-edit.xpm
+Style "emacs*"      Icon emacs.xpm,TitleIcon mini-edit.xpm
+Style "emacs@*"     Icon emacs.xpm,TitleIcon mini-edit.xpm
+Style "LogBook"     NoTitle, Icon notepad.xpm
+Style "vi*"         Icon notepad.xpm,StartsOnDesk 3
+
+Style "PAW"         Icon plots.xbm
+Style "paw*"        Icon plots.xbm
+Style "HIGZ*"       Icon plots.xbm
+
+Style "nn*"         Icon news2.xpm
+Style "knews*"      Icon news2.xpm
+Style "xrn*"        Icon news2.xpm,StartsOnDesk 2
+
+Style "*zephyr*"     NoTitle, Icon talk_balloon.xbm, Sticky
+Style "*zwgc*"       NoTitle, Icon talk_balloon.xbm, WindowListSkip
+Style "*zwrite*"     NoTitle, Icon talk_balloon.xbm, WindowListSkip
+Style "*zw*"         NoTitle, Icon talk_balloon.xbm, WindowListSkip
+
+Style "Quota"        NoTitle, Sticky,WindowListSkip
+Style "*console*"    NoTitle, Icon dialog_box.xpm, StartsOnDesk 0
+Style "SSHRemoteHost"  NoTitle
+Style "XMMS*"        NoTitle
+Style "LSQuota*"     NoTitle, BorderWidth 0, NoHandles, StartsOnDesk 0
+Style "Logger"       NoTitle, BorderWidth 0, NoHandles, StartsOnDesk 0, Icon display.xpm
+Style "xmessage*"    NoTitle, BorderWidth 0, NoHandles
+
+#========================================================================#
+
+##################### II - Initialization Functions  #######################
+
+#
+# Stuff to do at start-up
+#
+
+DestroyFunc "InitFunction" 
+AddToFunc "InitFunction" \
+  "I" Module FvwmButtons
++ "I" Module FvwmPager 0 7
++ "I" Module FvwmBacker
+
+
+DestroyFunc "RestartFunction"
+AddToFunc "RestartFunction" \
+  "I" Module FvwmButtons
++ "I" Module FvwmPager 0 7
++ "I" Module FvwmBacker
++ "I" Refresh
+
+#========================================================================#
+
+##################### III - Handy Complex Functions  #######################
+
+# Creating complex functions:
+
+# To create a complex function, type the following lines (replacing
+# the words in braces {} with the description of your choice):
+
+# DestroyFunc "{function_name}"
+# AddToFunc "{function_name}" \
+#    "{descriptor}"   {FVWM_action}
+
+# For subsequent lines (a function can execute several actions, dependent on
+# mouse clicks), add a plus sign (+) in front:
+# +  "{descriptor}"    {FWWM_action}
+          
+
+# An FVWM_action can be any FVWM built-in function, any fucntion already 
+# defined in your .fvwm95rc file, or any FVWM utility.
+
+
+# Now define some handy complex functions
+
+#
+# This one moves and then raises the window if you drag the mouse,
+# only raises the window if you click,  or does a RaiseLower if you double 
+# click
+#
+
+DestroyFunc "Move-or-Raise"
+AddToFunc "Move-or-Raise" \
+  "M"	Move
++ "M"	Raise
++ "C"	Raise
++ "D"	RaiseLower
+
+#
+# This one maximizes vertically if you click (leaving room for the 
+# FvwmTaskBar at the bottom, or does a full maximization (leaving room for
+# the FvwmTaskBar and the FvwmButtons) if you double click, or a true full
+# maximization if you just hold the mouse button down. 
+#
+
+DestroyFunc "Maximize-Func"
+AddToFunc "Maximize-Func" \
+  "M"	Maximize 0 97
++ "D"	Maximize 100 97
++ "C"	Maximize 93 97
+
+#
+# This one moves and then lowers the window if you drag the mouse,
+# only lowers the window if you click, or does a RaiseLower if you double 
+# click
+#
+
+DestroyFunc "Move-or-Lower"
+AddToFunc "Move-or-Lower" \
+  "M"	Move
++ "M"	Lower
++ "C"	Lower
++ "D"	RaiseLower
+
+#
+# This one moves or (de)iconifies:
+#
+
+DestroyFunc "Move-or-Iconify"
+AddToFunc "Move-or-Iconify" \
+  "M"	Move
++ "D"	Iconify
+
+#
+# This one resizes and then raises the window if you drag the mouse,
+# only raises the window if you click,  or does a RaiseLower if you double 
+# click
+#
+
+DestroyFunc "Resize-or-Raise"
+AddToFunc "Resize-or-Raise" \
+  "M"	Resize
++ "M"	Raise
++ "C"	Raise
++ "D"	RaiseLower
+
+################################ IV - Menus ##################################
+ 
+AddToMenu "WindowOps" "Window Operations" Title
++                       "Move"          Move-or-Raise
++                       "Resize"        Resize-or-Raise
++                       "Raise"         Raise
++                       "Lower"         Lower
++                       "(De)Iconify"   Iconify
++                       "(Un)Stick"     Stick
++                       ""              Nop
++                       "Delete"        Delete
++                       "Close"         Close
++                       "Destroy"       Destroy
+
+#  #========================================================================################### My new menus ########################################
+
+DestroyMenu "Shells"
+AddToMenu "Shells" "Shells"       	Title 
++       "Black on LightBlue"		Exec  xterm -bg lightblue -fg Black -geometry 100x25
++	"Black on Light Yellow"		Exec  xterm -bg lightyellow -fg Black -geometry 100x25
++	"Black on Peach"		Exec  xterm -bg PeachPuff2 -fg Black -geometry 100x25
++	"Black on Pink"		        Exec  xterm -bg pink -fg black -geometry 100x25
++       "GreenYellow on Black"          Exec  xterm -bg black -fg greenyellow
++       "Green on Black"                Exec  xterm -bg grey20 -fg Green
++	"Wheat on DarkBlue"		Exec  xterm -bg darkblue -fg wheat -geometry 100x25
++	"" Nop
++	"sh"		                Exec  xterm -geometry 100x25 -bg Black -fg Yellow -n "bash" -T "bash" -e /bin/sh
++	"tcsh"				Exec  xterm -geometry 100x25 -bg Black -fg Orange -e /bin/tcsh 
++	"tclsh"				Exec  xterm -geometry 100x25 -bg Black -fg Green -e /usr/bin/tclsh 
++       "" Nop
++       "Python shell"                  Exec xterm -geometry 100x25 -bg grey20 -fg Green -e /usr/bin/python2.2 &
+
+# Hosts menu:
+DestroyMenu "Hosts"
+AddToMenu "Hosts" "Hosts" Title
++ "ssh: pccms127" Exec xterm -sb -geometry 100x25 -fn 6x10 -fg Yellow -bg Black -T pccms127 -n pccms127 -e ssh pccms127.cern.ch &
++ " LINUX " Nop
++ "ssh: lxplus" Exec xterm -sb -geometry 100x25 -fn 6x10 -bg White -fg Black -T lxplus -n lxplus -e ssh lxplus.cern.ch &
++ "ssh: lxplus (pubzh)" Exec xterm -sb -geometry 100x25 -fn 6x10 -fg Green -bg Black -T lxplus:pubzh -n lxplus:pubzh -e ssh lxplus.cern.ch -l pubzh &
++ "ssh: lxcmsb1" Exec xterm -sb -geometry 100x25 -fn 6x10 -bg White -fg Black -T lxcmsb1 -n lxcmsb1 -e ssh lxcmsb1.cern.ch &
++ "ssh: lxcmsb1 (pubzh)" Exec xterm -sb -geometry 100x25 -fn 6x10 -fg Green -bg Black -T lxcmsb1:pubzh -n lxcmsb1:pubzh -e ssh lxcmsb1.cern.ch -l pubzh &
++ "ssh: lxcmsc2" Exec xterm -sb -geometry 100x25 -fn 6x10 -bg White -fg Black -T lxcmsc2 -n lxcmsc2 -e ssh lxcmsc2.cern.ch &
++ "ssh: lxcmsc2 (pubzh)" Exec xterm -sb -geometry 100x25 -fn 6x10 -fg Green -bg Black -T lxcmsc2:pubzh -n lxcmsc2:pubzh -e ssh lxcmsc2.cern.ch -l pubzh &
++ " BUILD SERVERS " Nop
++ "ssh: lxbuild023" Exec xterm -sb -geometry 100x25 -fn 6x10 -bg lightyellow -fg Black -T lxbuild -n lxbuild -e ssh lxbuild023.cern.ch &
++ "ssh: lxbuild024" Exec xterm -sb -geometry 100x25 -fn 6x10 -bg lightyellow -fg Black -T lxbuild -n lxbuild -e ssh lxbuild024.cern.ch &
++ "" Nop
++ "ssh: lxslc3" Exec xterm -sb -geometry 100x25 -fn 6x10 -fg White -bg Black -T lxslc3 -n lxslc3 -e ssh lxslc3.cern.ch &
++ "ssh: lxslc3 (pubzh)" Exec xterm -sb -geometry 100x25 -fn 6x10 -fg Green -bg Black -T lxslc3:pubzh -n lxslc3:pubzh -e ssh lxslc3.cern.ch -l pubzh &
++ "" Nop
++ "ssh: lxcmsd1" Exec xterm -sb -geometry 100x25 -fn 6x10 -fg White -bg Black -T lxcmsd1 -n lxcmsd1 -e ssh lxcmsd1.cern.ch &
++ "ssh: lxcmsd1 (pubzh)" Exec xterm -sb -geometry 100x25 -fn 6x10 -fg White -bg Black -T lxcmsd1:pubzh -n lxcmsd1:pubzh -e ssh lxcmsd1.cern.ch -l pubzh &
++ "ssh: lxcmsd2" Exec xterm -sb -geometry 100x25 -fn 6x10 -fg White -bg Black -T lxcmsd2 -n lxcmsd2 -e ssh lxcmsd2.cern.ch &
++ "ssh: lxcmsd2 (pubzh)" Exec xterm -sb -geometry 100x25 -fn 6x10 -fg White -bg Black -T lxcmsd2:pubzh -n lxcmsd2:pubzh -e ssh lxcmsd2.cern.ch -l pubzh &
++ "ssh: lxcmse1" Exec xterm -sb -geometry 100x25 -fn 6x10 -fg White -bg Black -T lxcmse1 -n lxcmse1 -e ssh lxcmse1.cern.ch &
++ "ssh: lxcmse1 (pubzh)" Exec xterm -sb -geometry 100x25 -fn 6x10 -fg White -bg Black -T lxcmse1:pubzh -n lxcmse1:pubzh -e ssh lxcmse1.cern.ch -l pubzh &
++ "ssh: lxcmse2" Exec xterm -sb -geometry 100x25 -fn 6x10 -fg White -bg Black -T lxcmse2 -n lxcmse2 -e ssh lxcmse2.cern.ch &
++ "ssh: lxcmse2 (pubzh)" Exec xterm -sb -geometry 100x25 -fn 6x10 -fg White -bg Black -T lxcmse2:pubzh -n lxcmse2:pubzh -e ssh lxcmse2.cern.ch -l pubzh &
++ "CMS CMC" Nop
++ "ssh: cmsdoc (cmsdoc)" Exec xterm -sb -geometry 100x25 -fn 6x10 -fg Green -bg Black -T cmsdoc:cmsdoc -n cmsdoc:cmsdoc -e ssh cmsdoc.cern.ch -l cmsdoc &
++ "" Nop
++ "ssh: cmscvs (cvsadmin)" Exec xterm -sb -geometry 100x25 -fn 6x10 -bg White -fg Black -T cmscvs:cvsadmin -n cmscvs:cvsadmin -e ssh cmscvs.cern.ch -l cvsadmin &
++ "" Nop
++ "su" Exec xterm -geometry 100x25+0+650 -e sudo su -&
++ "" Nop
++ "clean hosts file" Exec ~/scripts/CleanKHosts.ksh 
+
+DestroyMenu "Module"
+AddToMenu "Module" "Modules" Title
++ "Buttons"				Module FvwmButtons
++ "Clean-Up%mini-pencil.xpm%"		Module FvwmClean
++ "Identify%mini-question.xpm%"		Module FvwmIdent
++ "Save Desktop"			Module FvwmSave
++ "Debug%mini-bug2.xpm%"		Module FvwmDebug
++ "Pager"				Module FvwmPager 0 7
++ "Window List%mini-windows.xpm%"	Module FvwmWinList
++ "Talk"				Module FvwmTalk
++ "Configure%mini-hammer.xpm%"		Module FvwmConfig
+
+#DestroyMenu "AnalysisTools"
+#AddToMenu "AnalysisTools" "AnalysisTools" Title 
+#+	"PAW Session %mini-graph.xpm%" 	Exec xterm -fn 6x10 -geometry 100x25 -fg White -bg Red4 -n PAW -T PAW -e ipaw &
+#+	"ROOT Session %mini-graph-bw.xpm%" Exec xterm -fn 6x10 -geometry 120x25 -fg yellow -bg grey20 -n ROOT -T ROOT -e iroot &
+
+#DestroyMenu "Scripts"
+#AddToMenu "Scripts" "Tools" Title
+#+ "Send a message " Exec ~/scripts/zmessage
+#+ "" Nop
+#+ "Analysis tools" Popup AnalysisTools
+#+ "" Nop
+#+ "XWho" Exec xterm +sb -e xwho
+#+ "" Nop
+#+ "Start XtoX     " Exec ~/bin/start-x2x 
+
+DestroyMenu "Sound"
+AddToMenu "Sound" "Sound" Title
++ "MP3 player %xmms_mini.xpm%" Exec xmms >/dev/null 2>&1 &
+
+DestroyMenu "Editors"
+AddToMenu "Editors" "Editors" Title
++     "emacs %mini-edit.xpm%" Exec emacs
++     "vi"    Exec xterm -n edit -T edit -e vi /tmp/sfa.$$ 
+
+DestroyMenu "DeskTop"
+AddToMenu "DeskTop" "DeskTop Menu" Title
++       "Pine %mini-mail.xpm%"         Exec xterm -132 -name "pine" -e pine &
++	"News %mini-news.xpm%"         Exec xrn
++       "Calendar %mydatebook-small.xpm%" Exec ical
++	"Calculator (xcalc) %mini-calc.xpm%" Exec xcalc
++	"Drawing (xfig) %mini-xfig.xpm%"      Exec xfig
++	"Painting (xpaint) %mini-paint.xpm%"  Exec xpaint
+
+## Provides a list of applications.
+DestroyMenu "StdTools"
+AddToMenu "StdTools" "Tools" Title
++      "PostScript viewer (gv) %mini-gv.xpm%" Exec gv
++      "picture viewer (xv) %mini-xv.xpm%" Exec xv
++      "DVI viewer (xdvi) %mini-dvi.xpm%" Exec xdvi
++      "PDF viewer (xpdf) %mini-pdf.xpm%" Exec xpdf
++      "" Nop
++      "Sound" Popup Sound 
++      "" Nop
+
+
+# DestroyMenu "ZWindow"
+# AddToMenu "ZWindow" "ZEPHYR Windows" Title
+# + "plain window" Exec xterm -132  -sl 100 -T "zwgc" -name "zwgc" -e tail -f $HOME/.zephyr_msgs &
+# + "another window" Exec xterm -fg Green -bg black -132  -sl 100 -T "zwgc" -name "zwgc" -e tail -f $HOME/.zephyr_msgs &
+
+# DestroyMenu "Zephyr"
+# AddToMenu "Zephyr" "Zephyr Messaging" Title
+# + "stop messages"    Exec zctl set exposure none
+# + "accept messages"  Exec zctl set exposure realm-visible
+# + 	"" Nop
+# + "hide"             Exec zctl hide
+# + "unhide"           Exec zctl unhide
+# + 	"" Nop
+# + "new windows"      Popup ZWindow 
+# + 	"" Nop
+# + "run subscribe"    Exec subscribe;sleep 2
+# +       "" Nop
+# + "restart zwgc"       Exec stop_zwgc ; exec subscribe
+
+DestroyMenu "WallPaper"
+AddToMenu "WallPaper" "Background Colors" Title
++              "skyblue %skyblue.xpm%"	       Exec xsetroot -solid SkyBlue4
++	       "black  %black.xpm%"            Exec xsetroot -solid Black 
++              "dsgrey %dsgrey.xpm%"	       Exec xsetroot -solid darkslategrey
++	       "grey18 %grey18.xpm%"           Exec xsetroot -solid grey18  
++              "grey25 %grey25.xpm%"	       Exec xsetroot -solid grey25  
++              "grey30 %grey30.xpm%"	       Exec xsetroot -solid grey30
++	       "antiquewhite %antiquew.xpm%"   Exec xsetroot -solid AntiqueWhite4 
++              "blue %blue.xpm%"               Exec xsetroot -solid SkyBlue4 
++	       "midnightblue %mnblue.xpm%"     Exec xsetroot -solid MidnightBlue 
++              "dodgerblue   %dgblue.xpm%"     Exec xsetroot -solid DodgerBlue 
++              "burlywood    %blywood.xpm%"    Exec xsetroot -solid Burlywood 
++	       "tan %tan.xpm%"                 Exec xsetroot -solid Tan 
++	       "brown %brown.xpm%"             Exec xsetroot -solid Brown 
++	       "seagreen %seagreen.xpm%"       Exec xsetroot -solid SeaGreen 
++              "" Nop
++              "default"       Exec xsetroot -def
+
+DestroyMenu "Web"
+AddToMenu "Web" "Web Browsers" Title
++	"WWW %mini-nscape.xpm%"		Exec  netscape
++	"WWW (lynx)"			Exec  xterm -bg Black -fg White -e lynx $WWW_HOME
+
+# This menu controls most common applications.
+# -------------------------------------------
+DestroyMenu "UserMenu"
+AddToMenu "UserMenu" "User Menu" Title
++	"Shells"	                Popup Shells
++	""				Nop 
++	"Editors %mini-edit.xpm%"      	Popup Editors
++	"Standard Tools"		Popup StdTools
++	"Desktop Tools"			Popup DeskTop
++	""				Nop 
++       "Wallpaper"			Popup WallPaper
++	""				Nop 
++	"Web"				Popup Web
+#+	""				Nop 
+#+       "Zephyr"                        Popup  Zephyr
++       "" Nop 
++       "top"	                        Exec xterm -geometry 90x70 -fn 5x8 -sb -fg black -bg lemonchiffon -T top -n top -e top &
++       "" Nop  
++	"Browse Docs (LYNX)"		Exec xterm -bg lemonchiffon -fg black -e lynx $HOME/DOCS/
++	""				Nop 
++	"Lock Screen %mini-lock.xpm%"  	Exec xscreensaver-command -lock
++	""				Nop 
++	""				Nop 
++	"Logout %mini-stop.xpm%"        Module FvwmForm QuitVerify
+
+
+# This menu controls login/out/hosts, not utilities.
+# -------------------------------------------------
+DestroyMenu "GroupMenu"
+AddToMenu "GroupMenu" "Window Manager"  Title
++	"Window Ops"			Popup WindowOps 
++       "Modules %mini-modules.xpm%"    Popup Module
++	"Refresh %mini-ray.xpm%"        Refresh
++	""				Nop
++	""				Nop 
++	"Restart %mini-turn.xpm"       	Restart
+
+DestroyMenu "SystemMenu"
+AddToMenu "SystemMenu" "System Control" Title
++ "List modules" Exec sudo lsmod
++ "Check system messages" Exec sudo xterm -bg grey15 -fg pink -e tail -f /var/log/messages &
+
+#
+# This creates the "system" menu for the title-bar window-ops pop-up
+#
+
+DestroyFunc "windows_ops_func"
+AddToFunc "window_ops_func" \
+  "C"	PopUp WindowOps
++ "M"	PopUp WindowOps
++ "D"	Delete  
+
+
+###################### Mouse Stuff ##########################################
+
+
+
+
+########################### V - Mouse Button Bindings ########################
+
+#
+# Mouse bindings
+#
+
+# First, for the mouse in the root window
+# Button 1 gives the Utilities menu
+# Button 2 gives the Window Ops menu
+# Button 3 gives the WindowList (like TwmWindows)
+# I use the AnyModifier (A) option for the modifier field, so you can hold down
+# any shift-control-whatever combination you want!
+
+#     Button	Context Modifi 	Function
+Mouse 1		R   	A       Menu "UserMenu" Nop
+Mouse 2		R    	A       Menu "GroupMenu" Nop
+Mouse 3         R       A       Menu "SystemMenu" Nop
+
+# Now the title bar buttons
+# Any button in the left title-bar button gives the window ops menu
+# Any button in the first right title-bar button Iconifies the window
+# Any button in the second title-bar button maximizes
+# Any button in the third (rightmost) title-bar button closes
+# Note the use of "Mouse 0" for AnyButton.
+
+#     Button	Context Modif 	Function
+Mouse 0		1    	A      	Function "window_ops_func"
+Mouse 1         2       A       Delete
+Mouse 0		4    	A     	Function "Maximize-Func"
+Mouse 0		6    	A     	Iconify
+
+################################################################
+#########Mouse 0         8       A       Function "sticky"######
+################################################################
+
+#
+# Now the rest of the frame
+# Here I invoke my complex functions for Move-or-lower, Move-or-raise,
+# and Resize-or-Raise. 
+#
+# Button 1 in the corner pieces, with any modifiers, gives resize or raise
+Mouse 1		F	A	Function "Resize-or-Raise"
+# Button 1 in the title, sides, or icon, w/ any modifiers, gives move or raise
+Mouse 1		T	A	Function "Move-or-Raise"
+Mouse 1		S	A	Function "Resize-or-Raise"
+
+# Button 1 in an icons gives move for a drag, de-iconify for a double-click,
+# nothing for a single click
+# Button 2 in an icon, w/ any modifiers, gives de-iconify
+Mouse 1		I	A	Function "Move-or-Iconify"
+Mouse 2		I	A	Iconify
+
+# Button 2 in the corners, sides, or title-bar gives the window ops menu
+Mouse 2		FST	A	Function "window_ops_func"
+
+# Button 3 anywhere in the decoration (except the title-bar buttons)
+# does a raise-lower
+Mouse 3		TSIF	A	RaiseLower
+Mouse 1		W	M	Move
+
+#========================================================================#
+
+############################ VI - Key Bindings ##############################
+
+# Arrow Keys
+# press arrow + control anywhere, and scroll by 1 page
+Key Left	A	C	Scroll -100  0
+Key Right	A	C	Scroll +100 +0+ 
+Key Up		A	C	Scroll +0   -100
+Key Down	A	C	Scroll +0   +100
+
+# press arrow + meta key, and scroll by 1/10 of a page
+Key Left	A	M	Scroll -10 +0
+Key Right	A	M	Scroll +10 +0
+Key Up		A	M	Scroll +0  -10
+Key Down	A	M	Scroll +0  +10
+
+# press shift arrow + control anywhere, and move the pointer by 1% of a page
+Key Left	A	SC	CursorMove -1  0
+Key Right	A	SC	CursorMove +1 +0
+Key Up		A	SC	CursorMove +0 -1
+Key Down	A	SC	CursorMove +0 +1
+
+# press shift arrow + meta key, and move the pointer by 1/10 of a page
+Key Left	A	SM	CursorMove -10 +0
+Key Right	A	SM	CursorMove +10 +0
+Key Up		A	SM	CursorMove +0  -10
+Key Down	A	SM	CursorMove +0  +10
+
+# Keyboard accelerators
+Key F1		A	M	Popup "Utilities"
+Key F1		A	M	Popup "Utilities"
+Key F2		A	M	Popup "WindowOps"
+Key F3		A	M	Module "WindowList" FvwmWinList 
+Key F4		A	M	Delete
+Key F5		A	M	Move
+Key F6		A	M	Resize
+Key Tab         A       M       Prev Focus
+Key Tab         A       MS      Next Focus
+
+Key Escape	A	C	WindowList
+Key F1		A	C	Popup StartMenu +4 -26
+
+############################ VII - Fvwm Buttons ##########################
+
+*FvwmButtonsFore Black
+*FvwmButtonsBack SlateGrey
+#*FvwmButtonsFont lucidasanstypewriter-bold-10
+*FvwmButtonsGeometry 600x30+0+0
+*FvwmButtonsRows 1
+
+# 5 button container:
+*FvwmButtons(1x1, Container(Columns 5,Frame 2))
+*FvwmButtons(Icon mydatebook-small.xpm, Back Tan3, Action `Exec ical &`)
+*FvwmButtons(Icon mini-asmail.xpm, Back CornflowerBlue, Action `Exec xterm -name "POPMail" -e python $HOME/scripts/PyMail &`)
+*FvwmButtons(Icon mini-nscape.xpm, Action `Exec $NETSCAPE &`)
+*FvwmButtons(Icon mini-telnet.xpm, Back thistle3, Fore white, Action `Exec $HOME/bin/SSHRemoteHost >/dev/null 2>&1 &`)
+*FvwmButtons(Icon mynetwork.xpm, Back Plum4, Action `Popup "Hosts"`)
+*FvwmButtons(End)
+# Container for mxconns, spanning 5 buttons:
+#*FvwmButtons(1x1, Container(Columns 1,Frame 0))
+#*FvwmButtons(Size 30 30, Swallow(UseOld,NoKill) "mxconns" `Exec mxconns -bg black -fg white &`)
+#*FvwmButtons(End)
+# Container for xclock, spanning same width as 5 buttons:
+*FvwmButtons(1x1, Container(Columns 1,Frame 1))
+*FvwmButtons(Swallow(UseOld,NoKill) "xclock" `Exec /usr/bin/X11/xclock -digital -bg black -fg green&`)
+*FvwmButtons(End)
+# xosview container, also spanning 5 buttons:
+*FvwmButtons(1x1, Container(Columns 1,Frame 1))
+*FvwmButtons(Swallow(UseOld,NoKill) "xosview" `Exec /usr/bin/X11/xosview &`)
+*FvwmButtons(End)
+#
+*FvwmButtons(1x1, Container(Columns 5,Frame 2))
+*FvwmButtons(Title 'su', Back Grey50, Fore orange, Action `Exec xterm -e sudo su - &`)
+*FvwmButtons(Icon mini.toolbox-small.xpm)
+*FvwmButtons(Icon mini-term.xpm, Back Grey35, Action `Exec xterm -fg black -bg wheat &`)
+*FvwmButtons(Icon mini-edit.xpm, Back CadetBlue4, Action `Exec emacs -name "LogBook" -l batch-library.el -f batch-open-logbook &`)
+*FvwmButtons(Icon mini.xlock.xpm, Back DeepSkyBlue4, Action `Exec xscreensaver-command -lock &`)
+*FvwmButtons(End)
+
+############################ IX - Other Fvwm Modules ##########################
+
+########################### Pager #########################################
+*FvwmPagerBack Ivory 
+*FvwmPagerFore Black 
+*FvwmPagerFont lucidasanstypewriter-bold-10 
+*FvwmPagerHilight Gold 
+*FvwmPagerGeometry x45-1-1
+*FvwmPagerSmallFont 5x8
+
+*FvwmPagerLabel 0 Home
+*FvwmPagerLabel 1 Web
+*FvwmPagerLabel 2 Desk3
+*FvwmPagerLabel 3 Desk4 
+*FvwmPagerLabel 4 Desk5
+*FvwmPagerLabel 5 Desk6
+*FvwmPagerLabel 6 Desk7
+*FvwmPagerLabel 7 Desk8
+
+##########################FvwmWinList##################################
+*FvwmWinListBack Black
+*FvwmWinListFore Yellow 
+*FvwmWinListFont -*-prestige-medium-r-normal-*-40-*
+*FvwmWinListAction Click1 Iconify
+*FvwmWinListAction Click2 Iconify -1,Focus
+*FvwmWinListAction Click3 Module "FvwmIdent" FvwmIdent
+*FvwmWinListUseSkipList
+*FvwmWinListGeometry -1+1
+*FvwmWinListShowCurrentDesk
+
+##################### C: Fvwm Identify
+*FvwmIdentBack IndianRed
+*FvwmIdentFore Yellow
+*FvwmIdentFont -adobe-helvetica-medium-r-*-*-10-*-*-*-*-*-*-*
+
+
+#!!#####################        FvwmBacker         #######################
+*FvwmBackerDesk 0 xsetroot -solid grey15
+*FvwmBackerDesk 1 xsetroot -solid black
+*FvwmBackerDesk 2 xsetroot -solid skyblue4
+*FvwmBackerDesk 3 xsetroot -solid grey25
+*FvwmBackerDesk 4 xsetroot -solid grey30
+*FvwmBackerDesk 5 xsetroot -solid grey35
+*FvwmBackerDesk 6 xsetroot -solid grey20
+*FvwmBackerDesk 7 xsetroot -solid AntiqueWhite4
+
+#!!########################   FVWMForm QuitVerify  #######################
+*QuitVerifyGrabServer
+*QuitVerifyWarpPointer
+*QuitVerifyFont		-adobe-helvetica-medium-r-*-*-12-*-*-*-*-*-*-*
+*QuitVerifyButtonFont	-adobe-helvetica-medium-r-*-*-10-*-*-*-*-*-*-*
+*QuitVerifyFore		white
+*QuitVerifyBack		Grey15
+*QuitVerifyItemFore	white
+*QuitVerifyItemBack	IndianRed4
+*QuitVerifyLine		left
+*QuitVerifyText		"Do you really want to logout?"
+*QuitVerifyLine		expand
+*QuitVerifyButton	quit      "logout"  ^M
+*QuitVerifyCommand	Quit
+*QuitVerifyButton	restart   "restart" ^R
+*QuitVerifyCommand	Restart 
+*QuitVerifyButton	quit      "cancel"  ^[
+*QuitVerifyCommand	Nop
+
+# Fvwm window style
+Style "QuitVerify"	ForeColor Black, BackColor Grey65, NoTitle, NoHandles, BorderWidth 1
