@@ -191,46 +191,46 @@ Ical*background:                                 grey80
 Ical.interestColor: purple4
 !#Ical.smallHeadingFont: 6x10
 
-mxconns*iconic:					 false
-mxconns*background:				 black
-mxconns*foreground:				 white
+! mxconns*iconic:					 false
+! mxconns*background:				 black
+! mxconns*foreground:				 white
 
-LogBook*popup.background:			 grey25
-LogBook*popup.foreground:			 yellow
-LogBook*popup.font:				 lucidasanstypewriter-bold-10
-LogBook*menubar.background:			 white
-LogBook*menubar.foreground:			 indianred4
-LogBook*menubar.font:				 lucidasanstypewriter-bold-10
-LogBook*EmacsScreen.foreground:			 white
-LogBook*EmacsScreen*cursorColor:		 violetred
-LogBook*EmacsScreen.borderWidth:		 2
-LogBook*EmacsScreen.background:			 black
-LogBook*EmacsScreen*pointerColor:		 goldenrod1
-LogBook*foreground:				 black
-LogBook*font:					 fixed
-LogBook*bitmapIcon:				 on
-LogBook*background:				 SeaGreen
-LogBook*.cursorColor:				 violetred
-LogBook*.pointerColor:				 goldenrod1
-LogBook*geometry:                                95x26+620+110
+! LogBook*popup.background:			 grey25
+! LogBook*popup.foreground:			 yellow
+! LogBook*popup.font:				 lucidasanstypewriter-bold-10
+! LogBook*menubar.background:			 white
+! LogBook*menubar.foreground:			 indianred4
+! LogBook*menubar.font:				 lucidasanstypewriter-bold-10
+! LogBook*EmacsScreen.foreground:			 white
+! LogBook*EmacsScreen*cursorColor:		 violetred
+! LogBook*EmacsScreen.borderWidth:		 2
+! LogBook*EmacsScreen.background:			 black
+! LogBook*EmacsScreen*pointerColor:		 goldenrod1
+! LogBook*foreground:				 black
+! LogBook*font:					 fixed
+! LogBook*bitmapIcon:				 on
+! LogBook*background:				 SeaGreen
+! LogBook*.cursorColor:				 violetred
+! LogBook*.pointerColor:				 goldenrod1
+! LogBook*geometry:                                95x26+620+110
 
-Emacs*popup.background:				 steelblue
-Emacs*popup.foreground:				 yellow
-Emacs*popup.font:				 lucidasanstypewriter-bold-10
-Emacs.pane.menubar.*.background:		 darkslategrey
-Emacs.pane.menubar.*.foreground:	         burlywood1
-Emacs.pane.menubar.*.font:		         lucidasanstypewriter-bold-10
-Emacs*EmacsScreen.foreground:			 white
-Emacs*EmacsScreen*cursorColor:			 mediumorchid
-Emacs*EmacsScreen.borderWidth:			 2
-Emacs*EmacsScreen.background:			 black
-Emacs*EmacsScreen*pointerColor:			 goldenrod1
-Emacs*foreground:				 white
-Emacs*font:					 6x13
-Emacs.geometry:					 +0+30
-Emacs*background:				 black
-Emacs*.cursorColor:				 mediumorchid
-Emacs*.pointerColor:				 goldenrod1
+ Emacs*popup.background:				 steelblue
+ Emacs*popup.foreground:				 yellow
+ Emacs*popup.font:				 lucidasanstypewriter-bold-10
+ Emacs.pane.menubar.*.background:		 darkslategrey
+ Emacs.pane.menubar.*.foreground:	         burlywood1
+ Emacs.pane.menubar.*.font:		         lucidasanstypewriter-bold-10
+ Emacs*EmacsScreen.foreground:			 white
+ Emacs*EmacsScreen*cursorColor:			 mediumorchid
+ Emacs*EmacsScreen.borderWidth:			 2
+ Emacs*EmacsScreen.background:			 black
+ Emacs*EmacsScreen*pointerColor:			 goldenrod1
+ Emacs*foreground:				 white
+ Emacs*font:					 6x13
+ Emacs.geometry:					 +0+30
+ Emacs*background:				 black
+ Emacs*.cursorColor:				 mediumorchid
+ Emacs*.pointerColor:				 goldenrod1
 
 XClipboard*Command*Font:			 lucidasanstypewriter-bold-12
 XClipboard*Label*Font:				 lucidasanstypewriter-bold-12
@@ -359,29 +359,29 @@ xrn*dialog*Text*background:	white
 xrn*dialog*Text*foreground:	black
 xrn*dialog*borderWidth:		1
 
-Quota*geometry:                                  66x5+1196+1080
-Quota*font:                                      6x10
-Quota*foreground:                                white
-Quota*background:                                black
-Quota*scrollBar:                                 false
+! Quota*geometry:                                  66x5+1196+1080
+! Quota*font:                                      6x10
+! Quota*foreground:                                white
+! Quota*background:                                black
+! Quota*scrollBar:                                 false
 
-zwgc*geometry:                                   80x15+1066+194
-zwgc.termName:                                   vt100
-zwgc*foreground:                                 black
-zwgc*background:                                 pink
-zwgc*font:                                       6x10
-zwgc*scrollBar:                                  false
-zwgc*cursorColor:                                violetred
-zwgc*pointerColor:                               red
+! zwgc*geometry:                                   80x15+1066+194
+! zwgc.termName:                                   vt100
+! zwgc*foreground:                                 black
+! zwgc*background:                                 pink
+! zwgc*font:                                       6x10
+! zwgc*scrollBar:                                  false
+! zwgc*cursorColor:                                violetred
+! zwgc*pointerColor:                               red
 
-zwrite*geometry:                                 80x5+1066+350
-zwrite.termName:                                 vt100
-zwrite*foreground:                               white
-zwrite*background:                               grey15
-zwrite*font:                                     6x10
-zwrite*scrollBar:                                false
-zwrite*cursorColor:                              violetred
-zwrite*pointerColor:                             red
+! zwrite*geometry:                                 80x5+1066+350
+! zwrite.termName:                                 vt100
+! zwrite*foreground:                               white
+! zwrite*background:                               grey15
+! zwrite*font:                                     6x10
+! zwrite*scrollBar:                                false
+! zwrite*cursorColor:                              violetred
+! zwrite*pointerColor:                             red
 
 xlock*nice:	                                 15
 
