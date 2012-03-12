@@ -1,4 +1,4 @@
-#compdef scram
+#compdef scram -*- shell-script -*-
 # $Id: _scram,v 1.2 2005/11/08 13:28:28 sashby Exp $
 #
 _scram()

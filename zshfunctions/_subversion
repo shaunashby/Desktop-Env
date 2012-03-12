@@ -1,4 +1,4 @@
-#compdef svn svnadmin svnadmin-static=svnadmin
+#compdef svn svnadmin svnadmin-static=svnadmin -*- shell-script -*-
 
 _svn () {
   local curcontext="$curcontext" state line expl ret=1
