@@ -2,6 +2,15 @@
 ;; cust-misc-mode.el
 ;;
 
+;; CoffeeScript:
+(setq auto-mode-alist
+      (append auto-mode-alist
+	      '(("\\.coffee$" . coffee-mode)
+		("Cakefile" . coffee-mode))))
+
+(autoload 'coffee-mode "coffee-mode"
+  "Major mode for editing CoffeeScript files." t)
+
 ;; HASKELL:
 (load "/opt/local/share/emacs/site-lisp/haskell-mode-2.4/haskell-site-file")
 (setq auto-mode-alist
