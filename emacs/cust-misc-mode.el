@@ -174,13 +174,6 @@
 (setq auto-mode-alist (cons '("\\.applescript$" . applescript-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.scpt$" . applescript-mode) auto-mode-alist))
 
-;; Autoload CMS Parameter set mode:
-;; (autoload 'cms-pset-mode "cms-pset-mode" "CMS Parameter Set Editing Mode." t)
-;; (setq auto-mode-alist (cons '("\\.cfg$" . cms-pset-mode) auto-mode-alist))
-
-;; Misc!
-;; (autoload 'cmt-mode "cmt-mode" "CMT Requirements Editing Mode." t)
-
 ;; RPM spec mode:
 (autoload 'rpm-spec-mode "rpm-spec-mode" "RPM spec mode" t)
 (setq auto-mode-alist (cons '("\\.spec$". rpm-spec-mode) auto-mode-alist))

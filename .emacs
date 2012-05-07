@@ -104,7 +104,7 @@
 (load "cust-f77-mode")     ;; FORTRAN
 (load "cust-java-mode")    ;; Java
 (load "cust-latex-mode")   ;; LaTeX
-(load "cust-sgml-mode")    ;; SGML/HTML/XML
+;; (load "cust-sgml-mode")    ;; SGML/HTML/XML
 (load "cust-makefile-mode");; Make
 (load "cust-misc-mode")    ;; Misc modes (PostScript, GNUPlot, Xrdb, Apache..)
 
