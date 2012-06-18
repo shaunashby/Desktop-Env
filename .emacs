@@ -115,6 +115,13 @@
     (gnuserv-start)
   (message "Not starting Emacs server."))
 
+;; Erlang load path (MacPorts version R15B):
+(setq load-path (cons "/opt/local/lib/erlang/lib/tools-2.6.6.6/emacs" load-path))
+(setq erlang-root-dir "/opt/local/lib/erlang")
+(setq exec-path (cons "/opt/local/lib/erlang/bin" exec-path))
+
+(require 'erlang-start)
+
 ;; Common variables:
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
