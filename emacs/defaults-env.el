@@ -2,13 +2,12 @@
 ;; defaults-env.el:
 ;;
 (setq default-major-mode            'text-mode
-      compile-command		    "eval `scram runtime -sh`; scram b"
+      compile-command		    "gmake all"
       ccdefault                     "gcc"
       cxxdefault                    "g++"
       javadefault                   "gcj"
       ;; Choose to set emacs server mode or not (t or nil):
       eserver-mode                  nil
-      scram-admindir                ".SCRAM"
       gc-cons-threshold	            8388607
       dired-listing-switches        "-lat"
       lpr-command                   "xprint"
