@@ -1,7 +1,7 @@
 ;;
 ;; defaults-env.el:
 ;;
-(setq default-major-mode            'text-mode
+(setq major-mode                    'text-mode
       compile-command		    "gmake all"
       ccdefault                     "gcc"
       cxxdefault                    "g++"
