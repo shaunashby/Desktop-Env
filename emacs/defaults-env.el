@@ -10,8 +10,8 @@
       eserver-mode                  nil
       gc-cons-threshold	            8388607
       dired-listing-switches        "-lat"
-      lpr-command                   "xprint"
-      lpr-switches                  '("-P40_5b_08")
+;;      lpr-command                   "xprint"
+;;      lpr-switches                  '("-P40_5b_08")
       mark-even-if-inactive         t
       font-lock-support-mode        'jit-lock-mode
       font-lock-maximum-decoration  t
