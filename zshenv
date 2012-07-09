@@ -43,3 +43,6 @@ export PERLBREW_ROOT=/opt/perl5/perlbrew
 export PERLBREW_HOME=$HOME/.perlbrew
 
 . $PERLBREW_ROOT/etc/bashrc
+
+# Setup for torquebox and JRuby (from macports):
+export PATH=$PATH:/opt/local/share/java/jruby/bin
