@@ -46,3 +46,5 @@ export PERLBREW_HOME=$HOME/.perlbrew
 
 # Setup for torquebox and JRuby (from macports):
 export PATH=$PATH:/opt/local/share/java/jruby/bin
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
