@@ -116,7 +116,7 @@
   (message "Not starting Emacs server."))
 
 ;; Erlang load path (MacPorts version R15B):
-(setq load-path (cons "/opt/local/lib/erlang/lib/tools-2.6.7/emacs" load-path))
+(setq load-path (cons "/opt/local/lib/erlang/lib/tools-2.6.8/emacs" load-path))
 (setq erlang-root-dir "/opt/local/lib/erlang")
 (setq exec-path (cons "/opt/local/lib/erlang/bin" exec-path))
 
