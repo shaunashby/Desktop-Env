@@ -12,7 +12,7 @@
   "Major mode for editing CoffeeScript files." t)
 
 ;; HASKELL:
-(load "/opt/local/share/emacs/site-lisp/haskell-mode-2.4/haskell-site-file")
+(load "~/emacs/haskell-mode-2.4/haskell-site-file")
 (setq auto-mode-alist
       (append auto-mode-alist
 	      '(("\\.[hg]s$"  . haskell-mode)
