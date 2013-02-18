@@ -2,6 +2,11 @@
 ;; cust-misc-mode.el
 ;;
 
+
+;; Mustache-mode:
+(add-to-list 'load-path "~/emacs/mustache-mode.el")
+(require 'mustache-mode)
+
 ;; CoffeeScript:
 (setq auto-mode-alist
       (append auto-mode-alist
