@@ -194,6 +194,7 @@
 			      auto-mode-alist))
 ;; Path to info for gnuplot:
 (add-to-list 'Info-default-directory-list "~/emacs/info")
+
 ;; PostScript mode:
 (setq auto-mode-alist (cons '("\\.ps\\'" . ps-mode) auto-mode-alist))
 (autoload 'ps-mode "ps-mode" "Major mode to edit PostScript files." t)
