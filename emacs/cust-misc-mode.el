@@ -187,38 +187,6 @@
 (setq auto-mode-alist (cons '("\\.st\\'" . smalltalk-mode) auto-mode-alist))
 (autoload 'smalltalk-mode "smalltalk-mode" "Major mode to edit SmallTalk files." t)
 
-;; Xdefaults editing mode:
-(setq cust-xrdb-font-lock-keywords
-      (list
-       '("^#.*" 0 'font-lock-comment-face t)
-       '("\\(:\\)"  1 'Green-face t)
-       '("\\(\\*\\)" 1 'CornflowerBlue-face t)
-       '("^#[ \t]*\\(ifdef\\|define\\|endif\\)" 1 font-lock-variable-name-face t)
-       ))
-
-(font-lock-add-keywords 'xrdb-mode cust-xrdb-font-lock-keywords)
-
-(add-hook 'xrdb-mode 'turn-on-font-lock)
-(add-hook 'xrdb-mode-hook
-	  (function (lambda()
-		      (require 'easymenu)
-		      (easy-menu-define xrdb-menu xrdb-mode-map "XRDB Menu"
-			'("XRDB"
-			  ["Merge File or Region" xrdb-database-merge-buffer-or-region t]
-			  [ "Save Buffer" save-buffer t]
-			  "---"
-			  ["Quit"         kill-buffer t]
-			  ))
-		      )))
-
-(setq auto-mode-alist (append '(("\\.Xresources\\'" . xrdb-mode)
-				("\\xresources\\'"  . xrdb-mode)
-				("\\.Xdefaults\\'"  . xrdb-mode)
-				)
-			      auto-mode-alist))
-;;
-(autoload 'xrdb-mode "xrdb-mode" "Mode for editing X resource files." t)
-
 ;; Gnuplot-mode:
 (autoload 'gnuplot-mode "gnuplot" "gnuplot major mode" t)
 (autoload 'gnuplot-make-buffer "gnuplot" "open a buffer in gnuplot mode" t)
