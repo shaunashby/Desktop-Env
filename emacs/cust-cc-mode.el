@@ -123,13 +123,13 @@ std::ostream & operator<< (std::ostream & O, const " (symbol-value 'classname) "
    "#include <iosfwd>\n"
    "\n// New class declaration:"
    "\nclass " classname
-   "\n{"
+   " {"
    "\npublic:"
    "\n" (format "  %-30s" (concat classname "();"))
    "\n" (format "  %-30s" (concat "~" classname "();"))
    "\n"
-   "\n" (format "  %-30s" (concat classname "(const " classname "& r);"))
-   "\n" (format "  %-30s" (concat classname "& operator=(const " classname "& r);"))
+   "\n" (format "  %-30s" (concat classname "(const " classname " & r);"))
+   "\n" (format "  %-30s" (concat classname "& operator=(const " classname " & r);"))
    "\n\n   // Public methods:"
    "\n\n"
    "\nprotected:"
