@@ -5,3 +5,5 @@ emacs/*.elc
 *~
 .zsh-history
 zshfunctions/cache
+emacs/elisp/elisp-practice.el
+emacs/elisp/*~
