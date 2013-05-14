@@ -187,17 +187,6 @@
 (setq auto-mode-alist (cons '("\\.st\\'" . smalltalk-mode) auto-mode-alist))
 (autoload 'smalltalk-mode "smalltalk-mode" "Major mode to edit SmallTalk files." t)
 
-;; ToolBox mode:
-(autoload 'toolbox-mode "toolbox-mode" "autoloaded" t)
-(setq auto-mode-alist (append '(("\\BuildFile\\'" . toolbox-mode)               
-				("\\CMSconfiguration\\'" . toolbox-mode)        
-				("\\Configuration\\'" . toolbox-mode) 
-				("\\RequirementsDoc\\'" . toolbox-mode)         
-				("\\BootStrapFile\\'" . toolbox-mode)           
-				("\\BootStrapFileSRC\\'" . toolbox-mode)
-				)
-			      auto-mode-alist))
-
 ;; Xdefaults editing mode:
 (setq cust-xrdb-font-lock-keywords
       (list
