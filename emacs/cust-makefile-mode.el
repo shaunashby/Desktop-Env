@@ -85,20 +85,7 @@
 			  "---"
 			  ["If .." makefile-if-loop t]
 			  ["For Loop" makefile-foreach-loop t]
-;;			  "---"
-;;			  ["Insert Class" insert-class t]
-;;			  ["Insert Member Functions" insert-member-funcs t]
-;;			  "---"
-;;			  ["Insert System Header" system-include-header t]
-;;			  ["Insert Local Header" local-include-header t]
 			  ))
-		      ;;
-;;		      (define-key makefile-mode-map "\C-m" 'newline-and-indent)
-;;		      (define-key makefile-mode-map "\C-cic" 'insert-class)
-;;		      (define-key makefile-mode-map "\C-cnc" 'new-class-templates)
-;;		      (define-key makefile-mode-map "\C-cmf" 'insert-member-funcs)
-;;		      (define-key makefile-mode-map "\C-csh" 'system-include-header)
-;;		      (define-key makefile-mode-map "\C-clh" 'local-include-header)
 		      ;;
 		      (cond ((not (file-exists-p (buffer-file-name)))
 			     (makefile-insert-file-header)
