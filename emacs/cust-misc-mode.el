@@ -230,26 +230,6 @@
 
 (autoload 'rfcview-mode "rfcview" nil t)
 
-;; Stuff for VM:
-(eval-after-load "vm" '(defun vm-check-emacs-version () t))
-(setq vm-circular-folders nil)
-(autoload 'vm "vm" "Start VM on your primary inbox." t)
-(autoload 'vm-other-frame "vm" "Like `vm' but starts in another frame." t)
-(autoload 'vm-visit-folder "vm" "Start VM on an arbitrary folder." t)
-(autoload 'vm-visit-virtual-folder "vm" "Visit a VM virtual folder." t)
-(autoload 'vm-mode "vm" "Run VM major mode on a buffer" t)
-(autoload 'vm-mail "vm" "Send a mail message using VM." t)
-(autoload 'vm-submit-bug-report "vm" "Send a bug report about VM." t)
-;;
-;;  Change C-x m  to vm mail send 
-;;  Change default mail read and send to vm in menu when in X
-;;
-(if (not window-system)
-    nil
-  (define-key menu-bar-tools-menu [rmail] '("Read Mail" . vm))
-  (define-key-after menu-bar-tools-menu [smail] 
-    '("Send Mail" . vm-mail) 'rmail))
-
 ;; Gnus:
 (defun get-file-contents (name)
   (let ((newbuf (generate-new-buffer "tmp"))
