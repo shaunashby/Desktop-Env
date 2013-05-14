@@ -6,7 +6,7 @@
 ;; Function to generate header:
 (defun c-insert-file-header () 
   (interactive)
-  "Inserts some lines for a header, including CVS Id, author, date and copyright."
+  "Inserts some lines for a header, including VCS info, author, date and copyright."
   (insert 
    "/*********************************************************************
  File: " (buffer-name) "

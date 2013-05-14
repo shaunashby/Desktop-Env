@@ -160,7 +160,7 @@
 ;; Function to generate script header:
 (defun perl-script-header (&optional args) 
   (interactive)
-  "Inserts some info, including CVS Id, author, date and copyright."
+  "Inserts some info, including VCS info, author, date and copyright."
   (setq args (read-string "Args to pass to Perl: "))
   (insert "#!/usr/bin/perl " (symbol-value 'args) "\n")
   (perl-simple-header)
@@ -168,7 +168,7 @@
 
 (defun perl-simple-header () 
   (interactive)
-  "Inserts some info, including CVS Id, author, date and copyright."
+  "Inserts some info, including VCS info, author, date and copyright."
   (insert "#____________________________________________________________________ 
 # File: " (buffer-name) "
 #____________________________________________________________________ 

@@ -8,7 +8,7 @@
 ;; Function to generate script header:
 (defun insert-script-header (&optional shell) 
   (interactive)
-  "Inserts some info, including CVS Id, author, date and copyright."
+  "Inserts some info, including VCS info, author, date and copyright."
   (setq shell (read-string "Shell type (return for sh default): "))
   (if (eq (length shell) 0) (setq shell "sh"))
   (insert 

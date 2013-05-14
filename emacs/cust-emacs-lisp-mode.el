@@ -4,7 +4,7 @@
 ;; Function to generate header and footer:
 (defun insert-elisp-tmpl ( ) 
   (interactive)
-  "Inserts some info, including CVS Id, author, date and copyright."
+  "Inserts some info, including VCS info, author, date and copyright."
   (insert 
    ";;____________________________________________________________________ 
 ;; File: " (buffer-name) "
