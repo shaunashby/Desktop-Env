@@ -47,7 +47,7 @@
 
 (defun puppet-insert-file-header ()
   (interactive)
-  "Inserts some lines for a header, including Revision Id, author, date and copyright."
+  "Inserts some lines for a header, including VCS info, author, date and copyright."
   (insert "#____________________________________________________________________ 
 # File: " (buffer-name) "
 #____________________________________________________________________ 
@@ -77,7 +77,7 @@
 
 (defun tt-insert-file-header ()
   (interactive)
-  "Inserts some lines for a header, including Revision Id, author, date and copyright."
+  "Inserts some lines for a header, including VCS info, author, date and copyright."
   (insert "[%#
 #____________________________________________________________________ 
 # File: " (buffer-name) "
@@ -114,8 +114,8 @@
 
 (defun ruby-insert-file-header () 
   (interactive)
-  "Inserts some lines for a header, including CVS Id, author, date and copyright."
-  (insert "#!/usr/bin/ruby
+  "Inserts some lines for a header, including VCS info, author, date and copyright."
+  (insert "#!/usr/bin/env ruby
 #____________________________________________________________________ 
 # File: " (buffer-name) "
 #____________________________________________________________________ 
@@ -149,7 +149,7 @@
 
 (defun applescript-insert-file-header () 
   (interactive)
-  "Inserts some lines for a header, including CVS Id, author, date and copyright."
+  "Inserts some lines for a header, including VCS info, author, date and copyright."
   (insert 
    "--
 -- -------------------------------------------------------------------
