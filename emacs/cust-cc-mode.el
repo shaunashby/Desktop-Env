@@ -9,20 +9,13 @@
 (font-lock-add-keywords
  'c++-mode
  '(("\\<FIXME:\\>" 0 'Orange-face t)
-   ;;   ("^class \\(ABCD\\)" 1 'bold-italic t)
    ("^class \\([a-zA-Z0-9]*\\)" 1 'bold-italic t)
    ("^class \\([a-zA-Z0-9]*\\):" 1 'bold-italic t)
    ("  class \\([a-zA-Z0-9]*\\)" 1 'bold-italic t)
    ("  class \\([a-zA-Z0-9]*\\):" 1 'bold-italic t)
-;;   ("^class.*\\(\\sw+\\)" 1 'bold-italic t)
-;;   ("[c][l][a][s][s] *\\([a-zA-Z0-9]+\\)" 1 'bold-italic t)   
    ("\\(^public\\|^private\\|^protected\\):" 1 'bold-LightSteelBlue2-face t)
    ("\\(  public\\|  private\\|  protected\\):" 1 'bold-LightSteelBlue2-face t)
    ("::" . 'Thistle2-face)
-;;   ("^class " ("\\<\\(ABCD\\)" nil nil (1 'bold-italic t)))
-;;   ("^#[ \t]*\\(elif\\|if\\|ifndef\\)\\>"
-;;    ("\\<\\(define\\)\\>[ \t]*(?\\(\\sw+\\)?" nil nil
-;;     (1 font-lock-reference-face) (2 font-lock-variable-name-face nil t)))
    ("\\<\\(struct\\|union\\|enum\\|virtual[ \t]\\)" 1 'GreenYellow-face)
    ("\\<\\(catch \\|try \\|throw\\)" 1 'Plum2-face t)
    ("\\<\\(case\\|goto\\)" 1 'SkyBlue-face t)
