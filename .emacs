@@ -23,7 +23,6 @@
 (load "goto-percent")      ;; Goto % of buffer
 (load "flash-paren")       ;; Flashing bracket mode
 (load "ssh")               ;; Use SSH for remote connections
-(load "color-mode")        ;; Play with this
 
 ;; Default parameters and variables:
 (load "defaults-env")
