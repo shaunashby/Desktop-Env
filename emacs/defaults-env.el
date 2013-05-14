@@ -5,13 +5,11 @@
       compile-command		    "gmake all"
       ccdefault                     "gcc"
       cxxdefault                    "g++"
-      javadefault                   "gcj"
+      javadefault                   "javac"
       ;; Choose to set emacs server mode or not (t or nil):
       eserver-mode                  nil
       gc-cons-threshold	            8388607
       dired-listing-switches        "-lat"
-;;      lpr-command                   "xprint"
-;;      lpr-switches                  '("-P40_5b_08")
       mark-even-if-inactive         t
       font-lock-support-mode        'jit-lock-mode
       font-lock-maximum-decoration  t
