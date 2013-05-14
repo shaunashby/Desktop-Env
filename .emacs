@@ -94,7 +94,6 @@
 
 (load "cust-text-mode")    ;; text
 (load "cust-emacs-lisp-mode") ;; Emacs-lisp
-(load "cust-orcarc-mode")  ;; .orcarc editing
 (load "cust-shell-mode")   ;; shell-scripts
 (load "cust-perl-mode")    ;; perl-scripts
 (load "cust-python-mode")  ;; python-scripts
@@ -104,7 +103,6 @@
 (load "cust-f77-mode")     ;; FORTRAN
 (load "cust-java-mode")    ;; Java
 (load "cust-latex-mode")   ;; LaTeX
-;; (load "cust-sgml-mode")    ;; SGML/HTML/XML
 (load "cust-makefile-mode");; Make
 (load "cust-misc-mode")    ;; Misc modes (PostScript, GNUPlot, Xrdb, Apache..)
 
