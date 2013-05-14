@@ -60,7 +60,7 @@
   "Inserts some lines for a header, including VCS info, author, date and copyright."
   (setq version (read-string "Python version? "))
   (insert 
-   "#!/usr/bin/python" (symbol-value 'version) "
+   "#!/usr/bin/env python" (symbol-value 'version) "
 ##____________________________________________________________________ 
 ## File: " (buffer-name) "
 ##____________________________________________________________________ 
