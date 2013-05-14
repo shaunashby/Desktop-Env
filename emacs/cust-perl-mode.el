@@ -338,13 +338,6 @@ sub " (symbol-value 'subname) "{\n"
 			  "---"
 			  ["Save Buffer and KILL" save-buffer-kill-buffer t]
 			  ))
-		      ;; Disable cust 19/10/06
-		      ;; (setq perl-indent-level 0)
-		      ;; (setq perl-continued-statement-offset 0)
-		      ;; (setq perl-continued-brace-offset 3)
-		      ;; (setq perl-brace-offset 3)
-		      ;; (setq perl-brace-imaginary-offset 3)
-		      ;; (setq perl-label-offset -3)
 		      ;;
 		      (define-key perl-mode-map "\C-m" 'newline-and-indent)
 		      (define-key perl-mode-map "\C-cs" 'insert-sub-header)
