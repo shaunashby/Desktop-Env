@@ -93,7 +93,6 @@ std::ostream & operator<< (std::ostream & O, const " (symbol-value 'classname) "
   ;; #ifdef  __cplusplus
   ;; }
   ;; #endif
-  ;; #endif
   ;;  
   (insert
    "#ifdef __cplusplus\n"
