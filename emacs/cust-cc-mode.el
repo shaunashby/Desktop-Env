@@ -217,15 +217,6 @@ std::ostream & operator<< (std::ostream & O, const " (symbol-value 'classname) "
   (message "New class (%s) created!" classname)
   )
 
-(defun c++-do-buildfile-edit-or-create()
-  (interactive)
-  "Edit or create a BuildFile found in the current directory."
-  (if (not (eq (car (find-localtop)) nil))
-      (message "Found LOCALTOP")
-    (message "LOCALTOP not found."))
-  (message "SCRAM package name: %s" (car (scram-package-name)))
-  )
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;
@@ -244,8 +235,6 @@ std::ostream & operator<< (std::ostream & O, const " (symbol-value 'classname) "
 			  ["Insert System Header" system-include-header t]
 			  ["Insert Local Header" local-include-header t]
 			  ["Insert Header Guards" insert-c-in-c++-hdr-guards t]
-			  "---"
-			  ["Edit/Create Package BuildFile" c++-do-buildfile-edit-or-create t]
 			  "---"
 			  ["Insert Compile Command" insert-cc-compile-command t]
 			  ))
