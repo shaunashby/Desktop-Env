@@ -3,9 +3,6 @@
 ;;
 
 ;; C++:
-
-;;(font-lock-remove-keywords 'c++-mode '(("class")))
-
 (font-lock-add-keywords
  'c++-mode
  '(("\\<FIXME:\\>" 0 'Orange-face t)
