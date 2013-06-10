@@ -109,9 +109,6 @@
 	    (inclass			. +)
 	    (cpp-macro			. -1000)
 	    (friend			. 0)
-	    (objc-method-intro		. -1000)
-	    (objc-method-args-cont	. c-lineup-ObjC-method-args)
-	    (objc-method-call-cont	. c-lineup-ObjC-method-call)
 	    (extern-lang-open		. 0)
 	    (extern-lang-close		. 0)
 	    (inextern-lang		. +)
@@ -175,41 +172,6 @@
 				       " "
 				       (file-name-nondirectory buffer-file-name)))))))
 
-;; Add hook for Obj-C mode:
-(add-hook 'objc-mode-hook
-	  (function (lambda ()
-		      (require 'easymenu)
-		      (easy-menu-define objc-menu objc-mode-map "ObjC Menu"
-			'("Insert"
-			  ["Insert File Header" c-insert-file-header t]
-			  "---"
-			  ["Insert System Header import" system-import-header t]
-			  "---"
-			  ["Insert System Header include" system-include-header t]
-			  ["Insert Local Header include" local-include-header t]
-			  "---"
-			  ["Insert Compile Command" insert-c-compile-command t]
-			  ))
-		      ;;
-		      (define-key objc-mode-map "\C-csi" 'system-import-header)
-		      (define-key objc-mode-map "\C-csh" 'system-include-header)
-		      (define-key objc-mode-map "\C-clh" 'local-include-header)
-		      (define-key objc-mode-map "\C-ccc" 'insert-c-compile-command)
-		      ;;
-		      (cond ((not (file-exists-p (buffer-file-name)))
-			     (c-insert-file-header)))
-		      (or (file-exists-p "makefile")
-			  (file-exists-p "Makefile")
-			  (set (make-local-variable 'compile-command)
-			       (concat "gcc -o "
-				       (substring
-					(file-name-nondirectory buffer-file-name)
-					0
-					(string-match
-					 "\\.m$"
-					 (file-name-nondirectory buffer-file-name)))
-				       " "
-				       (file-name-nondirectory buffer-file-name)))))))
 ;;
 ;; cust-c-mode.el
 ;;
