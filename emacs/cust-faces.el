@@ -9,10 +9,6 @@
 (make-face 'Directory-face)
 (set-face-foreground 'Directory-face "Black")
 (set-face-background 'Directory-face "White")
-;; OK face (text mode, in logbook):
-(make-face 'OK-face)
-(set-face-foreground 'OK-face "black")
-(set-face-background 'OK-face "tomato1")
 ;; Template face:
 (make-face 'Template-face)
 (set-face-foreground 'Template-face "black")
