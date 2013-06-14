@@ -4,32 +4,6 @@
 ;;
 ;;
 ;;
-(defvar TeX-print-command (concat "dvips -f %s | " lpr-command " -P%p")
-  "*Command used to print a file. 
-
-First %p is expanded to the printer name, then ordinary expansion is
-performed as specified in TeX-expand-list.")
-;;
-;; Default printer list
-;;
-(defvar TeX-printer-list
-  '(("default" (concat "dvips -f %s | " lpr-command) (concat lpr-command " -q"))
-    ("40_5b_08" (concat "dvips -f %s | " lpr-command " -P40_5b_08") (concat lpr-command " -q -P40_5b_08"))
-    ("40_3b_cor" (concat "dvips -f %s | " lpr-command " -P40_3b_cor") (concat lpr-command " -q -P40_3b_cor"))
-    ("513-lps" (concat "dvips -f %s | " lpr-command " -P513-lps") (concat lpr-command " -q -P513-lps")))
-  "*List of available printers.
-
-The first element of each entry is the printer name.
-
-The second element is the command used to print to this
-printer.  It defaults to the value of TeX-print-command.
-
-The third element is the command used to examine the print queue for
-this printer.  It defaults to the value of TeX-queue-command.
-
-Any occurrence of `%p' in the second or third element is expanded to
-the printer name given in the first element, then ordinary expansion
-is performed as specified in TeX-expand-list.")
 
 ;; Functions:
 (defun latex-insert-file-header () 
@@ -96,10 +70,6 @@ is performed as specified in TeX-expand-list.")
 			     (latex-insert-file-footer)
 			     ))
 		      )))
-;;
-(setq auto-mode-alist (cons '("\\.tex\\'" . latex-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.lyx\\'" . latex-mode) auto-mode-alist))
-
 ;;
 ;; End of cust-latex-mode.el
 ;;
