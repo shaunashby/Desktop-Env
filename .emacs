@@ -8,9 +8,6 @@
 
 ;; Add ny lisp dir to load path:
 (setq load-path (cons "~/emacs" load-path))
-;; Also add the path to the library containing
-;; functions to be used in batch mode:
-(setq load-path (cons "~/emacs/elisp" load-path))
 
 ;; Load defaults for keymaps, frames and look/feel:
 (load "keymaps-env")       ;; Default keymaps
@@ -92,7 +89,6 @@
 (load "cust-php-mode")     ;; php-scripts
 (load "cust-cc-mode")      ;; C++
 (load "cust-c-mode")       ;; C
-(load "cust-f77-mode")     ;; FORTRAN
 (load "cust-java-mode")    ;; Java
 (load "cust-latex-mode")   ;; LaTeX
 (load "cust-makefile-mode");; Make
