@@ -21,7 +21,7 @@
 ;;
 ;; End of " (buffer-name) "
 ;;
-") (goto-line 10))
+") (goto-line 20))
 
 ;; Function template:
 (defun elisp-fn-tmpl (&optional name info args)
