@@ -215,7 +215,7 @@
   (interactive)
   (setq dir (read-string "Install dir: "))
   (if (string-match "BuildFile$" (file-name-nondirectory buffer-file-name))
-      (cond ((not (file-exists-p (buffer-file-name))) 
+      (cond ((not (file-exists-p (buffer-file-name)))
 	     (message "File does not exist: ")))
     (message "BuildFile already exists!"))
   )
