@@ -9,10 +9,6 @@
 (make-face 'Directory-face)
 (set-face-foreground 'Directory-face "Black")
 (set-face-background 'Directory-face "White")
-;; Template face:
-(make-face 'Template-face)
-(set-face-foreground 'Template-face "black")
-(set-face-background 'Template-face "bisque3")
 ;; Makefile def highlight face:
 (make-face 'Definition-face)
 (set-face-foreground 'Definition-face "yellow")
