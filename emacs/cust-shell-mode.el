@@ -1,9 +1,6 @@
 ;;
 ;; cust-shell-mode.el
 ;;
-;;
-;; cust-shell-mode.el
-;;
 
 ;; Function to generate script header:
 (defun insert-script-header (&optional shell) 
@@ -46,7 +43,6 @@
 (font-lock-add-keywords 'sh-mode cust-sh-mode-font-lock-keywords)
 ;;
 (setq auto-mode-alist (cons '("\\.sh\\'" . sh-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.ksh\\'" . sh-mode) auto-mode-alist))
 ;;
 (add-hook 'sh-mode-hook
 	  (function (lambda()
