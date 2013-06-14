@@ -218,10 +218,6 @@
       (cond ((not (file-exists-p (buffer-file-name))) 
 	     (message "File does not exist: ")))
     (message "BuildFile already exists!"))
-  
-  ;;  (get-buffer-create "BuildFile") 
-  ;;  (switch-to-buffer-other-frame "BuildFile")
-  ;;  (insert "hello there!")
   )
 
 ;; Function to insert a system header:
@@ -243,14 +239,6 @@
 	   "#include \"" (symbol-value 'header) ".h\"\n"
 	   "#endif\n"
 	   ))
-
-;; Import (for Obj-C):
-(defun system-import-header (&optional header) 
-  "Insert an #import for an Objective-C system header" 
-  (interactive) 
-  (while (or (not header) (string= header "")) 
-    (setq header (read-string "Header name: ")))
-  (insert "#import <" (symbol-value 'header) ">\n"))
 
 (defun first-match (name pos &rest patterns)
   "*Find the first match in NAME starting at POS with PATTERNS.
