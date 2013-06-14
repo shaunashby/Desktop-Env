@@ -1,20 +1,7 @@
 ;; 
 ;; cust-faces.el
 ;;
-;; Extra faces for editing modes
-;; FORTRAN:
-(make-face 'Cradle-face)
-(set-face-foreground 'Cradle-face "PaleGreen")  
-;; face for patchy patches:
-(make-face 'Patch-face)
-(set-face-foreground 'Patch-face "Black")
-(set-face-background 'Patch-face "PaleGreen")     
-;; PAW: messages/itx:
-(make-face 'message-face)
-(set-face-foreground 'message-face "DeepPink")
-;; PAW: plot options:
-(make-face 'option-face)
-(set-face-foreground 'option-face "Aquamarine3")
+
 ;; end-of-line "\":
 (make-face 'backslash-eol-face)
 (set-face-foreground 'backslash-eol-face "Red")   
