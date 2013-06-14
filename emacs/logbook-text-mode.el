@@ -41,11 +41,11 @@
        '("\\(--\\)" 1 'bold-italic t)
        '("-- \\(.*\\)$" 1 'bold-GreenYellow-face t)
        '("\\<\\([sS]ubject\\)" 1 'SkyBlue-face t)
-       '("\\<\\(Received\\):" 1 'Patch-face t)
+       '("\\<\\(Received\\):" 1 'Red-face t)
        '("\\<\\(From\\):" 1 'secondary-selection t)
        '("\\<\\(To\\):" 1 'Red-face t)
        '("\\<\\(Return-Path\\):" 1 'Red2-face t)
-       '("\\<\\(OK\\)" 1 'OK-face t)
+       '("\\<\\(OK\\)" 1 'Yellow-face t)
 ))
 
 ;; Regexps for menus:
