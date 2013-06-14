@@ -72,15 +72,6 @@ start-tag
 entity  - general entity reference
 shortref- short reference")
 
-;; Keywords for font-lock:
-(setq cust-sgml-mode-keywords
-      (list
-       '("\\<\\(configuration\\)" 1 'Plum-face t)
-       '("\\<\\(tool\\)" 1 'Green-face t)
-       ))
-
-(font-lock-add-keywords 'sgml-mode cust-sgml-mode-keywords)
-
 ;; SGML/XML mode hook:
 (add-hook 'sgml-mode-hook
 	  (function (lambda ()
