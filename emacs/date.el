@@ -65,13 +65,3 @@ stardate used on Star Trek."
     (if (interactive-p)
 	(insert date-str))
     date-str))
-
-;
-; Save desktop from session to session?
-;(load "desktop")
-;(desktop-load-default)
-;(desktop-read)
-(custom-set-variables
- '(user-mail-address "Shaun.Ashby@cern.ch" t)
- '(query-user-mail-address nil))
-(custom-set-faces)
