@@ -1,9 +1,14 @@
-#                                                                     
-#                 ----------------------------------------------------
-#                 Copyright © 1995 Lassi A. Tuura <Lassi.Tuura@hut.fi>
-######################################################################
-# $Header: /afs/cern.ch/user/s/sashby/w1/cvs/repositories/sashby/environment/emacs/insert/Makefile.in,v 1.1 2005/08/18 17:03:50 sashby Exp $
-
+#____________________________________________________________________
+# File: Makefile.in
+#____________________________________________________________________
+#
+# Author: Shaun Ashby <shaun@ashby.ch>
+# Update: 2013-06-13 10:00:34+0200
+# Revision: $Id$
+#
+# Copyright: 2013 (C) Shaun Ashby
+#
+#--------------------------------------------------------------------
 
 # Targets built by this makefile
 TARGET_SUBDIRS	= src
@@ -83,11 +88,6 @@ LEXFLAGS        = -d
 YACC            = bison
 YACCFLAGS       = -dtvl
 
-# UIL compiler
-UIL		= uil
-UILFLAGS	=
-UILCPP		= gcc -E
-
 # Installation
 INSTALL		= @INSTALL@
 INSTALL_PROGRAM	= $(INSTALL)
@@ -97,7 +97,7 @@ INSTALL_DATA	= $(INSTALL)
 all: subdirs $(TARGET)
 
 # Default rules 
-.SUFFIXES: .c .cc .uid .uil
+.SUFFIXES: .c .cc .cxx .cpp
 
 %.o: %.c
 	$(CC) $(CPPFLAGS) $(CALLFLAGS) -Wp,-MD,$(patsubst %.o,%.d,$@) -c $< -o $@
@@ -115,17 +115,11 @@ all: subdirs $(TARGET)
 	$(YACC) $(YACCFLAGS) -p $${prefix:-yy} $< -o $*.c && \
 	mv $*.c $@
 
-%.uid: %.uil
-	$(UILCPP) $(CPPFLAGS) -P $< >/tmp/$(@F).; \
-	$(UIL) $(UILFLAGS) /tmp/$(@F). -o $@ ; rm  -f /tmp/$(@F).
-
 # Files in this project directory.
 
 SRC		=
 DEPLIBS		=
 H		=
-USRC		=
-UOBJS		= $(USRC:.uil=.uid)
 APPDEF		=
 
 OBJS		= $(patsubst %.l,%.o,		\
@@ -148,7 +142,7 @@ subdirs:
 		  "LDFLAGS=$(LDFLAGS)" "AR=$(AR)" "RANLIB=$(RANLIB)" \
 		  "ARFLAGS=$(ARFLAGS)" "ARXFLAGS=$(ARXFLAGS)" "LEX=$(LEX)" \
 		  "LEXFLAGS=$(LEXFLAGS)" "YACC=$(YACC)" "YACCFLAGS=$(YACCFLAGS)" \
-		  "UIL=$(UIL)" "UILFLAGS=$(UILFLAGS)" "UILCPP=$(UILCPP)" all; \
+		  all; \
 	done
 
 program-target: $(OBJS) $(DEPLIBS)
@@ -319,3 +313,9 @@ uninstall-info:
 
 include $(wildcard *.d) /dev/null
 
+#############
+
+#____________________________________________________________________
+# End of Makefile.in
+#____________________________________________________________________
+#
