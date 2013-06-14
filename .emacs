@@ -86,7 +86,6 @@
 (load "cust-shell-mode")   ;; shell-scripts
 (load "cust-perl-mode")    ;; perl-scripts
 (load "cust-python-mode")  ;; python-scripts
-(load "cust-php-mode")     ;; php-scripts
 (load "cust-cc-mode")      ;; C++
 (load "cust-c-mode")       ;; C
 (load "cust-java-mode")    ;; Java
