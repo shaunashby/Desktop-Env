@@ -40,11 +40,7 @@
 			  ["Insert File Header" java-insert-file-header t]
 			  ))
 		      ;;
-		      (define-key java-mode-map "\C-m" 'newline-and-indent)
-		      ;;
-		      (cond ((not (file-exists-p (buffer-file-name)))
-			     (java-insert-file-header)
-			     )))))
+		      (define-key java-mode-map "\C-m" 'newline-and-indent))))
 ;;
 (setq auto-mode-alist (append '(("\\.java\\'" . java-mode))
 			      auto-mode-alist))

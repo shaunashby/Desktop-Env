@@ -199,10 +199,6 @@ std::ostream & operator<< (std::ostream & O, const " (symbol-value 'classname) "
   (end-of-buffer)
   (insert
    "//\n"
-   "//  Local variables:\n"
-   "//  compile-command: \"" 
-   (symbol-value 'compiler) " " (buffer-name) " -o " (file-name-sans-extension (buffer-name)) ".exe\"\n"
-   "//  End:\n"
    "//")
    (save-buffer))
 
@@ -245,32 +241,7 @@ std::ostream & operator<< (std::ostream & O, const " (symbol-value 'classname) "
 		      (define-key c++-mode-map "\C-cmf" 'insert-member-funcs)
 		      (define-key c++-mode-map "\C-csh" 'system-include-header)
 		      (define-key c++-mode-map "\C-clh" 'local-include-header)
-		      (define-key c++-mode-map "\C-ccc" 'insert-cc-compile-command)
-		      ;;
-		      (cond ((not (file-exists-p (buffer-file-name)))
-			     ;; See if it looks like a new header file. If it
-			     ;; is, insert the class definition:
-			     (if (string-match "\\.h$" (buffer-file-name))
-				 (if (y-or-n-p "Insert class definition in this header file? ")
-				     (c++-create-class)
-				   ;; A simple script header only:
-				   (c++-insert-file-header))
-			       (c++-insert-file-header))
-			     ))
-		      ;; Alternatively:
-		      (or (file-exists-p "makefile")
-			  (file-exists-p "Makefile")
-			  (set (make-local-variable 'compile-command)
-			       (concat "gcc -o "
-				       (substring
-					(file-name-nondirectory buffer-file-name)
-					0
-					(string-match
-					 "\\.c$"
-					 (file-name-nondirectory buffer-file-name)))
-				       " "
-				       (file-name-nondirectory buffer-file-name))))
-		      )))
+		      (define-key c++-mode-map "\C-ccc" 'insert-cc-compile-command))))
 ;;
 (setq auto-mode-alist (append '(("\\.cpp\\'" . c++-mode) 
 				("\\.C\\'" . c++-mode)

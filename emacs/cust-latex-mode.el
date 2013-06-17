@@ -63,12 +63,6 @@
 		      (set-face-font 'font-latex-title-4-face "-adobe-helvetica-bold-o-normal--12-120-75-75-p-69-iso8859-1")
 		      (set-face-foreground 'font-latex-title-4-face "DodgerBlue")
 		      (set-face-background 'font-latex-title-4-face "black")
-		      ;;
-		      (cond ((not (file-exists-p (buffer-file-name)))
-			     (latex-insert-file-header)
-			     (latex-start-doc)
-			     (latex-insert-file-footer)
-			     ))
 		      )))
 ;;
 ;; End of cust-latex-mode.el

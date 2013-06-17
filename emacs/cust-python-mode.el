@@ -79,11 +79,7 @@
 	  (function (lambda()
 		      ;; Python keymap is called py-mode-map 
 		      ;; not python-mode map
-		      (define-key py-mode-map "\C-cs" 'insert-py-def)
-		      ;;
-		      (cond ((not (file-exists-p (buffer-file-name)))
-			     (py-insert-file-header)
-			     )))))
+		      (define-key py-mode-map "\C-cs" 'insert-py-def))))
 ;;
 ;; End of cust-python-mode.el
 ;;

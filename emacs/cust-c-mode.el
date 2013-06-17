@@ -155,22 +155,7 @@
 		      ;;
 		      (define-key c-mode-map "\C-csh" 'system-include-header)
 		      (define-key c-mode-map "\C-clh" 'local-include-header)
-		      (define-key c-mode-map "\C-ccc" 'insert-c-compile-command)
-		      ;;
-		      (cond ((not (file-exists-p (buffer-file-name)))
-			     (c-insert-file-header)))
-		      (or (file-exists-p "makefile")
-			  (file-exists-p "Makefile")
-			  (set (make-local-variable 'compile-command)
-			       (concat "gcc -o "
-				       (substring
-					(file-name-nondirectory buffer-file-name)
-					0
-					(string-match
-					 "\\.c$"
-					 (file-name-nondirectory buffer-file-name)))
-				       " "
-				       (file-name-nondirectory buffer-file-name)))))))
+		      (define-key c-mode-map "\C-ccc" 'insert-c-compile-command))))
 
 ;;
 ;; cust-c-mode.el
