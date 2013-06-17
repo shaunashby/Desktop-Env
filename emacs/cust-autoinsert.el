@@ -110,4 +110,9 @@ private:
 
 #endif // " guard "
 "
-)) auto-insert-alist))
+)
+
+) auto-insert-alist))
+
+;; Automatic insertion of content from templates:
+;;(define-auto-insert             "\.rb" "hello.rb")
