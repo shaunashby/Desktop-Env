@@ -32,13 +32,10 @@
 			  "---"
 			  ["Insert System Header" system-include-header t]
 			  ["Insert Local Header" local-include-header t]
-			  "---"
-			  ["Insert Compile Command" insert-c-compile-command t]
 			  ))
 		      ;;
 		      (define-key c-mode-map "\C-csh" 'system-include-header)
 		      (define-key c-mode-map "\C-clh" 'local-include-header)
-		      (define-key c-mode-map "\C-ccc" 'insert-c-compile-command)
 		      ;;
 		      (cond ((not (file-exists-p (buffer-file-name)))
 			     (c-insert-file-header)))

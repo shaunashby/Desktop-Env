@@ -189,23 +189,6 @@ std::ostream & operator<< (std::ostream & O, const " (symbol-value 'classname) "
     ;; Write a message to user
     (message "Class is in '%s' and '%s'" header-name source-name)))
 
-;; To insert a new compile command:
-(defun insert-cc-compile-command (&optional compiler)
-  (interactive)
-  "Inserts a new compile-command block at end of file."
-  (if (not compiler)
-      (setq compiler (read-string "Compiler name: ")))
-  (if (eq (length compiler) 0) (setq compiler cxxdefault))
-  (end-of-buffer)
-  (insert
-   "//\n"
-   "//  Local variables:\n"
-   "//  compile-command: \"" 
-   (symbol-value 'compiler) " " (buffer-name) " -o " (file-name-sans-extension (buffer-name)) ".exe\"\n"
-   "//  End:\n"
-   "//")
-   (save-buffer))
-
 (defun c++-create-class()
   (interactive)
   "Create a new class in the current empty buffer."
@@ -235,8 +218,6 @@ std::ostream & operator<< (std::ostream & O, const " (symbol-value 'classname) "
 			  ["Insert System Header" system-include-header t]
 			  ["Insert Local Header" local-include-header t]
 			  ["Insert Header Guards" insert-c-in-c++-hdr-guards t]
-			  "---"
-			  ["Insert Compile Command" insert-cc-compile-command t]
 			  ))
 		      ;;
 		      (define-key c++-mode-map "\C-m" 'newline-and-indent)
@@ -245,7 +226,6 @@ std::ostream & operator<< (std::ostream & O, const " (symbol-value 'classname) "
 		      (define-key c++-mode-map "\C-cmf" 'insert-member-funcs)
 		      (define-key c++-mode-map "\C-csh" 'system-include-header)
 		      (define-key c++-mode-map "\C-clh" 'local-include-header)
-		      (define-key c++-mode-map "\C-ccc" 'insert-cc-compile-command)
 		      ;;
 		      (cond ((not (file-exists-p (buffer-file-name)))
 			     ;; See if it looks like a new header file. If it
