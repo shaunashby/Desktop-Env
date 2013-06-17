@@ -93,6 +93,9 @@
 (load "cust-makefile-mode");; Make
 (load "cust-misc-mode")    ;; Misc modes (PostScript, GNUPlot, Xrdb, Apache..)
 
+;; Autoinsert support:
+(load "cust-autoinsert")
+
 ;; Start emacs server if required:
 (autoload 'gnuserv-start "gnuserv-compat" 
   "Allow this Emacs process to be a server for client processes." t)
