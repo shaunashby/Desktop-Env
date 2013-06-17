@@ -111,8 +111,23 @@ private:
 #endif // " guard "
 "
 )
-
-) auto-insert-alist))
+    ;; Java:
+    (("\\.\\(jni\\|java\\)\\'" . "Java Source File")
+     nil
+     '(setq class (file-name-sans-extension (buffer-name)))
+     '(setq guard "MYCLASS_H")
+"//____________________________________________________________________
+// File: " (buffer-name) "
+//____________________________________________________________________
+//
+// Author: " (user-full-name)  " <" user-mail-address ">
+// Update: " (format-time-string "%Y-%m-%d %T%z") "
+// Revision: $Id" "$
+//
+// Copyright: " (format-time-string "%Y") " (C) " (user-full-name) "
+//
+//--------------------------------------------------------------------
+")) auto-insert-alist))
 
 ;; Automatic insertion of content from templates:
 ;;(define-auto-insert             "\.rb" "hello.rb")
