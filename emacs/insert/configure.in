@@ -1,15 +1,22 @@
+dnl ____________________________________________________________________
+dnl  File: Makefile.in
+dnl ____________________________________________________________________
+dnl
+dnl  Author: Shaun Ashby <shaun@ashby.ch>
+dnl  Update: 2013-06-13 10:00:34+0200
+dnl  Revision: $Id$
+dnl
+dnl  Copyright: 2013 (C) Shaun Ashby
+dnl
+dnl --------------------------------------------------------------------
 dnl Process this file with autoconf to produce a configure script
-dnl ----------------------------------------------------------------------
-dnl 
-dnl (C) 1995 Lassi A. Tuura (<Lassi.Tuura@hut.fi>)
-dnl ----------------------------------------------------------------------
-
-AC_REVISION($Revision: 1.1 $)dnl
+dnl --------------------------------------------------------------------
+AC_REVISION($Revision: 0.1 $)dnl
 
 AC_INIT(src/file.cc)
 AC_CONFIG_AUX_DIR(config)
 AC_CONFIG_HEADER(include/config.h)
-AC_PREFIX_DEFAULT(/afs/cern.ch/user/l/lat/src/)
+dnl AC_PREFIX_DEFAULT(/somepath)
 AC_PROG_CXX
 AC_PROG_CXXCPP
 AC_PROG_INSTALL
