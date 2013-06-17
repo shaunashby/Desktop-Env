@@ -125,8 +125,6 @@
 		      (require 'easymenu)
 		      (easy-menu-define c-menu c-mode-map "C Menu"
 			'("Insert"
-			  ["Insert File Header" c-insert-file-header t]
-			  "---"
 			  ["Insert System Header" system-include-header t]
 			  ["Insert Local Header" local-include-header t]
 			  "---"
@@ -136,7 +134,6 @@
 		      (define-key c-mode-map "\C-csh" 'system-include-header)
 		      (define-key c-mode-map "\C-clh" 'local-include-header)
 		      (define-key c-mode-map "\C-ccc" 'insert-c-compile-command))))
-
 ;;
 ;; cust-c-mode.el
 ;;
