@@ -60,6 +60,7 @@
      ("config\\.h" . "C/C++ Package Configuration Header File")
      nil
      '(setq copy "MyCopyRight")
+     '(setq prefix (filename-sans-extension(buffer-name)))
      ;;
      copy
 "
