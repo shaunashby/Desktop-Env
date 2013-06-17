@@ -20,24 +20,6 @@
    ("\\<\\(include\\)" 1 'Brown-face t)
    ))
 
-;; Function to generate header:
-(defun c++-insert-file-header () 
-  (interactive)
-  "Inserts some lines for a header, including VCS info, author, date and copyright."
-  (insert 
-   "//____________________________________________________________________ 
-// File: " (buffer-name) "
-//____________________________________________________________________ 
-//  
-// Author: " (user-full-name)  " <" user-mail-address ">
-// Update: " (format-time-string "%Y-%m-%d %T%z") "
-// Revision: $Id" "$ 
-//
-// Copyright: " (format-time-string "%Y") " (C) " (user-full-name) "
-//
-//--------------------------------------------------------------------
-"))
-
 ;; Function to insert a set of member functions:
 (defun insert-member-funcs (&optional classname) 
   "Insert a set of member functions for given class." 
@@ -221,8 +203,6 @@ std::ostream & operator<< (std::ostream & O, const " (symbol-value 'classname) "
 		      (require 'easymenu)
 		      (easy-menu-define cpp-menu c++-mode-map "C++ Menu"
 			'("Insert"
-			  ["Insert File Header" c++-insert-file-header t]
-			  "---"
 			  ["New Class Templates" new-class-templates t]
 			  "---"
 			  ["Insert Class" insert-class t]
