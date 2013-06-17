@@ -17,33 +17,47 @@
 ;; Set up the mappings between file types and content to be inserted:
 (setq
  auto-insert			t
+ auto-insert-directory          "~/.env/templates/"
  auto-insert-alist
  (append
   ;; C++ source files
   '((
      ("\\.\\(cc\\|C\\|cpp\\|cxx\\)\\'" . "C++ Program File")
      nil
-     '(setq blah "TheBlah")
+     '(setq class (filename-sans-extension (buffer-name)))
      ;;
-     "//<<<<<< INCLUDES                                                       >>>>>>
+"//____________________________________________________________________
+// File: " (buffer-name) "
+//____________________________________________________________________
+//
+// Author: " (user-full-name)  " <" user-mail-address ">
+// Update: " (format-time-string "%Y-%m-%d %T%z") "
+// Revision: $Id" "$
+//
+// Copyright: " (format-time-string "%Y") " (C) " (user-full-name) "
+//
+//
+//--------------------------------------------------------------------
 
-" blah "#include \"" blah "\"
+//<<<< INCLUDES                                                       >>>>
 
-//<<<<<< PRIVATE DEFINES                                                >>>>>>
-//<<<<<< PRIVATE CONSTANTS                                              >>>>>>
-//<<<<<< PRIVATE TYPES                                                  >>>>>>
-//<<<<<< PRIVATE VARIABLE DEFINITIONS                                   >>>>>>
-//<<<<<< PUBLIC VARIABLE DEFINITIONS                                    >>>>>>
-//<<<<<< CLASS STRUCTURE INITIALIZATION                                 >>>>>>
-//<<<<<< PRIVATE FUNCTION DEFINITIONS                                   >>>>>>
-//<<<<<< PUBLIC FUNCTION DEFINITIONS                                    >>>>>>
-//<<<<<< MEMBER FUNCTION DEFINITIONS                                    >>>>>>
+#include \"" class ".h\"
 
-" blah "::" blah " (" _ ") {
+//<<<< PRIVATE DEFINES                                                >>>>
+//<<<< PRIVATE CONSTANTS                                              >>>>
+//<<<< PRIVATE TYPES                                                  >>>>
+//<<<< PRIVATE VARIABLE DEFINITIONS                                   >>>>
+//<<<< PUBLIC VARIABLE DEFINITIONS                                    >>>>
+//<<<< CLASS STRUCTURE INITIALIZATION                                 >>>>
+//<<<< PRIVATE FUNCTION DEFINITIONS                                   >>>>
+//<<<< PUBLIC FUNCTION DEFINITIONS                                    >>>>
+//<<<< MEMBER FUNCTION DEFINITIONS                                    >>>>
+
+" class "::" class " (" _ ") {
 }")
     ;; Package config.h
     (
-     ("config\\.h\\'" . "C/C++ Package Configuration Header File")
+     ("config\\.h" . "C/C++ Package Configuration Header File")
      nil
      '(setq copy "MyCopyRight")
      ;;
@@ -58,27 +72,41 @@
     ;; C/C++ header files 
     (("\\.\\(h\\|hxx\\)\\'" . "C/C++ Header File")
      nil
-"
-//<<<<<< INCLUDES                                                       >>>>>>
-//<<<<<< PUBLIC DEFINES                                                 >>>>>>
-//<<<<<< PUBLIC CONSTANTS                                               >>>>>>
-//<<<<<< PUBLIC TYPES                                                   >>>>>>
-//<<<<<< PUBLIC VARIABLES                                               >>>>>>
-//<<<<<< PUBLIC FUNCTIONS                                               >>>>>>
-//<<<<<< CLASS DECLARATIONS                                             >>>>>>
+     '(setq class (file-name-sans-extension (buffer-name)))
+     '(setq guard "MYCLASS_H")
+"//____________________________________________________________________
+// File: " (buffer-name) "
+//____________________________________________________________________
+//
+// Author: " (user-full-name)  " <" user-mail-address ">
+// Update: " (format-time-string "%Y-%m-%d %T%z") "
+// Revision: $Id" "$
+//
+// Copyright: " (format-time-string "%Y") " (C) " (user-full-name) "
+//
+//
+//--------------------------------------------------------------------
+
+//<<<< INCLUDES                                                       >>>>
+//<<<< PUBLIC DEFINES                                                 >>>>
+//<<<< PUBLIC CONSTANTS                                               >>>>
+//<<<< PUBLIC TYPES                                                   >>>>
+//<<<< PUBLIC VARIABLES                                               >>>>
+//<<<< PUBLIC FUNCTIONS                                               >>>>
+//<<<< CLASS DECLARATIONS                                             >>>>
 
 class " class " {
- public:
-   " class " (" _ ");
-   // implicit copy constructor
-   // implicit assignment operator
-   // implicit destructor
- private:
+public:
+  " class "(" _ ");
+  // implicit copy constructor
+  // implicit assignment operator
+  // implicit destructor
+private:
 
 };
 
-//<<<<<< INLINE PUBLIC FUNCTIONS                                        >>>>>>
-//<<<<<< INLINE MEMBER FUNCTIONS                                        >>>>>>
+//<<<< INLINE PUBLIC FUNCTIONS                                        >>>>
+//<<<< INLINE MEMBER FUNCTIONS                                        >>>>
 
 #endif // " guard "
 "
