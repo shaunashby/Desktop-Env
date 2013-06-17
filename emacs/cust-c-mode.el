@@ -2,26 +2,6 @@
 ;; cust-c-mode.el
 ;;
 
-
-;; Function to generate header:
-(defun c-insert-file-header () 
-  (interactive)
-  "Inserts some lines for a header, including VCS info, author, date and copyright."
-  (insert 
-   "/*********************************************************************
- File: " (buffer-name) "
----------------------------------------------------------------------- 
-  
- Author: " (user-full-name)  " <" user-mail-address ">
- Update: " (format-time-string "%Y-%m-%d %T%z") "
- Revision: $Id" "$ 
-
- Copyright: " (format-time-string "%Y") " (C) " (user-full-name) "
-
-*********************************************************************/
-#include <stdio.h>
-"))
-
 ;; To insert a new compile command:
 (defun insert-c-compile-command (&optional compiler)
   (interactive)

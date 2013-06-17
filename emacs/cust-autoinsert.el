@@ -128,6 +128,21 @@ private:
 // Copyright: " (format-time-string "%Y") " (C) " (user-full-name) "
 //
 //--------------------------------------------------------------------
+")
+    ;; C:
+    (("\\.c\\'" . "C Source File")
+     nil
+"/*********************************************************************
+ File: " (buffer-name) "
+----------------------------------------------------------------------
+
+ Author: " (user-full-name)  " <" user-mail-address ">
+ Update: " (format-time-string "%Y-%m-%d %T%z") "
+ Revision: $Id" "$
+
+ Copyright: " (format-time-string "%Y") " (C) " (user-full-name) "
+
+*********************************************************************/
 ")) auto-insert-alist))
 
 ;; Automatic insertion of content from templates:
