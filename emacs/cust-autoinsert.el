@@ -24,8 +24,7 @@
   '((
      ("\\.\\(cc\\|C\\|cpp\\|cxx\\)\\'" . "C++ Source File")
      nil
-     '(setq class (filename-sans-extension (buffer-name)))
-     ;;
+     '(setq class (file-name-sans-extension (buffer-name)))
 "//_______________________________________________________________________
 // File: " (buffer-name) "
 //________________________________________________________________________
