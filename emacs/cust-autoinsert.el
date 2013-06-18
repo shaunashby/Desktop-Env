@@ -103,7 +103,6 @@ private:
     (("\\.\\(jni\\|java\\)\\'" . "Java Source File")
      nil
      '(setq class (file-name-sans-extension (buffer-name)))
-     '(setq guard "MYCLASS_H")
 "//____________________________________________________________________
 // File: " (buffer-name) "
 //____________________________________________________________________
