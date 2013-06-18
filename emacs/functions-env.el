@@ -83,63 +83,6 @@
 (defun yes-or-no-p (prompt)
   (y-or-n-p prompt))
 
-;; Some extra functions:
-(defun frame-tan ()
-  "Create a new frame with background TAN and foreground IVORY."
-  (interactive)
-  (message "Creating new frame with background TAN4")
-  (make-frame '(
-		(background-color . "tan4") 
-		(foreground-color . "ivory")
-		(mouse-color . "dark green")		
-		))
-  )
-
-(defun frame-grey ()
-  "Create a new frame with background GREY15 and foreground IVORY."
-  (interactive)
-  (message "Creating new frame with background GREY15")
-  (make-frame '(
-		(background-color . "grey15") 
-		(foreground-color . "ivory")
-		))
-  )
-
-
-(defun frame-wheat2 ()
-  "Create a new frame with background WHEAT2 and foreground BLACK."
-  (interactive)
-  (message "Creating new frame with background WHEAT2")
-  (make-frame '(
-		(background-color . "wheat2") 
-		(foreground-color . "black")
-		(mouse-color . "dark blue")
-		))
-  )
-
-(defun frame-wheat3 ()
-  "Create a new frame with background WHEAT3 and foreground BLACK."
-  (interactive)
-  (message "Creating new frame with background GREY15")
-  (make-frame '(
-		(background-color . "wheat3") 
-		(foreground-color . "black")
-		(mouse-color . "dark blue")
-		))
-  )
-
-(defun frame-black-on-white ()
-  "Create a new frame with background WHITE and foreground BLACK."
-  (interactive)
-  (message "Creating new frame with background WHITE")
-  (make-frame '(
-		(background-color . "white") 
-		(foreground-color . "black")
-		(mouse-color . "orangered")
-		(cursor-color . "brown")
-		))
-  )
-
 ;; File searching utils for SCRAM environment:
 (defun is-scram-project ()
   "Determine whether the current area is a SCRAM project area."
