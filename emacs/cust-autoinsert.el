@@ -54,39 +54,28 @@
 
 " class "::" class " (" _ ") {
 }")
-    ;; Package config.h
-    (
-     ("config\\.h" . "C/C++ Package Configuration Header File")
-     nil
-     '(setq copy "MyCopyRight")
-     '(setq prefix (filename-sans-extension(buffer-name)))
-     ;;
-     copy
-"
-# ifndef " prefix "_API
-#  define " prefix "_API
-# endif
-
-#endif // " guard "
-")
     ;; C/C++ header files 
     (("\\.\\(h\\|hxx\\)\\'" . "C/C++ Header File")
      nil
      '(setq class (file-name-sans-extension (buffer-name)))
-     '(setq guard "MYCLASS_H")
-"//_______________________________________________________________________
+     '(setq guard (concat (upcase class) "_H"))
+"#ifndef " guard "
+#define " guard " 1
+//_______________________________________________________________________
 // File: " (buffer-name) "
 //________________________________________________________________________
 //
 // Author: " (user-full-name)  " <" user-mail-address ">
 // Update: " (format-time-string "%Y-%m-%d %T%z") "
 // Revision: $Id" "$
+// Description: " (read-string "Description: ") "
 //
 // Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
 //
 //------------------------------------------------------------------------
 
 //<<<< INCLUDES                                                       >>>>
+
 //<<<< PUBLIC DEFINES                                                 >>>>
 //<<<< PUBLIC CONSTANTS                                               >>>>
 //<<<< PUBLIC TYPES                                                   >>>>
