@@ -86,14 +86,18 @@
 class " class " {
 public:
   " class "(" _ ");
+  // virtual ~" class "();
   // implicit copy constructor
   // implicit assignment operator
   // implicit destructor
 private:
-
+  // " class "(const " class " & r);
+  // " class " & operator=(const " class " & r);
 };
 
 //<<<< INLINE PUBLIC FUNCTIONS                                        >>>>
+// inline std::ostream & operator<< (std::ostream & O, const " class " & rhs);
+
 //<<<< INLINE MEMBER FUNCTIONS                                        >>>>
 
 #endif // " guard "
