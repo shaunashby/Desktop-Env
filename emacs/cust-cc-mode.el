@@ -208,8 +208,6 @@ std::ostream & operator<< (std::ostream & O, const " (symbol-value 'classname) "
 			  ["Insert Class" insert-class t]
 			  ["Insert Member Functions" insert-member-funcs t]
 			  "---"
-			  ["Insert System Header" system-include-header t]
-			  ["Insert Local Header" local-include-header t]
 			  ["Insert Header Guards" insert-c-in-c++-hdr-guards t]
 			  "---"
 			  ["Insert Compile Command" insert-cc-compile-command t]
@@ -219,8 +217,6 @@ std::ostream & operator<< (std::ostream & O, const " (symbol-value 'classname) "
 		      (define-key c++-mode-map "\C-cic" 'insert-class)
 		      (define-key c++-mode-map "\C-cnc" 'new-class-templates)
 		      (define-key c++-mode-map "\C-cmf" 'insert-member-funcs)
-		      (define-key c++-mode-map "\C-csh" 'system-include-header)
-		      (define-key c++-mode-map "\C-clh" 'local-include-header)
 		      (define-key c++-mode-map "\C-ccc" 'insert-cc-compile-command))))
 ;;
 (setq auto-mode-alist (append '(("\\.cpp\\'" . c++-mode) 
