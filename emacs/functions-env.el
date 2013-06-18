@@ -83,43 +83,6 @@
 (defun yes-or-no-p (prompt)
   (y-or-n-p prompt))
 
-;; File searching utils for SCRAM environment:
-(defun is-scram-project ()
-  "Determine whether the current area is a SCRAM project area."
-  (setq found (search-file ".SCRAM" (buffer-file-name)))
-  (if (file-directory-p found)
-      (cons found nil)
-    (cons nil nil))
-  )
-
-(defun find-localtop ()
-  "*Find LOCALTOP from the current directory or START."
-  (interactive)
-  (setq localtop nil)
-  ;; Look for a .SCRAM directory from the current file"
-  (setq found-path (car (is-scram-project)))
-  (cond ((not (eq (length found-path) 0))
-	 (string-match "\\(/.SCRAM\\|/.SCRAM/\\)" found-path)
-	 (setq localtop (substring found-path 0 (match-beginning 1)))
-	 ))
-  ;; Return localtop:
-  (cons localtop nil)
-  )
-
-(defun scram-package-name()
-  "Return the SCRAM package name for the current filename."
-  (interactive)
-  (setq package "")
-  (cond ((car (find-localtop))
-	 ;; The path of current file:
-	 (setq filepath (buffer-file-name))
-	 ;; Look for a "src/x/y/src":
-	 (if (string-match ".*src/\\(.*\\)/\\(src\\|interface\\|include\\)/.*$" filepath)	   
-	     (setq package (substring filepath (match-beginning 1) (match-end 1))))
-	 ))
-  (cons package nil)
-  )
-
 (defun mangle-packagename(&optional package)
   "Take the package name as SUB/PACKAGE and return as a mangled name SUB_PACKAGE."
   (interactive)
@@ -151,16 +114,6 @@
 	)
     ;; If we got an output from scram-package-name, proceed with the value:
     (progn (setq mangled (concat (car (mangle-packagename (car (scram-package-name)))) "_" (upcase classname) "_H" ))))
-  )
-
-(defun create-package-buildfile(&optional dir)
-  "Create a BuildFile for the current package"
-  (interactive)
-  (setq dir (read-string "Install dir: "))
-  (if (string-match "BuildFile$" (file-name-nondirectory buffer-file-name))
-      (cond ((not (file-exists-p (buffer-file-name)))
-	     (message "File does not exist: ")))
-    (message "BuildFile already exists!"))
   )
 
 ;; Function to insert a system header:
