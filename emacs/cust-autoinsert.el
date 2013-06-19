@@ -201,12 +201,39 @@ int main(int argc, char *argv[]) {
 ## Revision: $Id" "$
 ## Description: " (read-string "Description: ") "
 ##
-## Copyright (C)" (format-time-string "%Y") " " (user-full-name) "
+## Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
 ##
 ##--------------------------------------------------------------------
 
-if __name__ == \"__main__\":"
-- "
+if __name__ == \"__main__\":
+  " - "
+")
+    ;; Perl:
+    (("\\.pl\\'" . "Perl Script Source File")
+     nil
+"#!/usr/bin/env perl
+#____________________________________________________________________
+# File: " (buffer-name) "
+#____________________________________________________________________
+#
+# Author: " (user-full-name)  " <" user-mail-address ">
+# Created: " (format-time-string "%Y-%m-%d %T%z") "
+# Revision: $Id" "$
+# Description: " (read-string "Description: ") "
+#
+# Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
+#
+#--------------------------------------------------------------------
+
+use 5.0010;
+"
+(if (y-or-n-p "Use Moose? ")
+    "use Moose;"
+"
+use warnings;
+use strict;
+") "
+" - "
 ")
 ) auto-insert-alist))
 
