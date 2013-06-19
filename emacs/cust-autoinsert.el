@@ -30,7 +30,7 @@
 //________________________________________________________________________
 //
 // Author: " (user-full-name)  " <" user-mail-address ">
-// Update: " (format-time-string "%Y-%m-%d %T%z") "
+// Created: " (format-time-string "%Y-%m-%d %T%z") "
 // Revision: $Id" "$
 // Description: " (read-string "Description: ") "
 //
@@ -66,7 +66,7 @@
 //________________________________________________________________________
 //
 // Author: " (user-full-name)  " <" user-mail-address ">
-// Update: " (format-time-string "%Y-%m-%d %T%z") "
+// Created: " (format-time-string "%Y-%m-%d %T%z") "
 // Revision: $Id" "$
 // Description: " (read-string "Description: ") "
 //
@@ -112,7 +112,7 @@ private:
 //____________________________________________________________________
 //
 // Author: " (user-full-name)  " <" user-mail-address ">
-// Update: " (format-time-string "%Y-%m-%d %T%z") "
+// Created: " (format-time-string "%Y-%m-%d %T%z") "
 // Revision: $Id" "$
 // Description: " (read-string "Description: ") "
 //
@@ -129,7 +129,7 @@ private:
 -------------------------------------------------------------------------------------------
 
  Author: " (user-full-name)  " <" user-mail-address ">
- Update: " (format-time-string "%Y-%m-%d %T%z") "
+ Created: " (format-time-string "%Y-%m-%d %T%z") "
  Revision: $Id" "$
  Description: " (read-string "Description: ") "
 
@@ -164,7 +164,7 @@ int main(int argc, char *argv[]) {
 -------------------------------------------------------------------------------------------
 
  Author: " (user-full-name)  " <" user-mail-address ">
- Update: " (format-time-string "%Y-%m-%d %T%z") "
+ Created: " (format-time-string "%Y-%m-%d %T%z") "
  Revision: $Id" "$
  Description: " (read-string "Description: ") "
 
