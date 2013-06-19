@@ -211,4 +211,6 @@ if __name__ == \"__main__\":"
 ) auto-insert-alist))
 
 ;; Automatic insertion of content from templates:
-(define-auto-insert             "COPYING" "License/GPLv3.txt")
+(define-auto-insert             "Makefile.in" "GNU/Makefile.in")
+(define-auto-insert             "LICENSE-2.0" "License/Apache-v2.0.txt")
+(define-auto-insert             "COPYING"     "License/GPLv3.txt")
