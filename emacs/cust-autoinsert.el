@@ -187,10 +187,26 @@ int main(int argc, char *argv[]) {
 
 *******************************************************************************************/
 ")
-    ;; License files:
-    (("LICENSE.txt" . "License file for GNU-like packages")
+    ;; Python:
+    (("\\.py\\'" . "Python Source File")
      nil
-     "
+     '(setq python-version (read-string "Python version?: "))
+"#!/usr/bin/env python" version "
+##____________________________________________________________________
+## File: " (buffer-name) "
+##____________________________________________________________________
+##
+## Author: " (user-full-name)  " <" user-mail-address ">
+## Created: " (format-time-string "%Y-%m-%d %T%z") "
+## Revision: $Id" "$
+## Description: " (read-string "Description: ") "
+##
+## Copyright (C)" (format-time-string "%Y") " " (user-full-name) "
+##
+##--------------------------------------------------------------------
+
+if __name__ == \"__main__\":"
+- "
 ")
 ) auto-insert-alist))
 

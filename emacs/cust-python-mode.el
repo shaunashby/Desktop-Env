@@ -53,27 +53,6 @@
    "\n " (make-string 45 ?-) " "
    "\n\"\"\""
    ))
-
-;; Function to generate header:
-(defun py-insert-file-header (&optional version) 
-  (interactive)
-  "Inserts some lines for a header, including VCS info, author, date and copyright."
-  (setq version (read-string "Python version? "))
-  (insert 
-   "#!/usr/bin/env python" (symbol-value 'version) "
-##____________________________________________________________________ 
-## File: " (buffer-name) "
-##____________________________________________________________________ 
-##  
-## Author: " (user-full-name)  " <" user-mail-address ">
-## Update: " (format-time-string "%Y-%m-%d %T%z") "
-## Revision: $Id" "$ 
-##
-## Copyright: " (format-time-string "%Y") " (C) " (user-full-name) "
-##
-##--------------------------------------------------------------------
-\n\n\n\n
-"))
 ;;
 (add-hook 'python-mode-hook
 	  (function (lambda()
