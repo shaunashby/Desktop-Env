@@ -33,9 +33,6 @@
        ))
 
 (font-lock-add-keywords 'python-mode cust-python-font-lock-keywords)
-;;
-(setq auto-mode-alist (append '(("\\.i$" . python-mode)) 
-			      auto-mode-alist))
 
 ;; Python function definition:
 (defun insert-py-def (&optional defname args)
