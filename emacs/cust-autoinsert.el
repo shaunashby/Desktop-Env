@@ -191,7 +191,7 @@ int main(int argc, char *argv[]) {
     (("\\.py\\'" . "Python Source File")
      nil
      '(setq python-version (read-string "Python version?: "))
-"#!/usr/bin/env python" version "
+"#!/usr/bin/env python" python-version "
 ##____________________________________________________________________
 ## File: " (buffer-name) "
 ##____________________________________________________________________
