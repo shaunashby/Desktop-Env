@@ -208,6 +208,26 @@ int main(int argc, char *argv[]) {
 if __name__ == \"__main__\":
   " - "
 ")
+    ;; Ruby:
+    (("\\.\\(rb\\|erb\\)\\'" . "Ruby Script/ERB Source File")
+     nil
+"#!/usr/bin/env ruby
+#____________________________________________________________________
+# File: " (buffer-name) "
+#____________________________________________________________________
+#
+# Author: " (user-full-name)  " <" user-mail-address ">
+# Created: " (format-time-string "%Y-%m-%d %T%z") "
+# Revision: $Id" "$
+# Description: " (read-string "Description: ") "
+#
+# Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
+#
+#--------------------------------------------------------------------
+
+if __name__ == \"__main__\":
+  " - "
+")
     ;; Perl:
     (("\\.pl\\'" . "Perl Script Source File")
      nil
@@ -241,3 +261,5 @@ use strict;
 (define-auto-insert             "Makefile.in" "GNU/Makefile.in")
 (define-auto-insert             "LICENSE-2.0" "License/Apache-v2.0.txt")
 (define-auto-insert             "COPYING"     "License/GPLv3.txt")
+;; Ruby files:
+(define-auto-insert             "Gemfile"     "Ruby/Gemfile")
