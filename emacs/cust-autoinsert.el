@@ -257,8 +257,11 @@ use strict;
 ")
 ) auto-insert-alist))
 
-;; Automatic insertion of content from templates:
+;; Automatic insertion of content from templates
+;;
+;; GNU env:
 (define-auto-insert             "Makefile.in" "GNU/Makefile.in")
+;; Licenses:
 (define-auto-insert             "LICENSE-2.0" "License/Apache-v2.0.txt")
 (define-auto-insert             "COPYING"     "License/GPLv3.txt")
 ;; Ruby files:
