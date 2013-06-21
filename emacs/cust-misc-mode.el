@@ -56,7 +56,7 @@
 # Created: " (format-time-string "%Y-%m-%d %T%z") "
 # Revision: $Id" "$ 
 #
-# Copyright: " (format-time-string "%Y") " (C) " (user-full-name) "
+# Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
 #
 #--------------------------------------------------------------------
 "
@@ -87,7 +87,7 @@
 # Created: " (format-time-string "%Y-%m-%d %T%z") "
 # Revision: $Id" "$ 
 #
-# Copyright: " (format-time-string "%Y") " (C) " (user-full-name) "
+# Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
 #
 #--------------------------------------------------------------------
 %]"
@@ -138,7 +138,7 @@
 -- Created: " (format-time-string "%Y-%m-%d %T%z") "
 -- Revision: $Id" "$ 
 --
--- Copyright: " (format-time-string "%Y") " (C) " (user-full-name) "
+-- Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
 --
 -- -------------------------------------------------------------------
 -- 
