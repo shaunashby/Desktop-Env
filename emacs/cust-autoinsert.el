@@ -100,6 +100,7 @@
 //
 // Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
 //
+//
 //------------------------------------------------------------------------
 
 //<<<< INCLUDES                                                       >>>>
@@ -151,6 +152,7 @@
 //
 // Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
 //
+//
 //------------------------------------------------------------------------
 
 //<<<< INCLUDES                                                       >>>>
@@ -196,6 +198,7 @@ dnl  Description: " (read-string "Description: ") "
 dnl
 dnl  Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
 dnl
+dnl
 dnl --------------------------------------------------------------------
 
 AC_PREREQ(2.69)
@@ -231,6 +234,7 @@ AC_OUTPUT(Makefile src/Makefile)
 // Description: " (read-string "Description: ") "
 //
 // Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
+//
 //
 //--------------------------------------------------------------------
 ")
@@ -316,6 +320,7 @@ int main(int argc, char *argv[]) {
 ##
 ## Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
 ##
+##
 ##--------------------------------------------------------------------
 
 if __name__ == \"__main__\":
@@ -336,6 +341,7 @@ if __name__ == \"__main__\":
 #
 # Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
 #
+#
 #--------------------------------------------------------------------
 " - "
 ")
@@ -353,6 +359,7 @@ if __name__ == \"__main__\":
 # Description: " (read-string "Description: ") "
 #
 # Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
+#
 #
 #--------------------------------------------------------------------
 
