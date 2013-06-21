@@ -53,7 +53,7 @@
 #____________________________________________________________________ 
 #  
 # Author: " (user-full-name)  " <" user-mail-address ">
-# Update: " (format-time-string "%Y-%m-%d %T%z") "
+# Created: " (format-time-string "%Y-%m-%d %T%z") "
 # Revision: $Id" "$ 
 #
 # Copyright: " (format-time-string "%Y") " (C) " (user-full-name) "
@@ -84,7 +84,7 @@
 #____________________________________________________________________ 
 #  
 # Author: " (user-full-name)  " <" user-mail-address ">
-# Update: " (format-time-string "%Y-%m-%d %T%z") "
+# Created: " (format-time-string "%Y-%m-%d %T%z") "
 # Revision: $Id" "$ 
 #
 # Copyright: " (format-time-string "%Y") " (C) " (user-full-name) "
@@ -135,7 +135,7 @@
 -- -------------------------------------------------------------------
 --  
 -- Author: " (user-full-name)  " <" user-mail-address ">
--- Update: " (format-time-string "%Y-%m-%d %T%z") "
+-- Created: " (format-time-string "%Y-%m-%d %T%z") "
 -- Revision: $Id" "$ 
 --
 -- Copyright: " (format-time-string "%Y") " (C) " (user-full-name) "
