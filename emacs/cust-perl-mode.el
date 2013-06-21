@@ -310,8 +310,6 @@ sub " (symbol-value 'subname) "{\n"
 
 (font-lock-add-keywords 'perl-mode cust-perl-font-lock-keywords)
 ;;
-(setq auto-mode-alist (cons '("\\.cgi\\'" . perl-mode) auto-mode-alist))
-;;
 (add-hook 'perl-mode-hook
 	  (function (lambda()
 		      (require 'easymenu)
