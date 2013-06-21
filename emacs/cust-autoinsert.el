@@ -329,7 +329,7 @@ use strict;
 ")
 ) auto-insert-alist))
 
-;; Automatic insertion of content from templates
+;; Automatic insertion of content from templates:
 ;;
 ;; GNU env:
 (define-auto-insert             "Makefile.in" "GNU/Makefile.in")
