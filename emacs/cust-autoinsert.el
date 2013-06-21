@@ -14,6 +14,33 @@
 (load-library "autoinsert")
 (add-hook 'find-file-hooks 'auto-insert)
 
+; Manage settings which can be used elsewhere in the templates:
+(defun project-settings (filename)
+  "*Determine/set the project settings for the file named FILENAME."
+  (cond ((string-match "/classlib/" filename)
+	 `((copyright-owner		. "Shaun Ashby <shaun@ashby.ch>")
+	   (copyright-desc		. "C++ Class Library")
+	   (copyright-year		. ,(concat "2012-"
+						   (substring
+						    (current-time-string) -4)))
+	   (copyright-style		. single-line)
+	   (copyright-prefix		. "//")
+	   (copyright-separator		. nil)
+	   (project-conf-file		. "classlib/system.h")
+	   (package-prefix		. "classlib")
+	   (package-root		. "../COPYING")
+	   ))
+
+	((string-match "/Projects/" filename)
+	 '((project-conf-file		. "config.h")
+	   (license-type                . gpl)
+	   ))
+	(t
+	 '((project-conf-file           . "include/arch.h")
+	   (license-type                . apache2)
+	   ))
+	))
+
 ;; Set up the mappings between file types and content to be inserted:
 (setq
  auto-insert			t
