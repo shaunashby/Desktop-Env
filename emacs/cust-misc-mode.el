@@ -112,34 +112,12 @@
 ;; Ruby mode:
 (autoload 'ruby-mode "ruby-mode" "Major mode for editing Ruby source." t)
 
-(defun ruby-insert-file-header () 
-  (interactive)
-  "Inserts some lines for a header, including VCS info, author, date and copyright."
-  (insert "#!/usr/bin/env ruby
-#____________________________________________________________________ 
-# File: " (buffer-name) "
-#____________________________________________________________________ 
-#  
-# Author: " (user-full-name)  " <" user-mail-address ">
-# Update: " (format-time-string "%Y-%m-%d %T%z") "
-# Revision: $Id" "$ 
-#
-# Copyright: " (format-time-string "%Y") " (C) " (user-full-name) "
-#
-#--------------------------------------------------------------------
-"
-))
-
 ;; Hooks:
 (add-hook 'ruby-mode-hook
 	  (function (lambda ()
 		      ;; Use auto completion:
 		      (require 'ruby-electric)
-		      (ruby-electric-mode t)
-		      (cond ((not (file-exists-p (buffer-file-name)))
-			     (ruby-insert-file-header)
-			     ))
-		      )))
+		      (ruby-electric-mode t))))
 
 (setq auto-mode-alist (cons '("\\.rb$" . ruby-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.erb$" . ruby-mode) auto-mode-alist))
