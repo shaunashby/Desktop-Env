@@ -298,8 +298,6 @@ if __name__ == \"__main__\":
 # Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
 #
 #--------------------------------------------------------------------
-
-if __name__ == \"__main__\":
   " - "
 ")
     ;; Perl:
