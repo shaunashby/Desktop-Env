@@ -195,7 +195,6 @@ AC_OUTPUT(Makefile src/Makefile)
 //
 //--------------------------------------------------------------------
 ")
-
     ;; C main:
     (("main.c\\'" . "C Source File for Executables")
      nil
