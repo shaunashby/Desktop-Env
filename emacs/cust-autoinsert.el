@@ -146,7 +146,7 @@ private:
     ;; Autoconf configuration files:
     (("configure\\.\\(in\\|ac\\)\\'" . "Autoconf Input Files")
      nil
-     "dnl Process this file with autoconf to produce a `configure' script
+"dnl Process this file with autoconf to produce a configure script
 dnl ____________________________________________________________________
 dnl  File: " (buffer-name) "
 dnl ____________________________________________________________________
@@ -159,6 +159,7 @@ dnl
 dnl  Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
 dnl
 dnl --------------------------------------------------------------------
+
 AC_PREREQ(2.69)
 AC_REVISION($Revision: 0.1 $)
 
