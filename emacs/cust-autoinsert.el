@@ -81,6 +81,20 @@
 
 " class "::" class " (" _ ") {
 }")
+    ;; Configuration headers:
+    (("config\\.h\\'" . "GNU-like config.h Header File.")
+     nil
+"
+/* config.h */
+#ifndef " prefix "
+ #define " prefix " 1
+//<<<< INCLUDES                                                       >>>>
+
+//<<<< PRIVATE DEFINES                                                >>>>
+
+
+#endif
+")
     ;; C/C++ header files 
     (("\\.\\(h\\|hxx\\)\\'" . "C/C++ Header File")
      nil
