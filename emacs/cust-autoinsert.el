@@ -47,7 +47,7 @@
  auto-insert-directory          "~/.env/templates/"
  auto-insert-alist
  (append
-  ;; C++ source files
+  ;; C++ source files:
   '((
      ("\\.\\(cc\\|C\\|cpp\\|cxx\\)\\'" . "C++ Source File")
      nil
@@ -95,7 +95,7 @@
 
 #endif
 ")
-    ;; C/C++ header files 
+    ;; C/C++ header files:
     (("\\.\\(h\\|hxx\\)\\'" . "C/C++ Header File")
      nil
      '(setq class (file-name-sans-extension (buffer-name)))
