@@ -299,7 +299,7 @@ if __name__ == \"__main__\":
 # Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
 #
 #--------------------------------------------------------------------
-  " - "
+" - "
 ")
     ;; Perl:
     (("\\.pl\\'" . "Perl Script Source File")
