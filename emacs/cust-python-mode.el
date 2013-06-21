@@ -33,9 +33,6 @@
        ))
 
 (font-lock-add-keywords 'python-mode cust-python-font-lock-keywords)
-;;
-(setq auto-mode-alist (append '(("\\.i$" . python-mode)) 
-			      auto-mode-alist))
 
 ;; Python function definition:
 (defun insert-py-def (&optional defname args)
@@ -53,37 +50,12 @@
    "\n " (make-string 45 ?-) " "
    "\n\"\"\""
    ))
-
-;; Function to generate header:
-(defun py-insert-file-header (&optional version) 
-  (interactive)
-  "Inserts some lines for a header, including VCS info, author, date and copyright."
-  (setq version (read-string "Python version? "))
-  (insert 
-   "#!/usr/bin/env python" (symbol-value 'version) "
-##____________________________________________________________________ 
-## File: " (buffer-name) "
-##____________________________________________________________________ 
-##  
-## Author: " (user-full-name)  " <" user-mail-address ">
-## Update: " (format-time-string "%Y-%m-%d %T%z") "
-## Revision: $Id" "$ 
-##
-## Copyright: " (format-time-string "%Y") " (C) " (user-full-name) "
-##
-##--------------------------------------------------------------------
-\n\n\n\n
-"))
 ;;
 (add-hook 'python-mode-hook
 	  (function (lambda()
 		      ;; Python keymap is called py-mode-map 
 		      ;; not python-mode map
-		      (define-key py-mode-map "\C-cs" 'insert-py-def)
-		      ;;
-		      (cond ((not (file-exists-p (buffer-file-name)))
-			     (py-insert-file-header)
-			     )))))
+		      (define-key py-mode-map "\C-cs" 'insert-py-def))))
 ;;
 ;; End of cust-python-mode.el
 ;;

@@ -91,12 +91,7 @@
 			  "---"
 			  ["If .." makefile-if-loop t]
 			  ["For Loop" makefile-foreach-loop t]
-			  ))
-		      ;;
-		      (cond ((not (file-exists-p (buffer-file-name)))
-			     (makefile-insert-file-header)
-			     (makefile-insert-file-footer)
-			     )))))
+			  )))))
 
 ;; 
 (setq auto-mode-alist (append '(("\\.mk\\'" . makefile-mode) 

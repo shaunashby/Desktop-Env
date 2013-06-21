@@ -20,24 +20,6 @@
    ("\\<\\(include\\)" 1 'Brown-face t)
    ))
 
-;; Function to generate header:
-(defun c++-insert-file-header () 
-  (interactive)
-  "Inserts some lines for a header, including VCS info, author, date and copyright."
-  (insert 
-   "//____________________________________________________________________ 
-// File: " (buffer-name) "
-//____________________________________________________________________ 
-//  
-// Author: " (user-full-name)  " <" user-mail-address ">
-// Update: " (format-time-string "%Y-%m-%d %T%z") "
-// Revision: $Id" "$ 
-//
-// Copyright: " (format-time-string "%Y") " (C) " (user-full-name) "
-//
-//--------------------------------------------------------------------
-"))
-
 ;; Function to insert a set of member functions:
 (defun insert-member-funcs (&optional classname) 
   "Insert a set of member functions for given class." 
@@ -208,15 +190,11 @@ std::ostream & operator<< (std::ostream & O, const " (symbol-value 'classname) "
 		      (require 'easymenu)
 		      (easy-menu-define cpp-menu c++-mode-map "C++ Menu"
 			'("Insert"
-			  ["Insert File Header" c++-insert-file-header t]
-			  "---"
 			  ["New Class Templates" new-class-templates t]
 			  "---"
 			  ["Insert Class" insert-class t]
 			  ["Insert Member Functions" insert-member-funcs t]
 			  "---"
-			  ["Insert System Header" system-include-header t]
-			  ["Insert Local Header" local-include-header t]
 			  ["Insert Header Guards" insert-c-in-c++-hdr-guards t]
 			  ))
 		      ;;
@@ -226,31 +204,6 @@ std::ostream & operator<< (std::ostream & O, const " (symbol-value 'classname) "
 		      (define-key c++-mode-map "\C-cmf" 'insert-member-funcs)
 		      (define-key c++-mode-map "\C-csh" 'system-include-header)
 		      (define-key c++-mode-map "\C-clh" 'local-include-header)
-		      ;;
-		      (cond ((not (file-exists-p (buffer-file-name)))
-			     ;; See if it looks like a new header file. If it
-			     ;; is, insert the class definition:
-			     (if (string-match "\\.h$" (buffer-file-name))
-				 (if (y-or-n-p "Insert class definition in this header file? ")
-				     (c++-create-class)
-				   ;; A simple script header only:
-				   (c++-insert-file-header))
-			       (c++-insert-file-header))
-			     ))
-		      ;; Alternatively:
-		      (or (file-exists-p "makefile")
-			  (file-exists-p "Makefile")
-			  (set (make-local-variable 'compile-command)
-			       (concat "gcc -o "
-				       (substring
-					(file-name-nondirectory buffer-file-name)
-					0
-					(string-match
-					 "\\.c$"
-					 (file-name-nondirectory buffer-file-name)))
-				       " "
-				       (file-name-nondirectory buffer-file-name))))
-		      )))
 ;;
 (setq auto-mode-alist (append '(("\\.cpp\\'" . c++-mode) 
 				("\\.C\\'" . c++-mode)

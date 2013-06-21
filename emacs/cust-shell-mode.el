@@ -44,12 +44,5 @@
 ;;
 (setq auto-mode-alist (cons '("\\.sh\\'" . sh-mode) auto-mode-alist))
 ;;
-(add-hook 'sh-mode-hook
-	  (function (lambda()
-		      ;;
-		      (cond ((not (file-exists-p (buffer-file-name)))
-			     (insert-script-header)
-			     )))))	      
-;;
 ;; End of cust-shell-mode.el
 ;;

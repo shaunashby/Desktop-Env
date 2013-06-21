@@ -310,8 +310,6 @@ sub " (symbol-value 'subname) "{\n"
 
 (font-lock-add-keywords 'perl-mode cust-perl-font-lock-keywords)
 ;;
-(setq auto-mode-alist (cons '("\\.cgi\\'" . perl-mode) auto-mode-alist))
-;;
 (add-hook 'perl-mode-hook
 	  (function (lambda()
 		      (require 'easymenu)
@@ -345,16 +343,7 @@ sub " (symbol-value 'subname) "{\n"
 		      (define-key perl-mode-map "\C-np" 'new-perl-package)
 		      (define-key perl-mode-map "\C-xs" 'perl-start-pod-skeleton)
 		      (define-key perl-mode-map "\C-xi" 'perl-add-pod-item)
-		      (define-key perl-mode-map "\C-xe" 'perl-end-pod-skeleton)
-		      ;;
-		      (cond ((not (file-exists-p (buffer-file-name)))
-			     ;; If we're creating a new Perl package, run
-			     ;; the functions to create the skeleton:
-			     (if (string-match "\\.pm$" (buffer-file-name))
-				 (perl-create-package)
-			       ;; A simple script header only:
-			       (perl-script-header))
-			     )))))
+		      (define-key perl-mode-map "\C-xe" 'perl-end-pod-skeleton))))
 ;;
 ;; End of cust-perl-mode.el
 ;;

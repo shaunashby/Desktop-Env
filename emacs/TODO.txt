@@ -1,0 +1,8 @@
+
+- Add .t file recognition for Perl autoinsert (for tests).
+- Improve class structure for Perl autoinsert (e.g, Moose and
+  non-Moose classes).
+
+- Support for JavaScript files in autoinsert-mode.
+
+- Add separate functions for inserting license content in files.
