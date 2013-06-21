@@ -142,8 +142,42 @@ private:
 //<<<< INLINE MEMBER FUNCTIONS                                        >>>>
 
 #endif // " guard "
+")
+    ;; Autoconf configuration files:
+    (("configure\\.\\(in\\|ac\\)\\'" . "Autoconf Input Files")
+     nil
+     "dnl Process this file with autoconf to produce a `configure' script
+dnl ____________________________________________________________________
+dnl  File: " (buffer-name) "
+dnl ____________________________________________________________________
+dnl
+dnl  Author: " (user-full-name)  " <" user-mail-address ">
+dnl  Created: " (format-time-string "%Y-%m-%d %T%z") "
+dnl  Revision: $Id" "$
+dnl  Description: " (read-string "Description: ") "
+dnl
+dnl  Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
+dnl
+dnl --------------------------------------------------------------------
+AC_PREREQ(2.69)
+AC_REVISION($Revision: 0.1 $)
+
+dnl Initialisation:
+AC_INIT(" (read-string "Unique file: ")")\n"
+"AC_CONFIG_HEADER(" (read-string "config.h path (RET for none): ") & ")\n" | -17
+     "SCREAM_INIT
+
+dnl Configure locally and nested packages:
+SCREAM_CONFIG_LOCAL
 "
-)
+     (if (y-or-n-p "Does the package contain other packages? ")
+	 "SCREAM_CONFIG_PACKAGES\n"
+       nil)
+     "\n" _ "
+
+dnl Generate output files:
+AC_OUTPUT(Makefile src/Makefile)
+")
     ;; Java:
     (("\\.\\(jni\\|java\\)\\'" . "Java Source File")
      nil
