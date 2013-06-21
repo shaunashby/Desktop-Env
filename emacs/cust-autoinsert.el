@@ -84,6 +84,7 @@
     ;; Configuration headers:
     (("config\\.h\\'" . "GNU-like config.h Header File.")
      nil
+     '(setq prefix "CONFIG_H")
 "
 /* config.h */
 #ifndef " prefix "
