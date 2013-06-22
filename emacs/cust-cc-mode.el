@@ -20,45 +20,6 @@
    ("\\<\\(include\\)" 1 'Brown-face t)
    ))
 
-;; Function to insert a set of member functions:
-(defun insert-member-funcs (&optional classname) 
-  "Insert a set of member functions for given class." 
-  (interactive)
-  (if (not classname)
-      (setq classname (read-string "Class name (or <ret> to use file name): ")))
-  ;; Also get the package name for the include for this class defn.:
-  (setq packagename (car (scram-package-name)))
-  ;; If no classname given, user buffer name less the ending:
-  (if (eq (length classname) 0) (setq classname (file-name-sans-extension (buffer-name))))
-  ;; If no package name, use the class name:
-  (if (eq (length packagename) 0) (setq packagename classname))
-  ;;
-  (insert "#include \"" packagename "/interface/" (symbol-value 'classname) ".h\"\n"
-	  "#include <iostream>\n
-"(symbol-value 'classname) "::" (symbol-value 'classname) "() \n{}\n
-"(symbol-value 'classname) "::~" (symbol-value 'classname) "() \n{}\n
-"(symbol-value 'classname) "::" (symbol-value 'classname) "(const " 
-(symbol-value 'classname) "& i)\n{}\n
-"(symbol-value 'classname) "& " (symbol-value 'classname) "::operator=(const " 
-(symbol-value 'classname) "& rhs)
-{
- if (this != &rhs)
-    {
-     
-    }\n
- return *this;
-}\n\n
-
-// Overloaded stream operators:
-std::ostream & operator<< (std::ostream & O, const " (symbol-value 'classname) " & o)
-{
- // O << o.print() << std::endl;
- // O << o.m_data_ << std::endl; // If std::ostream is declared a 'friend'
- return O;
-}
-\n"
-))
-
 ;; Add #ifdef __cplusplus header guards:
 (defun insert-c-in-c++-hdr-guards (&optional d)
   "Add an #ifdef __cplusplus guard to current file"
@@ -83,43 +44,6 @@ std::ostream & operator<< (std::ostream & O, const " (symbol-value 'classname) "
    "#ifdef __cplusplus\n"
    "}\n"
    "#endif"))
-
-;; Insert class statement:
-(defun insert-class (&optional classname)
-  "Add a new class description"
-  (interactive)
-  (if (not classname)
-      (setq classname (read-string "Class name (or <ret> to use file name): ")))
-  ;; If no classname given, user buffer name less the ending:
-  (if (eq (length classname) 0) (setq classname (file-name-sans-extension (buffer-name))))  
-  ;;
-  (setq mangledhdr (insert-mangled-header-guard classname))
-  (insert
-   "#ifndef " (format "%-20s" mangledhdr) "\n"
-   "#define " (format "%-20s" mangledhdr) "\n"
-   "\n"
-   "#include <iosfwd>\n"
-   "\n// New class declaration:"
-   "\nclass " classname
-   " {"
-   "\npublic:"
-   "\n" (format "  %-30s" (concat classname "();"))
-   "\n" (format "  %-30s" (concat "~" classname "();"))
-   "\n"
-   "\n" (format "  %-30s" (concat classname "(const " classname " & r);"))
-   "\n" (format "  %-30s" (concat classname "& operator=(const " classname " & r);"))
-   "\n\n   // Public methods:"
-   "\n\n"
-   "\nprotected:"
-   "\n\n"
-   "\nprivate:"
-   "\n\n"
-   "};\n"
-   "\n"
-   "// Operators:\n"
-   "std::ostream & operator<< (std::ostream & O, const " classname " & b);"
-   "\n\n#endif // " (format "%-20s" mangledhdr) "\n"
-   ))
   
 ;; Create new files from scratch for new class:
 (defun new-class-templates (&optional name incdir srcdir) 
@@ -171,17 +95,6 @@ std::ostream & operator<< (std::ostream & O, const " (symbol-value 'classname) "
     ;; Write a message to user
     (message "Class is in '%s' and '%s'" header-name source-name)))
 
-(defun c++-create-class()
-  (interactive)
-  "Create a new class in the current empty buffer."
-  ;; First of all, add a simple file header:
-  (c++-insert-file-header)
-  (setq classname (file-name-sans-extension (buffer-name)))
-  ;; Insert the package:
-  (insert-class classname)
-  (message "New class (%s) created!" classname)
-  )
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;
@@ -192,18 +105,11 @@ std::ostream & operator<< (std::ostream & O, const " (symbol-value 'classname) "
 			'("Insert"
 			  ["New Class Templates" new-class-templates t]
 			  "---"
-			  ["Insert Class" insert-class t]
-			  ["Insert Member Functions" insert-member-funcs t]
-			  "---"
 			  ["Insert Header Guards" insert-c-in-c++-hdr-guards t]
 			  ))
 		      ;;
 		      (define-key c++-mode-map "\C-m" 'newline-and-indent)
-		      (define-key c++-mode-map "\C-cic" 'insert-class)
-		      (define-key c++-mode-map "\C-cnc" 'new-class-templates)
-		      (define-key c++-mode-map "\C-cmf" 'insert-member-funcs)
-		      (define-key c++-mode-map "\C-csh" 'system-include-header)
-		      (define-key c++-mode-map "\C-clh" 'local-include-header)
+		      )))
 ;;
 (setq auto-mode-alist (append '(("\\.cpp\\'" . c++-mode) 
 				("\\.C\\'" . c++-mode)

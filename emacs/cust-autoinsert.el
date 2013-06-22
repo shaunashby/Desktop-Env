@@ -118,7 +118,24 @@
 //<<<< MEMBER FUNCTION DEFINITIONS                                    >>>>
 
 " class "::" class " (" _ ") {
-}")
+}
+
+" class "::~" class "() {
+}
+
+//" class " & " class "::operator=(const " class " & rhs) {
+// if (this != &rhs) {
+// }
+// return *this;
+//}
+
+// Overloaded stream operators:
+//std::ostream & operator<< (std::ostream & O, const " class " & o) {
+// O << o.print() << std::endl;
+// O << o.m_data_ << std::endl; // If std::ostream is declared a 'friend'
+// return O;
+//}
+")
     ;; Configuration headers:
     (("config\\.h\\'" . "GNU-like config.h Header File.")
      nil
