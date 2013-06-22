@@ -94,10 +94,8 @@
 //________________________________________________________________________
 //
 // Author: " (user-full-name)  " <" user-mail-address ">
-// Created: " (format-time-string "%Y-%m-%d %T%z") "
+// Created: " (format-time-string "%Y-%m-%d %T%z") "(Time-stamp: <>)
 // Revision: $Id" "$
-// Time-stamp: <>
-//
 // Description: " (read-string "Description: ") "
 //
 // Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
@@ -143,7 +141,7 @@
      nil
      '(setq prefix "CONFIG_H")
 "
-/* config.h */
+/* config.h (Time-stamp: <>) */
 #ifndef " prefix "
  #define " prefix " 1
 //<<<< INCLUDES                                                       >>>>
@@ -165,10 +163,8 @@
 //________________________________________________________________________
 //
 // Author: " (user-full-name)  " <" user-mail-address ">
-// Created: " (format-time-string "%Y-%m-%d %T%z") "
+// Created: " (format-time-string "%Y-%m-%d %T%z") "(Time-stamp: <>)
 // Revision: $Id" "$
-// Time-stamp: <>
-//
 // Description: " (read-string "Description: ") "
 //
 // Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
@@ -213,10 +209,8 @@ dnl  File: " (buffer-name) "
 dnl ____________________________________________________________________
 dnl
 dnl  Author: " (user-full-name)  " <" user-mail-address ">
-dnl  Created: " (format-time-string "%Y-%m-%d %T%z") "
+dnl  Created: " (format-time-string "%Y-%m-%d %T%z") "(Time-stamp: <>)
 dnl  Revision: $Id" "$
-dnl  Time-stamp: <>
-dnl
 dnl  Description: " (read-string "Description: ") "
 dnl
 dnl  Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
@@ -252,10 +246,8 @@ AC_OUTPUT(Makefile src/Makefile)
 //____________________________________________________________________
 //
 // Author: " (user-full-name)  " <" user-mail-address ">
-// Created: " (format-time-string "%Y-%m-%d %T%z") "
+// Created: " (format-time-string "%Y-%m-%d %T%z") "(Time-stamp: <>)
 // Revision: $Id" "$
-// Time-stamp: <>
-//
 // Description: " (read-string "Description: ") "
 //
 // Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
@@ -273,8 +265,6 @@ AC_OUTPUT(Makefile src/Makefile)
  Author: " (user-full-name)  " <" user-mail-address ">
  Created: " (format-time-string "%Y-%m-%d %T%z") "
  Revision: $Id" "$
- Time-stamp: <>
-
  Description: " (read-string "Description: ") "
 
  Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
@@ -308,10 +298,8 @@ int main(int argc, char *argv[]) {
 -------------------------------------------------------------------------------------------
 
  Author: " (user-full-name)  " <" user-mail-address ">
- Created: " (format-time-string "%Y-%m-%d %T%z") "
+ Created: " (format-time-string "%Y-%m-%d %T%z") "(Time-stamp: <>)
  Revision: $Id" "$
- Time-stamp: <>
-
  Description: " (read-string "Description: ") "
 
  Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
@@ -343,10 +331,8 @@ int main(int argc, char *argv[]) {
 ##____________________________________________________________________
 ##
 ## Author: " (user-full-name)  " <" user-mail-address ">
-## Created: " (format-time-string "%Y-%m-%d %T%z") "
+## Created: " (format-time-string "%Y-%m-%d %T%z") "(Time-stamp: <>)
 ## Revision: $Id" "$
-## Time-stamp: <>
-##
 ## Description: " (read-string "Description: ") "
 ##
 ## Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
@@ -366,10 +352,8 @@ if __name__ == \"__main__\":
 #____________________________________________________________________
 #
 # Author: " (user-full-name)  " <" user-mail-address ">
-# Created: " (format-time-string "%Y-%m-%d %T%z") "
+# Created: " (format-time-string "%Y-%m-%d %T%z") "(Time-stamp: <>)
 # Revision: $Id" "$
-# Time-stamp: <>
-#
 # Description: " (read-string "Description: ") "
 #
 # Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
@@ -387,10 +371,8 @@ if __name__ == \"__main__\":
 #____________________________________________________________________
 #
 # Author: " (user-full-name)  " <" user-mail-address ">
-# Created: " (format-time-string "%Y-%m-%d %T%z") "
+# Created: " (format-time-string "%Y-%m-%d %T%z") "(Time-stamp: <>)
 # Revision: $Id" "$
-# Time-stamp: <>
-#
 # Description: " (read-string "Description: ") "
 #
 # Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
