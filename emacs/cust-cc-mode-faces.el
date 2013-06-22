@@ -23,6 +23,9 @@
 ;; 
 ;;
 ;;; Code:
+(require 'faces)
+(require 'font-lock)
+
 ;; Customize some colored faces:
 (message "Creating custom C++ faces...")
 (let ((default-font (if window-system (x-get-resource ".font" ".Font") nil)))
@@ -43,9 +46,9 @@
 (message "Creating custom C++ faces... done")
 
 ;; Set preferences for different faces to be used.
-(setq font-lock-reference-face	'cms-face-reference
-      font-lock-number-face	'cms-face-number
-      font-lock-warning-face	'cms-face-warning)
+(setq font-lock-reference-face	'ashby-face-reference
+      font-lock-number-face	'ashby-face-number
+      font-lock-warning-face	'ashby-face-warning)
 
 (provide 'cust-cc-mode-faces)
 ;;; cust-cc-mode-faces.el ends here
