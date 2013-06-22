@@ -4,5 +4,3 @@
   non-Moose classes).
 
 - Support for JavaScript files in autoinsert-mode.
-
-- Add separate functions for inserting license content in files.
