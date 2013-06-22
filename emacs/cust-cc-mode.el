@@ -61,7 +61,7 @@
 	    (extern-lang-close		. 0)
 	    (inextern-lang		. +)
 	    (template-args-cont		. +)))
-	(c-basic-offset			. 4)
+	(c-basic-offset			. 2)
 	(c-comment-only-line-offset	. (0 . 0))
 	(c-cleanup-list			. (empty-defun-braces
 					   scope-operator
