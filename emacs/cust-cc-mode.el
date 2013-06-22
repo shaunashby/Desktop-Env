@@ -26,7 +26,6 @@
 
 ;;
 (setq
- c-tab-always-indent            nil
  c-auto-newline			t
  auto-mode-alist (append '(("\\.cc\\'"     . c++-mode)
 			   ("\\.cpp\\'"    . c++-mode)
