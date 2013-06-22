@@ -156,6 +156,7 @@
      nil
      '(setq class (file-name-sans-extension (buffer-name)))
      '(setq guard (concat (upcase class) "_H"))
+     '(seqt api (concat (upcase class) "_API"))
 "#ifndef " guard "
 #define " guard " 1
 //________________________________________________________________________
@@ -181,7 +182,7 @@
 //<<<< PUBLIC FUNCTIONS                                               >>>>
 //<<<< CLASS DECLARATIONS                                             >>>>
 
-class " class " {
+class " api " " class " {
 public:
   " class "(" _ ");
   // virtual ~" class "();
