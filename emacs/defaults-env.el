@@ -29,6 +29,8 @@
 (tool-bar-mode 0)
 ;; Use scrolling with wheel mice:
 (mouse-wheel-mode t)
+;; Highlight brackets:
+(show-paren-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Other stuff                                      ;;
