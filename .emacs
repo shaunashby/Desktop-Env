@@ -86,8 +86,7 @@
 (load "cust-shell-mode")   ;; shell-scripts
 (load "cust-perl-mode")    ;; perl-scripts
 (load "cust-python-mode")  ;; python-scripts
-(load "cust-cc-mode")      ;; C++
-(load "cust-c-mode")       ;; C
+(load "cust-cc-mode")      ;; C and C++
 (load "cust-java-mode")    ;; Java
 (load "cust-latex-mode")   ;; LaTeX
 (load "cust-makefile-mode");; Make
