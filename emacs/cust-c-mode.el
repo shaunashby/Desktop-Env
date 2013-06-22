@@ -34,6 +34,7 @@
 		      ;;
 		      (define-key c-mode-map "\C-csh" 'system-include-header)
 		      (define-key c-mode-map "\C-clh" 'local-include-header)
+		      )))
 ;;
 ;; cust-c-mode.el
 ;;
