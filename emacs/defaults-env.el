@@ -36,7 +36,8 @@
 (transient-mark-mode t)
 ;; Enable DEL key for deleting marked areas:
 (delete-selection-mode t)
-
+;; Add hook to update timestamps automatically:
+(add-hook 'before-save-hook 'time-stamp)
 ;; Add hook to make scripts executable automatically:
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 ;;
