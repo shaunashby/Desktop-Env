@@ -94,7 +94,7 @@
 //________________________________________________________________________
 //
 // Author: " (user-full-name)  " <" user-mail-address ">
-// Created: " (format-time-string "%Y-%m-%d %T%z") "(Time-stamp: <>)
+// Created: " (format-time-string "%Y-%m-%d %T%z") " (Time-stamp: <>)
 // Revision: $Id" "$
 // Description: " (read-string "Description: ") "
 //
@@ -141,7 +141,7 @@
      nil
      '(setq prefix "CONFIG_H")
 "
-/* config.h (Time-stamp: <>) */
+/* config.h  (Time-stamp: <>) */
 #ifndef " prefix "
  #define " prefix " 1
 //<<<< INCLUDES                                                       >>>>
@@ -156,7 +156,7 @@
      nil
      '(setq class (file-name-sans-extension (buffer-name)))
      '(setq guard (concat (upcase class) "_H"))
-     '(seqt api (concat (upcase class) "_API"))
+     '(setq api (concat (upcase class) "_API"))
 "#ifndef " guard "
 #define " guard " 1
 //________________________________________________________________________
@@ -164,7 +164,7 @@
 //________________________________________________________________________
 //
 // Author: " (user-full-name)  " <" user-mail-address ">
-// Created: " (format-time-string "%Y-%m-%d %T%z") "(Time-stamp: <>)
+// Created: " (format-time-string "%Y-%m-%d %T%z") " (Time-stamp: <>)
 // Revision: $Id" "$
 // Description: " (read-string "Description: ") "
 //
@@ -210,7 +210,7 @@ dnl  File: " (buffer-name) "
 dnl ____________________________________________________________________
 dnl
 dnl  Author: " (user-full-name)  " <" user-mail-address ">
-dnl  Created: " (format-time-string "%Y-%m-%d %T%z") "(Time-stamp: <>)
+dnl  Created: " (format-time-string "%Y-%m-%d %T%z") " (Time-stamp: <>)
 dnl  Revision: $Id" "$
 dnl  Description: " (read-string "Description: ") "
 dnl
@@ -247,7 +247,7 @@ AC_OUTPUT(Makefile src/Makefile)
 //____________________________________________________________________
 //
 // Author: " (user-full-name)  " <" user-mail-address ">
-// Created: " (format-time-string "%Y-%m-%d %T%z") "(Time-stamp: <>)
+// Created: " (format-time-string "%Y-%m-%d %T%z") " (Time-stamp: <>)
 // Revision: $Id" "$
 // Description: " (read-string "Description: ") "
 //
@@ -299,7 +299,7 @@ int main(int argc, char *argv[]) {
 -------------------------------------------------------------------------------------------
 
  Author: " (user-full-name)  " <" user-mail-address ">
- Created: " (format-time-string "%Y-%m-%d %T%z") "(Time-stamp: <>)
+ Created: " (format-time-string "%Y-%m-%d %T%z") " (Time-stamp: <>)
  Revision: $Id" "$
  Description: " (read-string "Description: ") "
 
@@ -332,7 +332,7 @@ int main(int argc, char *argv[]) {
 ##____________________________________________________________________
 ##
 ## Author: " (user-full-name)  " <" user-mail-address ">
-## Created: " (format-time-string "%Y-%m-%d %T%z") "(Time-stamp: <>)
+## Created: " (format-time-string "%Y-%m-%d %T%z") " (Time-stamp: <>)
 ## Revision: $Id" "$
 ## Description: " (read-string "Description: ") "
 ##
@@ -353,7 +353,7 @@ if __name__ == \"__main__\":
 #____________________________________________________________________
 #
 # Author: " (user-full-name)  " <" user-mail-address ">
-# Created: " (format-time-string "%Y-%m-%d %T%z") "(Time-stamp: <>)
+# Created: " (format-time-string "%Y-%m-%d %T%z") " (Time-stamp: <>)
 # Revision: $Id" "$
 # Description: " (read-string "Description: ") "
 #
@@ -372,7 +372,7 @@ if __name__ == \"__main__\":
 #____________________________________________________________________
 #
 # Author: " (user-full-name)  " <" user-mail-address ">
-# Created: " (format-time-string "%Y-%m-%d %T%z") "(Time-stamp: <>)
+# Created: " (format-time-string "%Y-%m-%d %T%z") " (Time-stamp: <>)
 # Revision: $Id" "$
 # Description: " (read-string "Description: ") "
 #
