@@ -8,21 +8,13 @@
 (load-library "cust-cc-extra-faces")
 
 ;; C++ keywords:
-(font-lock-add-keywords 'c++-mode '(("\\<FIXME:\\>" 0 'Orange-face t)
-				    ("^class \\([a-zA-Z0-9]*\\)" 1 'bold-italic t)
-				    ("^class \\([a-zA-Z0-9]*\\):" 1 'bold-italic t)
-				    ("  class \\([a-zA-Z0-9]*\\)" 1 'bold-italic t)
-				    ("  class \\([a-zA-Z0-9]*\\):" 1 'bold-italic t)
-				    ("\\(^public\\|^private\\|^protected\\):" 1 'bold-LightSteelBlue2-face t)
-				    ("\\(  public\\|  private\\|  protected\\):" 1 'bold-LightSteelBlue2-face t)
-				    ("::" . 'Thistle2-face)
-				    ("\\<\\(struct\\|union\\|enum\\|virtual[ \t]\\)" 1 'GreenYellow-face)
-				    ("\\<\\(catch \\|try \\|throw\\)" 1 'Plum2-face t)
-				    ("\\<\\(case\\|goto\\)" 1 'SkyBlue-face t)
-				    ("\\<\\(friend\\|inline\\)" 1 'Sienna2-face t)
-				    ("\\<\\(include\\)" 1 'Brown-face t)
+(font-lock-add-keywords 'c++-mode '(("\\(public\\|private\\|protected\\):" 1 'bold-LightSteelBlue2-face t)
+				    ("\\(struct\\|union\\|enum\\|virtual\\)" 1 'GreenYellow-face)
+				    ("\\(catch\\|try\\|throw\\)" 1 'Plum2-face t)
+				    ("\\(case\\|goto\\)" 1 'SkyBlue-face t)
+				    ("\\(friend\\|inline\\)" 1 'Sienna2-face t)
+				    ("\\(include\\)" 1 'Brown-face t)
 				    ))
-
 ;; Customize C style:
 (setq ashby-c-style
       '((c-offsets-alist
