@@ -5,16 +5,12 @@
 ;; Load functions needed by c and cc modes:
 (load-library "cust-cc-mode-funcs")
 (load-library "cust-cc-mode-faces")
-(load-library "cust-cc-extra-faces")
 
 ;; C++ keywords:
-(font-lock-add-keywords 'c++-mode '(("\\(public\\|private\\|protected\\):" 1 'bold-LightSteelBlue2-face t)
+(font-lock-add-keywords 'c++-mode '(("\\<FIXME" 0 font-lock-warning-face t)
+				    ("\\(public\\|private\\|protected\\):" 1 'bold-LightSteelBlue2-face t)
 				    ("\\(struct\\|union\\|enum\\|virtual\\)" 1 'GreenYellow-face)
-				    ("\\(catch\\|try\\|throw\\)" 1 'Plum2-face t)
-				    ("\\(case\\|goto\\)" 1 'SkyBlue-face t)
-				    ("\\(friend\\|inline\\)" 1 'Sienna2-face t)
-				    ("\\(include\\)" 1 'Brown-face t)
-				    ))
+				    ("\\(friend\\|inline\\)" 1 'Sienna2-face t)))
 ;; Customize C style:
 (setq ashby-c-style
       '((c-offsets-alist
