@@ -19,13 +19,13 @@
 (setq ashby-c-style
       '((c-offsets-alist
 	 . ((string			. -1000)
-	    (c				. c-lineup-C-comments)
-	    (defun-open			. 0)
-	    (defun-close		. 0)
-	    (defun-block-intro		. +)
-	    (class-open			. 0)
-	    (class-close		. 0)
-	    (inline-open		. +);; Change this!
+	    ;; (c				. c-lineup-C-comments)
+	    ;; (defun-open			. 0)
+	    ;; (defun-close		. 0)
+	    ;; (defun-block-intro		. +)
+	    (class-open			. -)
+	    (class-close		. -)
+	    (inline-open		. 0);; Change this!
 	    (inline-close		. 0);; Change this!
 	    (func-decl-cont		. -);; Change this!
 	    (knr-argdecl-intro		. +)
