@@ -128,3 +128,6 @@
 (font-lock-add-keywords 'c-mode '(("\\<FIXME" 0 font-lock-warning-face t)))
 
 (setq c++-font-lock-keywords-3 sfa-c++-font-lock-keywords)
+
+;;
+(provide 'cust-cc-extra-faces)
