@@ -45,10 +45,5 @@
   (set-face-background  'ashby-face-warning "gray95"))
 (message "Creating custom C++ faces... done")
 
-;; Set preferences for different faces to be used.
-(setq font-lock-reference-face	'ashby-face-reference
-      font-lock-number-face	'ashby-face-number
-      font-lock-warning-face	'ashby-face-warning)
-
 (provide 'cust-cc-mode-faces)
 ;;; cust-cc-mode-faces.el ends here

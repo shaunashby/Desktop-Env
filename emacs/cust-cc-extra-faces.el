@@ -74,11 +74,11 @@
 	 ;; Fontify symbol names in #elif or #if ... defined preprocessor directives.
 	 '("^#[ \t]*\\(elif\\|if\\)\\>"
 	   ("\\<\\(defined\\)\\>[ \t]*(?\\(\\sw+\\)?" nil nil
-	    (1 font-lock-reference-face) (2 font-lock-variable-name-face nil t)))
+	    (1 ashby-reference-face) (2 font-lock-variable-name-face nil t)))
 	 ;;
 	 ;; Fontify otherwise as symbol names, and the preprocessor directive names.
 	 '("^#[ \t]*\\(\\sw+\\)\\>[ \t]*\\(\\sw+\\)?"
-	   (1 font-lock-reference-face) (2 font-lock-variable-name-face nil t))
+	   (1 ashby-reference-face) (2 font-lock-variable-name-face nil t))
 
 	 ;;
 	 ;; Fontity all type specifiers.
@@ -91,10 +91,10 @@
 	 ;;
 	 ;; Fontify case/goto keywords and targets, and case default/goto tags.
 	 (list (concat "\\<\\(case\\|goto\\)\\>[ \t]*\\(-?" token "\\)")
-	   2 'font-lock-reference-face nil t)
+	   2 'ashby-reference-face nil t)
 	 '(":" ("^[ \t]*\\(\\sw+\\)[ \t]*:\\($\\|[^:]\\)"
 		(beginning-of-line) (end-of-line)
-		(1 font-lock-reference-face)))
+		(1 ashby-reference-face)))
 	 ;;
 	 ;; Fontify structures, or typedef names, plus their items.
 	 (list (concat "^[ \t]*}\\([ \t*]*\\(\\sw+\\)[ \t]*,?\\)+;")
@@ -120,7 +120,7 @@
 	       7 'font-lock-function-name-face)
 	 ;; Fontify numbers (use C++ preprocessing pp-number rule for simplicity)
 	 '("\\<[+-]?\\.?[0-9]\\([0-9a-zA-Z_]\\|[eE][+-]\\)*\\>"
-	   . font-lock-number-face)
+	   . ashby-number-face)
 	 ;;
 	 ;; Fontify FIXMEs
 	 '("\\<FIXME" 0 font-lock-warning-face t))))
