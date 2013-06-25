@@ -13,74 +13,75 @@
 				    ("\\(friend\\|inline\\)" 1 'Sienna2-face t)))
 ;; Customize C style:
 (setq ashby-c-style
-      '((c-offsets-alist
-	 . ((string			. -1000)
-	    ;; (c				. c-lineup-C-comments)
-	    ;; (defun-open			. 0)
-	    ;; (defun-close		. 0)
-	    ;; (defun-block-intro		. +)
-	    (class-open			. -)
-	    (class-close		. -)
-	    (inline-open		. 0);; Change this!
-	    (inline-close		. 0);; Change this!
-	    (func-decl-cont		. -);; Change this!
-	    (knr-argdecl-intro		. +)
-	    (knr-argdecl		. 0)
-	    (topmost-intro		. 0)
-	    (topmost-intro-cont		. 0)
-	    (member-init-intro		. +)
-	    (member-init-cont		. 0)
-	    (inher-intro		. +)
-	    (inher-cont			. c-lineup-multi-inher)
-	    (block-open			. 0)
-	    (block-close		. 0)
-	    (brace-list-open		. 0)
-	    (brace-list-close		. 0)
-	    (brace-list-intro		. +)
-	    (brace-list-entry		. 0)
-	    (statement			. 0)
-	    (statement-cont		. c-lineup-math);; +
-	    (statement-block-intro	. +)
-	    (statement-case-intro	. +)
-	    (statement-case-open	. +);; 0
-	    (substatement		. +)
-	    (substatement-open		. 0);; +
-	    (case-label			. 0)
-	    (access-label		. -)
-	    (label			. -);; 2
-	    (do-while-closure		. 0)
-	    (else-clause		. 0)
-	    (comment-intro		. c-lineup-comment)
-	    (arglist-intro		. +)
-	    (arglist-cont		. 0)
-	    (arglist-cont-nonempty	. c-lineup-arglist)
-	    (arglist-close		. +)
-	    (stream-op			. c-lineup-streamop)
-	    (inclass			. +)
-	    (cpp-macro			. -1000)
-	    (friend			. 0)
-	    (objc-method-intro		. -1000)
-	    (objc-method-args-cont	. c-lineup-ObjC-method-args)
-	    (objc-method-call-cont	. c-lineup-ObjC-method-call)
-	    (extern-lang-open		. 0)
-	    (extern-lang-close		. 0)
-	    (inextern-lang		. +)
-	    (template-args-cont		. +)))
+      '((c-offsets-alist                . ((string			. -1000)
+					   (c		 	        . c-lineup-C-comments)
+					   (defun-open		        . 0)
+					   (defun-close		        . 0)
+					   (defun-block-intro	        . 0)
+					   (class-open			. 0)
+					   (class-close		        . 0)
+					   (inline-open		        . 0);; Change this!
+					   (inline-close		. 0);; Change this!
+					   (func-decl-cont		. -);; Change this!
+					   (knr-argdecl-intro	        . +)
+					   (knr-argdecl		        . 0)
+					   (topmost-intro		. 0)
+					   (topmost-intro-cont	        . 0)
+					   (member-init-intro	        . +)
+					   (member-init-cont	        . 0)
+					   (inher-intro		        . +)
+					   (inher-cont		        . c-lineup-multi-inher)
+					   (block-open		        . 0)
+					   (block-close		        . 0)
+					   (brace-list-open		. 0)
+					   (brace-list-close	        . 0)
+					   (brace-list-intro	        . +)
+					   (brace-list-entry	        . 0)
+					   (statement		        . 0)
+					   (statement-cont		. c-lineup-math);; +
+					   (statement-block-intro	. +)
+					   (statement-case-intro	. +)
+					   (statement-case-open	        . +);; 0
+					   (substatement		. +)
+					   (substatement-open	        . 0);; +
+					   (case-label		        . 0)
+					   (access-label		. -)
+					   (label			. -);; 2
+					   (do-while-closure	        . 0)
+					   (else-clause		        . 0)
+					   (comment-intro		. c-lineup-comment)
+					   (arglist-intro		. +)
+					   (arglist-cont		. 0)
+					   (arglist-cont-nonempty	. c-lineup-arglist)
+					   (arglist-close		. +)
+					   (stream-op		        . c-lineup-streamop)
+					   (inclass			. +)
+					   (cpp-macro		        . -1000)
+					   (friend			. 0)
+					   (extern-lang-open	        . 0)
+					   (extern-lang-close	        . 0)
+					   (inextern-lang		. +)
+					   (template-args-cont	        . +)
+					   ))
+	;;
 	(c-basic-offset			. 2)
 	(c-comment-only-line-offset	. (0 . 0))
-	(c-cleanup-list			. (empty-defun-braces
-					   scope-operator
+	;;
+	(c-cleanup-list                 . (brace-else-brace
+					   brace-catch-brace
+					   brace-elseif-brace
 					   defun-close-semi
-					   list-close-comma))
-	(c-hanging-braces-alist		. ((brace-list-open after)
-					   (class-open before after)
-					   (substatement-open before after)
+					   empty-defun-braces
+					   scope-operator
+					   compact-empty-funcall))
+
+	(c-hanging-braces-alist	        . ((brace-list-open after)
+					   (substatement-open after)
 					   (block-close . c-snug-do-while)))
-	(c-hanging-colons-alist		. ((member-init-intro before)
+	(c-hanging-colons-alist	        . ((member-init-intro before)
 					   (access-label after)))
 	(c-electric-pound-behavior	. (alignleft))
 	(c-backslash-column		. 78)))
-
 ;;
 (setq
  c-auto-newline			t
@@ -96,7 +97,7 @@
 			 auto-mode-alist))
 
 (defun ashby-c-mode-common-hook ()
-  ;;  (setq next-line-add-newlines nil)
+  (setq next-line-add-newlines nil)
   (c-add-style "ashby" ashby-c-style t)
   (turn-on-font-lock))
 
