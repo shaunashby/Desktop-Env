@@ -75,8 +75,8 @@
 					   scope-operator
 					   compact-empty-funcall))
 
-	(c-hanging-braces-alist	        . ((brace-list-open after)
-					   (substatement-open after)
+	(c-hanging-braces-alist	        . ((substatement-open . (after))
+					   (brace-list-open after)
 					   (block-close . c-snug-do-while)))
 	(c-hanging-colons-alist	        . ((member-init-intro before)
 					   (access-label after)))
