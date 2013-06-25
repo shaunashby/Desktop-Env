@@ -204,6 +204,7 @@ private:
     ;; Autoconf configuration files:
     (("configure\\.\\(in\\|ac\\)\\'" . "Autoconf Input Files")
      nil
+     '(setq project (read-string "Project name: "))
 "dnl Process this file with autoconf to produce a configure script
 dnl ____________________________________________________________________
 dnl  File: " (buffer-name) "
@@ -218,25 +219,41 @@ dnl  Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
 dnl
 dnl
 dnl --------------------------------------------------------------------
-
-AC_PREREQ(2.69)
+AC_PREREQ([2.69])
 AC_REVISION($Revision: 0.1 $)
 
 dnl Initialisation:
-AC_INIT(" (read-string "Unique file: ")")\n"
-"AC_CONFIG_HEADER(" (read-string "config.h path (RET for none): ") & ")\n" | -17
-     "SCREAM_INIT
+AC_INIT([" project "]),[0.1],[" user-mail-address "])
+dnl AC_INIT(" (read-string "Unique file: ")")
+AM_INIT_AUTOMAKE
+
+AC_CONFIG_SRCDIR([config.h.in])
+AC_CONFIG_HEADERS([" (read-string "config.h path (RET for none): ") & "])\n" | -19 "
 
 dnl Configure locally and nested packages:
+SCREAM_INIT
 SCREAM_CONFIG_LOCAL
+
+# Checks for programs:
+AC_PROG_CC
+
+# Checks for libraries:
+
+# Checks for header files:
+AC_CHECK_HEADERS([stdlib.h])
+
+# Checks for typedefs, structures, and compiler characteristics:
+
+# Checks for library functions:
+AC_FUNC_MALLOC
 "
      (if (y-or-n-p "Does the package contain other packages? ")
 	 "SCREAM_CONFIG_PACKAGES\n"
        nil)
      "\n" _ "
-
 dnl Generate output files:
-AC_OUTPUT(Makefile src/Makefile)
+AC_CONFIG_FILES([Makefile])
+AC_OUTPUT(Makefile)
 ")
     ;; Java:
     (("\\.\\(jni\\|java\\)\\'" . "Java Source File")
