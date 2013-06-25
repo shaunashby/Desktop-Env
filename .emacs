@@ -111,14 +111,14 @@
 
 ;; Common variables:
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(default-frame-alist (quote ((menu-bar-lines . 1) (tool-bar-lines . 0) (background-color . "black") (foreground-color . "white") (vertical-scroll-bars . left) (scroll-bar-width . 12) (top . 1) (left . 1) (height . 45) (width . 90))))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default-frame-alist (quote ((menu-bar-lines . 1) (tool-bar-lines . 0) (background-color . "black") (foreground-color . "white") (scroll-bar-width . 12) (top . 1) (left . 1) (height . 45) (width . 90))))
  '(font-lock-maximum-size 2560000)
  '(fringe-mode 4 nil (fringe))
- '(initial-frame-alist (quote ((background-color . "grey12") (foreground-color . "white") (vertical-scroll-bars . left) (scroll-bar-width . 12) (top . 1) (left . 1) (height . 45) (width . 90))))
+ '(initial-frame-alist (quote ((background-color . "grey12") (foreground-color . "white") (scroll-bar-width . 12) (top . 1) (left . 1) (height . 45) (width . 90))))
  '(query-user-mail-address nil)
  '(read-file-name-completion-ignore-case t)
  '(scroll-bar-mode (quote left))
@@ -127,3 +127,15 @@
 ;;
 ;; End of .emacs
 ;;
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(dired-ignored ((t (:foreground "light salmon"))))
+ '(font-lock-comment-face ((t (:bold t :foreground "red"))))
+ '(fringe ((((class color) (background dark)) nil)))
+ '(mode-line ((t (:background "grey30" :foreground "green" :box (:line-width 1 :style released-button) :slant normal :weight normal :height 96 :width normal :family "misc-fixed"))))
+ '(rfcview-headnum-face ((t (:bold t :foreground "skyblue"))))
+ '(rfcview-rfcnum-face ((t (:bold t :foreground "Yellow"))))
+ '(rfcview-title-face ((t (:bold t :foreground "Aquamarine")))))
