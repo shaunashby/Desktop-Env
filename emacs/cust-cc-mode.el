@@ -11,80 +11,8 @@
 				    ("\\(public\\|private\\|protected\\):" 1 'bold-LightSteelBlue2-face t)
 				    ("\\(struct\\|union\\|enum\\|virtual\\)" 1 'GreenYellow-face)
 				    ("\\(friend\\|inline\\)" 1 'Sienna2-face t)))
-;; Customize C style:
-(setq ashby-c-style
-      '((c-offsets-alist                . ((string			. -1000)
-					   (c		 	        . c-lineup-C-comments)
-					   (defun-open		        . 0)
-					   (defun-close		        . 0)
-					   (defun-block-intro	        . 0)
-					   (class-open			. 0)
-					   (class-close		        . 0)
-					   (inline-open		        . 0);; Change this!
-					   (inline-close		. 0);; Change this!
-					   (func-decl-cont		. -);; Change this!
-					   (knr-argdecl-intro	        . +)
-					   (knr-argdecl		        . 0)
-					   (topmost-intro		. 0)
-					   (topmost-intro-cont	        . 0)
-					   (member-init-intro	        . +)
-					   (member-init-cont	        . 0)
-					   (inher-intro		        . +)
-					   (inher-cont		        . c-lineup-multi-inher)
-					   (block-open		        . 0)
-					   (block-close		        . 0)
-					   (brace-list-open		. 0)
-					   (brace-list-close	        . 0)
-					   (brace-list-intro	        . +)
-					   (brace-list-entry	        . 0)
-					   (statement		        . 0)
-					   (statement-cont		. c-lineup-math);; +
-					   (statement-block-intro	. +)
-					   (statement-case-intro	. +)
-					   (statement-case-open	        . +);; 0
-					   (substatement		. +)
-					   (substatement-open	        . 0);; +
-					   (case-label		        . 0)
-					   (access-label		. -)
-					   (label			. -);; 2
-					   (do-while-closure	        . 0)
-					   (else-clause		        . 0)
-					   (comment-intro		. c-lineup-comment)
-					   (arglist-intro		. +)
-					   (arglist-cont		. 0)
-					   (arglist-cont-nonempty	. c-lineup-arglist)
-					   (arglist-close		. +)
-					   (stream-op		        . c-lineup-streamop)
-					   (inclass			. +)
-					   (cpp-macro		        . -1000)
-					   (friend			. 0)
-					   (extern-lang-open	        . 0)
-					   (extern-lang-close	        . 0)
-					   (inextern-lang		. +)
-					   (template-args-cont	        . +)
-					   ))
-	;;
-	(c-basic-offset			. 2)
-	(c-comment-only-line-offset	. (0 . 0))
-	;;
-	(c-cleanup-list                 . (brace-else-brace
-					   brace-catch-brace
-					   brace-elseif-brace
-					   defun-close-semi
-					   empty-defun-braces
-					   scope-operator
-					   compact-empty-funcall))
-
-	(c-hanging-braces-alist	        . ((substatement-open . (after))
-					   (brace-list-open after)
-					   (block-close . c-snug-do-while)))
-	(c-hanging-colons-alist	        . ((member-init-intro before)
-					   (access-label after)))
-	(c-electric-pound-behavior	. (alignleft))
-	(c-backslash-column		. 78)))
 ;;
 (setq
- c-auto-newline			t
  auto-mode-alist (append '(("\\.cc\\'"     . c++-mode)
 			   ("\\.cpp\\'"    . c++-mode)
 			   ("\\.cxx\\'"    . c++-mode)
@@ -96,10 +24,49 @@
 			   ("\\.l\\'"	. c++-mode))
 			 auto-mode-alist))
 
+;; Create my personal style:
+(defconst ashby-c-style
+  '((c-tab-always-indent        . t)
+    (c-comment-only-line-offset . 4)
+    (c-hanging-braces-alist     . ((defun-open after)
+				   (class-open after)
+				   (class-close after)
+				   (inline-open after)
+				   (block-close . c-snug-do-while)
+				   (substatement-open after)
+				   (brace-list-open after)
+				   (brace-list-close before)
+				   (brace-list-intro after)
+				   (brace-entry-open)
+				   (extern-lang-open after)
+				   (namespace-open after)
+				   (module-open after)
+				   (composition-open after)
+				   (inexpr-class-open after)
+				   (inexpr-class-close before)
+				   (arglist-cont-nonempty)))
+    (c-hanging-colons-alist     . ((access-label after)
+				   (member-init-intro before)
+				   (inher-intro after)))
+    (c-cleanup-list             . (brace-else-brace
+				   brace-elseif-brace
+				   empty-defun-braces
+				   defun-close-semi
+				   scope-operator
+				   compact-empty-funcall
+				   comment-close-slash))
+    ) "ASHBY C/C++ Programming Style")
+
+(c-add-style "PERSONAL" ashby-c-style)
+
+;; Customizations for all modes in CC Mode:
 (defun ashby-c-mode-common-hook ()
-  (setq next-line-add-newlines nil)
-  (c-add-style "ashby" ashby-c-style t)
-  (turn-on-font-lock))
+  (c-set-style "PERSONAL")
+  (setq tab-width 8
+        ;; this will make sure spaces are used instead of tabs
+        indent-tabs-mode nil)
+  ;; we like auto-newline, but not hungry-delete
+  (c-toggle-auto-newline 1))
 
 ;; Hooks for C and C++ mode customisations:
 (add-hook 'c-mode-common-hook 'ashby-c-mode-common-hook)
