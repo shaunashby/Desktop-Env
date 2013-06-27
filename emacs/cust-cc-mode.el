@@ -62,11 +62,11 @@
 ;; Customizations for all modes in CC Mode:
 (defun ashby-c-mode-common-hook ()
   (c-set-style "PERSONAL")
+  (setq c-auto-newline t)
+  (setq c-basic-offset 2)
   (setq tab-width 8
         ;; this will make sure spaces are used instead of tabs
-        indent-tabs-mode nil)
-  ;; we like auto-newline, but not hungry-delete
-  (c-toggle-auto-newline 1))
+        indent-tabs-mode nil))
 
 ;; Hooks for C and C++ mode customisations:
 (add-hook 'c-mode-common-hook 'ashby-c-mode-common-hook)

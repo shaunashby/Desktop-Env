@@ -122,7 +122,8 @@
  '(query-user-mail-address nil)
  '(read-file-name-completion-ignore-case t)
  '(scroll-bar-mode (quote left))
- '(user-mail-address "shaun@ashby.ch"))
+ '(user-mail-address "shaun@ashby.ch")
+ '(c-offsets-alist nil))
 
 ;;
 ;; End of .emacs
