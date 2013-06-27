@@ -27,7 +27,6 @@
 ;; Create my personal style:
 (defconst ashby-c-style
   '((c-tab-always-indent        . t)
-    (c-comment-only-line-offset . 4)
     (c-hanging-braces-alist     . ((defun-open after)
 				   (class-open after)
 				   (class-close after)
