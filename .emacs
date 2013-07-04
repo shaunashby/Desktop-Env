@@ -115,7 +115,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default-frame-alist (quote ((menu-bar-lines . 1) (tool-bar-lines . 0) (background-color . "black") (foreground-color . "white") (scroll-bar-width . 12) (top . 1) (left . 1) (height . 80) (width . 155))))
+ '(default-frame-alist (quote ((menu-bar-lines . 1) (tool-bar-lines . 0) (background-color . "black") (foreground-color . "white") (scroll-bar-width . 12) (top . 10) (left . 10) (height . 80) (width . 155))))
  '(font-lock-maximum-size 2560000)
  '(fringe-mode 4 nil (fringe))
  '(initial-frame-alist (quote ((background-color . "grey12") (foreground-color . "white") (scroll-bar-width . 12) (top . 1) (left . 1) (height . 80) (width . 155))))
