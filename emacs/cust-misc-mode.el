@@ -2,6 +2,9 @@
 ;; cust-misc-mode.el
 ;;
 
+;; Go:
+(add-to-list 'load-path "~/emacs/go-mode-load.el" t)
+(require 'go-mode-load)
 
 ;; Mustache-mode:
 (add-to-list 'load-path "~/emacs/mustache-mode.el")
