@@ -281,7 +281,7 @@ AC_OUTPUT(Makefile)
 -------------------------------------------------------------------------------------------
 
  Author: " (user-full-name)  " <" user-mail-address ">
- Created: " (format-time-string "%Y-%m-%d %T%z") "
+ Created: " (format-time-string "%Y-%m-%d %T%z") " (Time-stamp: <>)
  Revision: $Id" "$
  Description: " (read-string "Description: ") "
 
