@@ -128,33 +128,10 @@
 ;; Applescript mode:
 (autoload 'applescript-mode "applescript-mode" "Major mode for editing AppleScript source." t)
 
-(defun applescript-insert-file-header () 
-  (interactive)
-  "Inserts some lines for a header, including VCS info, author, date and copyright."
-  (insert 
-   "--
--- -------------------------------------------------------------------
--- File: " (buffer-name) "
--- -------------------------------------------------------------------
---  
--- Author: " (user-full-name)  " <" user-mail-address ">
--- Created: " (format-time-string "%Y-%m-%d %T%z") "
--- Revision: $Id" "$ 
---
--- Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
---
--- -------------------------------------------------------------------
--- 
-"))
-
 ;; Hooks:
 (add-hook 'applescript-mode-hook
 	  (function (lambda ()
 		      (auto-fill-mode 1)
-		      ;;
-		      (cond ((not (file-exists-p (buffer-file-name)))
-			     (applescript-insert-file-header)
-			     ))
 		      )))
 
 (setq auto-mode-alist (cons '("\\.applescript$" . applescript-mode) auto-mode-alist))
