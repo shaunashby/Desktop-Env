@@ -123,9 +123,8 @@ Ical.Listing.geometry:				 +35+210
 Ical.apptLineColor:                              MediumPurple4
 Ical.weekdayColor:                               darkslategrey
 Ical.weekendColor:                               FireBrick
-Ical.weekendInterestColor: OrangeRed1
+Ical.weekendInterestColor: 			 OrangeRed1
 Ical.fontFamily:                                 new century schoolbook
-!#Ical.fixedFontFamily: helvetica
 Ical.fontSize:                                   small
 Ical*Menu*font:                                  -adobe-helvetica-medium-r-*-*-10-*-*-*-*-*-*-*
 Ical*Menubutton*font:                            -adobe-helvetica-medium-r-*-*-10-*-*-*-*-*-*-*
@@ -139,8 +138,8 @@ Ical.itemSelectBg: 				 red4
 Ical*background:                                 grey80
 Ical.interestColor: 				 purple4
 
-Emacs*popup.background:			 steelblue
-Emacs*popup.foreground:			 yellow
+Emacs*popup.background:			 	 steelblue
+Emacs*popup.foreground:			 	 yellow
 Emacs*popup.font:				 lucidasanstypewriter-bold-10
 Emacs.pane.menubar.*.background:		 darkslategrey
 Emacs.pane.menubar.*.foreground:	         burlywood1
@@ -149,10 +148,10 @@ Emacs*EmacsScreen.foreground:			 white
 Emacs*EmacsScreen*cursorColor:			 mediumorchid
 Emacs*EmacsScreen.borderWidth:			 2
 Emacs*EmacsScreen.background:			 black
-Emacs*EmacsScreen*pointerColor:		 goldenrod1
+Emacs*EmacsScreen*pointerColor:		 	 goldenrod1
 Emacs*foreground:				 white
 Emacs*font:					 6x13
-Emacs.geometry:				 +0+30
+Emacs.geometry:				 	 +0+30
 Emacs*background:				 black
 Emacs*.cursorColor:				 mediumorchid
 Emacs*.pointerColor:				 goldenrod1
@@ -217,7 +216,6 @@ Netscape*globalNonTextTranslations: #override\n\
 xrn*background:					 SlateGray
 xrn*foreground:					 white
 xrn*borderWidth:				 1
-!xrn*borderColor:				 red3
 xrn*font:					 6x10
 xrn*geometry:					 635x650+0+83
 XRn*Scrollbar.Thickness:                         8
