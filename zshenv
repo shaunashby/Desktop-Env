@@ -37,10 +37,21 @@ fi
 # Path to ZSH functions:
 fpath=($HOME/.env/zshfunctions $fpath)
 
-# Interface to perlbrew environment:
-export PERLBREW_ROOT=/opt/perl5/perlbrew
-export PERLBREW_HOME=$HOME/.perlbrew
+# Interface to perlbrew and RVM environments. We need to support both OS X
+# and Linux:
+case `uname` in
+    Darwin)
+	export PERLBREW_ROOT=/opt/perl5/perlbrew
+	export PERLBREW_HOME=$HOME/.perlbrew
 
-. $PERLBREW_ROOT/etc/bashrc
+	. $PERLBREW_ROOT/etc/bashrc
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+	PATH=$PATH:$HOME/.rvm/bin
+	;;
+    Linux)
+
+	;;
+    *)
+
+esac
+
