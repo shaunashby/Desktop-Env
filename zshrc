@@ -3,7 +3,7 @@
 # File: zshrc
 #____________________________________________________________________ 
 #  
-# Author: Shaun Ashby <Shaun.Ashby@cern.ch>
+# Author: Shaun Ashby <Shaun.Ashby@gmail.com>
 # Update: 2005-08-31 23:18:41+0200
 # Revision: $Id$ 
 #

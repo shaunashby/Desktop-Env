@@ -3,7 +3,7 @@
 # File: zshenv
 #____________________________________________________________________ 
 #  
-# Author: Shaun Ashby <Shaun.Ashby@cern.ch>
+# Author: Shaun Ashby <Shaun.Ashby@gmail.com>
 # Update: 2005-09-03 18:15:48+0200
 # Revision: $Id$ 
 #

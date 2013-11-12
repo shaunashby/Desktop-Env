@@ -3,7 +3,7 @@
 # File: zlogin
 #____________________________________________________________________ 
 #  
-# Author: Shaun Ashby <Shaun.Ashby@cern.ch>
+# Author: Shaun Ashby <Shaun.Ashby@gmail.com>
 # Update: 2005-09-01 00:07:34+0200
 # Revision: $Id$ 
 #
