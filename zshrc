@@ -128,33 +128,6 @@ alias 'rm=rm -i'
 # Make sure that "which" is the shell function:
 alias which >&/dev/null && unalias which
 
-# Shell functions:
-
-tarx()
-{
-    tar -xvf $1 $2
-}
-    
-tarc()
-{
-    tar -cvf $1 $2
-}
-
-tart()
-    {
-    tar -tvf $1 | more
-}
-    
-guntar()
-{
-    gunzip < $1 | tar -xvf-
-}
-
-guntart()
-{
-    gunzip < $1 | tar -tvf-
-}
-
 # Other ZSH parameters:
 HISTSIZE=10000
 HISTFILE=$HOME/.env/.zsh-history
