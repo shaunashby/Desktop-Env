@@ -92,57 +92,6 @@ Ctrl<Btn5Down>,<Btn5Up>: next-page()\n\
 None<Btn4Down>,<Btn4Up>:scroll-one-line-down()scroll-one-line-down()scroll-one-line-down()scroll-one-line-down()scroll-one-line-down()\n\
 None<Btn5Down>,<Btn5Up>:scroll-one-line-up()scroll-one-line-up()scroll-one-line-up()scroll-one-line-up()scroll-one-line-up()\n\
 
-
-!pine*vt100.translations: #override\n\
-!      Shift<Btn4Down>,<Btn4Up>:string("\033OA")\n\
-!      Shift<Btn5Down>,<Btn5Up>:string("\033OB")\n\
-!      Ctrl<Btn4Down>,<Btn4Up>:string("\033OA\033OA\033OA\033OA\033OA")\n\
-!      Ctrl<Btn5Down>,<Btn5Up>:string("\033OB\033OB\033OB\033OB\033OB")\n\
-!      <Btn4Down>,<Btn4Up>: string("\033OA")\n\
-!      <Btn5Down>,<Btn5Up>: string("\033OB")\n\
-
-!pine.vt100.Scrollbar.translations: #override\n\
-!			<Btn5Down>: StartScroll(Forward)\n\
-!			<Btn4Down>: StartScroll(Backward)
-
-pine*borderWidth:                               1
-pine*borderColor:                               red3
-pine*foreground:                                lemonchiffon
-pine*background:                                black
-pine*cursorColor:                               violetred
-pine*font:                                      lucidasanstypewriter-bold-10
-pine*fullCursor:                                true
-pine*pointerColor:                              red
-pine*jumpScroll:                                true
-pine*saveLines:                                 5120
-pine*scrollBar:                                 false
-pine*scrollKey:                                 true
-pine*visualBell:                                true
-pine.termName:                                  vt100
-pine*geometry:                                  90x35+95+320
-Pine*Scrollbar.Thickness:                       8
-Pine*Scrollbar.DrawBorder:                      1
-pine*title:                                     pine [sashby@mailbox.cern.ch]
-
-POPMail*borderWidth:                            1
-POPMail*borderColor:                            black
-POPMail*foreground:                             indianred4
-POPMail*background:                             skyblue
-POPMail*cursorColor:                            yellow
-POPMail*font:                                   5x8
-POPMail*fullCursor:                             true
-POPMail*pointerColor:                           green
-POPMail*jumpScroll:                             true
-POPMail*saveLines:                              5120
-POPMail*scrollBar:                              false
-POPMail*scrollKey:                              true
-POPMail*visualBell:                             true
-POPMail.termName:                               vt100
-POPMail*geometry:                               80x45+580+95
-POPMail*Scrollbar.Thickness:                    8
-POPMail*Scrollbar.DrawBorder:                   1
-POPMail*title:                                  POP3@yahoo.com
-
 xclock*borderWidth:				 3
 xclock*update:					 1
 xclock*analog:					 true
@@ -184,53 +133,29 @@ Ical*Label*font:                                 lucidasanstypewriter-bold-18
 Ical.Dayview.geometry:                           +30+470
 Ical.itemBg:                                     DarkSeaGreen1
 Ical.itemFg:                                     black
-Ical*itemFont: -adobe-helvetica-medium-r-*-*-10-*-*-*-*-*-*-*
-Ical.itemSelectFg: white
-Ical.itemSelectBg: red4
+Ical*itemFont: 					 -adobe-helvetica-medium-r-*-*-10-*-*-*-*-*-*-*
+Ical.itemSelectFg: 				 white
+Ical.itemSelectBg: 				 red4
 Ical*background:                                 grey80
-Ical.interestColor: purple4
-!#Ical.smallHeadingFont: 6x10
+Ical.interestColor: 				 purple4
 
-! mxconns*iconic:					 false
-! mxconns*background:				 black
-! mxconns*foreground:				 white
-
-! LogBook*popup.background:			 grey25
-! LogBook*popup.foreground:			 yellow
-! LogBook*popup.font:				 lucidasanstypewriter-bold-10
-! LogBook*menubar.background:			 white
-! LogBook*menubar.foreground:			 indianred4
-! LogBook*menubar.font:				 lucidasanstypewriter-bold-10
-! LogBook*EmacsScreen.foreground:			 white
-! LogBook*EmacsScreen*cursorColor:		 violetred
-! LogBook*EmacsScreen.borderWidth:		 2
-! LogBook*EmacsScreen.background:			 black
-! LogBook*EmacsScreen*pointerColor:		 goldenrod1
-! LogBook*foreground:				 black
-! LogBook*font:					 fixed
-! LogBook*bitmapIcon:				 on
-! LogBook*background:				 SeaGreen
-! LogBook*.cursorColor:				 violetred
-! LogBook*.pointerColor:				 goldenrod1
-! LogBook*geometry:                                95x26+620+110
-
- Emacs*popup.background:				 steelblue
- Emacs*popup.foreground:				 yellow
- Emacs*popup.font:				 lucidasanstypewriter-bold-10
- Emacs.pane.menubar.*.background:		 darkslategrey
- Emacs.pane.menubar.*.foreground:	         burlywood1
- Emacs.pane.menubar.*.font:		         lucidasanstypewriter-bold-10
- Emacs*EmacsScreen.foreground:			 white
- Emacs*EmacsScreen*cursorColor:			 mediumorchid
- Emacs*EmacsScreen.borderWidth:			 2
- Emacs*EmacsScreen.background:			 black
- Emacs*EmacsScreen*pointerColor:			 goldenrod1
- Emacs*foreground:				 white
- Emacs*font:					 6x13
- Emacs.geometry:					 +0+30
- Emacs*background:				 black
- Emacs*.cursorColor:				 mediumorchid
- Emacs*.pointerColor:				 goldenrod1
+Emacs*popup.background:			 steelblue
+Emacs*popup.foreground:			 yellow
+Emacs*popup.font:				 lucidasanstypewriter-bold-10
+Emacs.pane.menubar.*.background:		 darkslategrey
+Emacs.pane.menubar.*.foreground:	         burlywood1
+Emacs.pane.menubar.*.font:		         lucidasanstypewriter-bold-10
+Emacs*EmacsScreen.foreground:			 white
+Emacs*EmacsScreen*cursorColor:			 mediumorchid
+Emacs*EmacsScreen.borderWidth:			 2
+Emacs*EmacsScreen.background:			 black
+Emacs*EmacsScreen*pointerColor:		 goldenrod1
+Emacs*foreground:				 white
+Emacs*font:					 6x13
+Emacs.geometry:				 +0+30
+Emacs*background:				 black
+Emacs*.cursorColor:				 mediumorchid
+Emacs*.pointerColor:				 goldenrod1
 
 XClipboard*Command*Font:			 lucidasanstypewriter-bold-12
 XClipboard*Label*Font:				 lucidasanstypewriter-bold-12
@@ -358,30 +283,6 @@ xrn*dialog*Command.background:	yellow
 xrn*dialog*Text*background:	white
 xrn*dialog*Text*foreground:	black
 xrn*dialog*borderWidth:		1
-
-! Quota*geometry:                                  66x5+1196+1080
-! Quota*font:                                      6x10
-! Quota*foreground:                                white
-! Quota*background:                                black
-! Quota*scrollBar:                                 false
-
-! zwgc*geometry:                                   80x15+1066+194
-! zwgc.termName:                                   vt100
-! zwgc*foreground:                                 black
-! zwgc*background:                                 pink
-! zwgc*font:                                       6x10
-! zwgc*scrollBar:                                  false
-! zwgc*cursorColor:                                violetred
-! zwgc*pointerColor:                               red
-
-! zwrite*geometry:                                 80x5+1066+350
-! zwrite.termName:                                 vt100
-! zwrite*foreground:                               white
-! zwrite*background:                               grey15
-! zwrite*font:                                     6x10
-! zwrite*scrollBar:                                false
-! zwrite*cursorColor:                              violetred
-! zwrite*pointerColor:                             red
 
 xlock*nice:	                                 15
 
