@@ -39,8 +39,6 @@ zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]} m:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=* r:|=*'
-
-
 zstyle ':completion:*' completer _complete _prefix _ignored _complete:-extended
 zstyle ':completion::prefix-1:*' completer _complete
 zstyle ':completion:incremental:*' completer _complete _correct
@@ -59,17 +57,13 @@ zstyle ':completion:*:history-words' remove-all-dups yes
 zstyle ':completion:*:history-words' list false
 zstyle ':completion:*:history-words' menu yes
 zstyle ':completion:*:my-accounts' users-hosts $accounts
-
-# Expand partial paths
 zstyle ':completion:*' expand 'no'
 # Handle duplicated slashes, e.g. a/b//c
 zstyle ':completion:*' squeeze-slashes true
-
 zstyle :compinstall filename "$HOME/.zshrc"
 
-
 hst=`echo $HOST | tr '[a-z]' '[A-Z]'`
-TERMSTRING="xterm@$hst"   
+TERMSTRING="xterm@$hst"
 
 case $TERM in
     xterm*|vt*)
@@ -135,4 +129,3 @@ DIRSTACKSIZE=20
 
 # No coredumps, thanks:
 ulimit -c 0
-
