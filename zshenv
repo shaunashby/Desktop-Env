@@ -49,6 +49,10 @@ case `uname` in
 	PATH=$PATH:$HOME/.rvm/bin
 	;;
     Linux)
+	export PERLBREW_ROOT=/data/softw/appdev/perl
+	export PERLBREW_HOME=$HOME/.perlbrew
+
+	. $PERLBREW_ROOT/etc/bashrc
 
 	;;
     *)
