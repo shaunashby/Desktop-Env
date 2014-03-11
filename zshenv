@@ -19,7 +19,7 @@ PAGER=less; export PAGER
 TERM=xterm-color; export TERM
 
 if [[ "x$EMACS" != "x" ]]; then
-TERM=dumb; export TERM
+    TERM=dumb; export TERM
 fi
 
 # ZSH stuff:
@@ -30,8 +30,8 @@ LOGCHECK=60
 ENABLE_ZSH_WATCH=0
 
 if [[ $ENABLE_ZSH_WATCH -eq 1 ]]; then
- WATCHFMT="[%B%t%b] %B%n%b has %a %B%l%b from %B%M%b"
- watch=(notme)
+    WATCHFMT="[%B%t%b] %B%n%b has %a %B%l%b from %B%M%b"
+    watch=(notme)
 fi
 
 # Path to ZSH functions:
