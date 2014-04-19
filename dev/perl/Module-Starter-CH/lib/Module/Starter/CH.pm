@@ -1,7 +1,7 @@
 #____________________________________________________________________
 #
 # Author: Shaun Ashby <shaun@ashby.ch>
-# Created: 2014-04-19 17:30:56+0200 (Time-stamp: <2014-04-19 17:32:01 sashby>)
+# Created: 2014-04-19 17:30:56+0200 (Time-stamp: <2014-04-19 17:38:45 sashby>)
 # Revision: $Id$
 #
 # Copyright (C) 2014 Shaun Ashby
@@ -13,7 +13,7 @@ use warnings;
 use strict;
 use Carp;
 
-use version; $VERSION = qv('0.0.3');
+use version; our $VERSION = qv('0.0.1');
 
 # Other recommended modules (uncomment to use):
 #  use IO::Prompt;
