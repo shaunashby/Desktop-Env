@@ -120,7 +120,7 @@
  '(default-frame-alist (quote ((menu-bar-lines . 1) (tool-bar-lines . 0) (background-color . "black") (foreground-color . "white") (scroll-bar-width . 12) (top . 10) (left . 10) (height . 80) (width . 155))))
  '(font-lock-maximum-size 2560000)
  '(fringe-mode 4 nil (fringe))
- '(initial-frame-alist (quote ((background-color . "grey12") (foreground-color . "white") (scroll-bar-width . 12) (top . 1) (left . 1) (height . 80) (width . 155))))
+ '(initial-frame-alist (quote ((background-color . "black") (foreground-color . "white") (scroll-bar-width . 12) (top . 1) (left . 1) (height . 80) (width . 155))))
  '(query-user-mail-address nil)
  '(read-file-name-completion-ignore-case t)
  '(scroll-bar-mode (quote left))
