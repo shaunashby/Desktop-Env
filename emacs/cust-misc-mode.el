@@ -2,6 +2,11 @@
 ;; cust-misc-mode.el
 ;;
 
+;; Docker mode:
+(add-to-list 'load-path "~/emacs/dockerfile-mode.el" t)
+(require 'dockerfile-mode)
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+
 ;; Go:
 (add-to-list 'load-path "~/emacs/go-mode-load.el" t)
 (require 'go-mode-load)
