@@ -495,3 +495,6 @@ import (
 (define-auto-insert             "COPYING"     "License/GPLv3.txt")
 ;; Ruby files:
 (define-auto-insert             "Gemfile"     "Ruby/Gemfile")
+;; Vagrant and Docker files:
+(define-auto-insert             "Vagrantfile" "Virt/Vagrantfile")
+(define-auto-insert             "Dockerfile"  "Virt/Dockerfile")
