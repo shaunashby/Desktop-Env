@@ -408,6 +408,28 @@ use strict;
 ") "
 " - "
 ")
+    ;; Shell scripts:
+    (("\\.sh\\'" . "Shell Script File")
+     nil
+"#!/bin/sh
+#____________________________________________________________________
+# File: " (buffer-name) "
+#____________________________________________________________________
+#
+# Author: " (user-full-name)  " <" user-mail-address ">
+# Created: " (format-time-string "%Y-%m-%d %T%z") "
+# Revision: $Id" "$
+# Description: " (read-string "Description: ") "
+#
+# Copyright (C) " (format-time-string "%Y") " " (user-full-name) "
+#
+#
+#--------------------------------------------------------------------
+" - "
+"
+"
+#")
+
 ;; JavaScript:
 (("\\.\\(js\\|JS\\)\\'" . "JavaScript Source File")
  nil
