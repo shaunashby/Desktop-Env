@@ -6,6 +6,7 @@ emacs/*.elc
 .zsh-history
 zshfunctions/cache
 emacs/elisp/elisp-practice.el
+emacs/scratch.el
 emacs/elisp/*~
 blib/
 .build/
