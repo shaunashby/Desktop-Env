@@ -430,9 +430,9 @@ use strict;
 "
 #")
 
-;; JavaScript:
-(("\\.\\(js\\|JS\\)\\'" . "JavaScript Source File")
- nil
+    ;; JavaScript:
+    (("\\.\\(js\\|JS\\)\\'" . "JavaScript Source File")
+     nil
 "//____________________________________________________________________
 // File: " (buffer-name) "
 //____________________________________________________________________
@@ -452,10 +452,10 @@ var f_ = function() {
 };
 fn_.call(this);
 ")
-;; Go:
-(("\\.\\(go\\|golang\\)\\'" . "Golang Source File")
- nil
- '(setq package (file-name-sans-extension (buffer-name)))
+    ;; Go:
+    (("\\.\\(go\\|golang\\)\\'" . "Golang Source File")
+     nil
+     '(setq package (file-name-sans-extension (buffer-name)))
 "//____________________________________________________________________
 // File: " (buffer-name) "
 //____________________________________________________________________
@@ -477,9 +477,9 @@ import (
 )
 " - "
 ")
-;; AppleScript:
-(("\\.\\(applescript\\|scpt\\)\\'" . "AppleScript Source File")
- nil
+    ;; AppleScript:
+    (("\\.\\(applescript\\|scpt\\)\\'" . "AppleScript Source File")
+     nil
 "---
 --- File: " (buffer-name) "
 ---
