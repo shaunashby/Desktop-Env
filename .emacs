@@ -105,7 +105,7 @@
 ;; Erlang (load only on OS X):
 (if (string-match "darwin" (emacs-version))
     (progn (message "Loading Erlang files from MacPorts.")
-	   (setq load-path (cons "/opt/local/lib/erlang/lib/tools-2.6.15/emacs" load-path))
+	   (setq load-path (cons "/opt/local/lib/erlang/lib/tools-2.7/emacs" load-path))
 	   (setq erlang-root-dir "/opt/local/lib/erlang")
 	   (setq exec-path (cons "/opt/local/lib/erlang/bin" exec-path))
 	   (require 'erlang-start))
