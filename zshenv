@@ -41,7 +41,7 @@ fpath=($HOME/.env/zshfunctions $fpath)
 # and Linux:
 case `uname` in
     Darwin)
-	export PERLBREW_ROOT=/opt/perl5/perlbrew
+	export PERLBREW_ROOT=$HOME/perl5/perlbrew
 	export PERLBREW_HOME=$HOME/.perlbrew
 
 	. $PERLBREW_ROOT/etc/bashrc
