@@ -44,7 +44,7 @@ case `uname` in
 	export PERLBREW_ROOT=$HOME/perl5/perlbrew
 	export PERLBREW_HOME=$HOME/.perlbrew
 
-	. $PERLBREW_ROOT/etc/bashrc
+#	. $PERLBREW_ROOT/etc/bashrc
 
 	source /etc/profile.d/rvm.sh
 	;;
