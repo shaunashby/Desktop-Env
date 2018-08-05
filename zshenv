@@ -11,8 +11,6 @@
 #
 #--------------------------------------------------------------------
 
-PATH=$HOME/bin:$HOME/scripts:/opt/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin; export PATH
-
 # Common environment:
 EDITOR=emacs; export EDITOR
 PAGER=less; export PAGER
