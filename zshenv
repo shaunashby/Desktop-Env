@@ -42,9 +42,11 @@ case `uname` in
 	export PERLBREW_ROOT=$HOME/perl5/perlbrew
 	export PERLBREW_HOME=$HOME/.perlbrew
 
-#	. $PERLBREW_ROOT/etc/bashrc
+	export PYENV_ROOT=$HOME/.pyenv
+	export PATH=$PYENV_ROOT/bin:$PATH
 
-	source /etc/profile.d/rvm.sh
+	eval "$(pyenv init -)"
+
 	;;
     Linux)
 	export PERLBREW_ROOT=$HOME/perl
