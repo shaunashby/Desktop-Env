@@ -15,5 +15,3 @@
 echo "Welcome to `hostname -s` on `date`"
 echo "------ "
 echo ""
-
-[[ -f "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
