@@ -21,7 +21,7 @@ setopt always_to_end	       # Move to cursor to the end after completion
 setopt extended_glob	       # In order to use #, ~ and ^ for filename generation
 
 # Arrays for completion system:
-hosts=(mntmgt pcnas.ashby.ch qnas1.ashby.ch lxsrv01 websrv01.ashby.ch www.ashby.ch github.com)
+hosts=(mntmgt pcnas.ashby.ch qnas1.ashby.ch websrv01.ashby.ch www.ashby.ch github.com)
 accounts=(sashby shaun ashby root frontrow shaunashby)
 
 # Activate the completion system:
