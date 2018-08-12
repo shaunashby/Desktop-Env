@@ -129,3 +129,9 @@ DIRSTACKSIZE=20
 
 # No coredumps, thanks:
 ulimit -c 0
+
+# Function to set up pyenv path correctly so
+# that /usr/bin/ comes after the local shims:
+pyenvpathsetup() {
+    export PATH=`ruby -e 'puts ENV["PATH"].split(/:/).reverse.join(":")'`
+}
