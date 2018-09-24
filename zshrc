@@ -135,3 +135,5 @@ ulimit -c 0
 pyenvpathsetup() {
     export PATH=`ruby -e 'puts ENV["PATH"].split(/:/).reverse.join(":")'`
 }
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
