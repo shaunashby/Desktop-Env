@@ -24,9 +24,6 @@
 ;; Default parameters and variables:
 (load "defaults-env")
 
-;; Load tex mode:
-(require 'tex-site)        ;; TeX stuff (AucTeX)
-
 ;; Arch-specific functionality:
 (if (eq window-system 'x)
     ;; X11 emacs on OS X:
