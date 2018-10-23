@@ -59,3 +59,6 @@ case `uname` in
 
 esac
 
+# Set up Go workspace:
+export GOPATH=$HOME/Desktop/Workspace/Projects/development/Go
+export GOBIN=$GOPATH/bin
