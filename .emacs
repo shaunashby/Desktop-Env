@@ -24,52 +24,6 @@
 ;; Default parameters and variables:
 (load "defaults-env")
 
-;; Arch-specific functionality:
-(if (eq window-system 'x)
-    ;; X11 emacs on OS X:
-    (if (string-match "powerpc-apple-darwin" (emacs-version))
-	(progn (load "mwheel")
-	       (message "ppc, x toolkit: Wheel mouse support loaded.")
-	       ;;
-	       (custom-set-faces
-		'(rfcview-headnum-face ((t (:bold t :foreground "skyblue"))))
-		'(rfcview-rfcnum-face ((t (:bold t :foreground "Yellow"))))
-		'(rfcview-title-face ((t (:bold t :foreground "Aquamarine"))))
-		'(dired-ignored ((t (:foreground "light salmon"))))
-		'(font-lock-comment-face ((t (:bold t :foreground "red"))))
-		'(fringe ((((class color) (background dark)) nil)))
-		'(mode-line ((t (:background "grey30" :foreground "green" :box (:line-width 1 :style released-button) :slant normal :weight normal :height 96 :width normal :family "misc-fixed"))))
-		))
-      
-      ;; X11 on linux:
-      (progn (load "mwheel")
-	     (message "linux: Wheel mouse support loaded.")
-	     (set-face-font 'mode-line "-schumacher-clean-medium-r-normal--12-*-75-75-c-60-iso8859-9")
-	     ;;
-	     (custom-set-faces
-	      '(rfcview-headnum-face ((t (:bold t :foreground "skyblue"))))
-	      '(rfcview-rfcnum-face ((t (:bold t :foreground "Yellow"))))
-	      '(rfcview-title-face ((t (:bold t :foreground "Aquamarine"))))
-	      '(dired-ignored ((t (:foreground "light salmon"))))
-	      '(font-lock-comment-face ((t (:bold t :foreground "red"))))
-	      '(fringe ((((class color) (background dark)) nil)))
-	      '(mode-line ((t (:background "grey30" :foreground "green" :box (:line-width 1 :style released-button) :slant normal :weight normal :height 96 :width normal :family "misc-fixed"))))
-	      )))
-
-  ;; Native emacs on OS X, no X toolkit:
-  (progn (message "Applying settings for OS X Carbon emacs")
-	 (set-cursor-color "MediumOrchid")	 
-	 (custom-set-faces
-	  '(default ((t (:stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 96 :width normal :family "apple-monaco"))))
-	  '(rfcview-headnum-face ((t (:bold t :foreground "skyblue"))))
-	  '(rfcview-rfcnum-face ((t (:bold t :foreground "Yellow"))))
-	  '(rfcview-title-face ((t (:bold t :foreground "Aquamarine"))))
-	  '(dired-ignored ((t (:foreground "light salmon"))))
-	  '(font-lock-comment-face ((t (:foreground "red"))))
-	  '(fringe ((((class color) (background dark)) nil)))
-	  '(mode-line ((t (:background "grey30" :foreground "green" :box (:line-width 1 :style released-button) :slant normal :weight normal :height 90 :width normal :family "misc-fixed"))))
-	  )))
-
 ;; Settings for faces:
 (load "colored-faces")     ;; Colored faces
 (load "cust-faces")        ;; My face defs
