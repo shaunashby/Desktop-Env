@@ -64,10 +64,6 @@
 
 ;; Common variables:
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(default-frame-alist (quote ((menu-bar-lines . 1) (tool-bar-lines . 0) (background-color . "black") (foreground-color . "white") (scroll-bar-width . 12) (top . 10) (left . 10) (height . 60) (width . 120))))
  '(font-lock-maximum-size 2560000)
  '(fringe-mode 4 nil (fringe))
@@ -78,14 +74,7 @@
  '(user-mail-address "shaun@ashby.ch")
  '(c-offsets-alist nil))
 
-;;
-;; End of .emacs
-;;
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(dired-ignored ((t (:foreground "light salmon"))))
  '(font-lock-comment-face ((t (:bold t :foreground "red"))))
  '(fringe ((((class color) (background dark)) nil)))
@@ -93,3 +82,6 @@
  '(rfcview-headnum-face ((t (:bold t :foreground "skyblue"))))
  '(rfcview-rfcnum-face ((t (:bold t :foreground "Yellow"))))
  '(rfcview-title-face ((t (:bold t :foreground "Aquamarine")))))
+;;
+;; End of .emacs
+;;
