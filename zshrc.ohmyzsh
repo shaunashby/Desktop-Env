@@ -71,7 +71,6 @@ plugins=(
     ruby
     python
     golang
-    puppet
     docker
     docker-compose
     kubectl
