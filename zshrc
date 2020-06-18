@@ -1,8 +1,8 @@
-# Add path for MacPorts installation:
+# Add additional path elements to PATH:
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/sashby/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set fpath to load completions from $ZS
 export fpath=($HOME/.env/zshfunctions $fpath)
