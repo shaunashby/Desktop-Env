@@ -1,139 +1,132 @@
-#!/bin/zsh
-#____________________________________________________________________ 
-# File: zshrc
-#____________________________________________________________________ 
-#  
-# Author: Shaun Ashby <Shaun.Ashby@gmail.com>
-# Update: 2005-08-31 23:18:41+0200
-# Revision: $Id$ 
+# Add path for MacPorts installation:
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+
+# Path to your oh-my-zsh installation.
+export ZSH="/Users/sashby/.oh-my-zsh"
+
+# Set fpath to load completions from $ZS
+export fpath=($HOME/.env/zshfunctions $fpath)
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="agnoster"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+    git
+    python
+    golang
+    ruby
+    rvm
+    docker
+    docker-compose
+    kubectl
+    terraform
+    vagrant
+    vault
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
 #
-# Copyright: 2005 (C) Shaun Ashby
-#
-#--------------------------------------------------------------------
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Set shell options:
-setopt ignoreeof
-setopt nobeep
-setopt nocheckjobs             # Don't warn about bg processes when exiting
-setopt nohup                   # Don't kill them, either
-setopt HIST_IGNORE_ALL_DUPS    # Ignores duplications
-setopt always_to_end	       # Move to cursor to the end after completion
-setopt extended_glob	       # In order to use #, ~ and ^ for filename generation
+test -e "${HOME}/.env/iterm2/.iterm2_shell_integration.zsh" && source "${HOME}/.env/iterm2/.iterm2_shell_integration.zsh"
 
-# Arrays for completion system:
-hosts=(git jenkins foreman-01 puppetmaster-01 mntmgt pcnas.ashby.ch qnas1.ashby.ch websrv01.ashby.ch www.ashby.ch github.com)
-accounts=(sashby shaun ashby root frontrow shaunashby)
-
-# Activate the completion system:
-autoload -Uz compinit
-compinit
-
-# Completion options:
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path $HOME/.env/zshfunctions/cache
-# completion colours:
-zstyle ':completion:*' list-colors "$LS_COLORS"
-zstyle ':completion:*' verbose yes
-zstyle ':completion:*:descriptions' format '%B%d%b'
-zstyle ':completion:*:messages' format '%d'
-zstyle ':completion:*:warnings' format 'No matches for: %d'
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]} m:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=* r:|=*'
-zstyle ':completion:*' completer _complete _prefix _ignored _complete:-extended
-zstyle ':completion::prefix-1:*' completer _complete
-zstyle ':completion:incremental:*' completer _complete _correct
-zstyle ':completion:predict:*' completer _complete
-zstyle ':completion:*:approximate-one:*'  max-errors 1
-zstyle ':completion:*:approximate-four:*' max-errors 4
-# e.g. f-1.j<TAB> would complete to foo-123.jpeg:
-zstyle ':completion:*:complete-extended:*' matcher 'r:|[.,_-]=* r:|=*'
-zstyle ':completion:*:processes' command 'ps -aU $USER'
-zstyle ':completion:*:*:*:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-zstyle ':completion:*:*:*:*:processes' menu yes select
-zstyle ':completion:*:*:*:*:processes' force-list always
-zstyle ':completion:*' hosts $hosts
-zstyle ':completion:*:history-words' stop yes
-zstyle ':completion:*:history-words' remove-all-dups yes
-zstyle ':completion:*:history-words' list false
-zstyle ':completion:*:history-words' menu yes
-zstyle ':completion:*:my-accounts' users-hosts $accounts
-zstyle ':completion:*' expand 'no'
-# Handle duplicated slashes, e.g. a/b//c
-zstyle ':completion:*' squeeze-slashes true
-zstyle :compinstall filename "$HOME/.zshrc"
-
-hst=`echo $HOST | tr '[a-z]' '[A-Z]'`
-TERMSTRING="xterm@$hst"
-
-case $TERM in
-    xterm*|vt*)
-	precmd() 
-	{
-	    print -Pn "\e]0; $TERMSTRING: %~ \a"
-	}
-	# Change the prompt at the same time:
-	PS1="%B[ %m ] >%b "
-	
-	set_colour_vars()
-	{
-	    NORM="\033[0m"; export NORM
-	    BOLD="\033[1m"; export BOLD
-	    REVERSE="\033[7m"; export REVERSE
-	    BLACK="\033[0;30m"; export BLACK
-	    DARKGREEN="\033[0;32m"; export DARKGREEN
-	    BROWN="\033[0;33m"; export BROWN
-	    DARKBLUE="\033[0;34m"; export DARKBLUE
-	    DARKMAGENTA="\033[0;35m"; export DARKMAGENTA
-	    DARKCYAN="\033[0;36m"; export DARKCYAN
-	    DARKGRAY="\033[0;30;1m"; export DARKGRAY
-	    GRAY="\033[0;37m"; export GRAY
-	    RED="\033[0;31;1m"; export RED
-	    GREEN="\033[0;32;1m"; export GREEN
-	    YELLOW="\033[0;33;1m"; export YELLOW
-	    BLUE="\033[0;34;1m"; export BLUE
-	    MAGENTA="\033[0;35;1m"; export MAGENTA
-	    CYAN="\033[0;36;1m"; export CYAN
-	    WHITE="\033[0;37;1m"; export WHITE	
-	}
-	;;
-    dumb)
-	# Handle use of zsh in emacs shell-mode:
-	[[ $EMACS = t ]] && unsetopt zle
-	PS1="%S[ emacs@%m ]%s %B>%b "
+# Change prompt for VS Code terminal windows:
+case $TERM_PROGRAM in
+    vscode)
+	PS1="%B%S[%m]%s >%b "
 	;;
     *)
-	PS1="$USER > "
 	;;
 esac
 
-# Aliases:
-alias 'll=ls -l -G'
-alias 'pa=ps -aU $USER | more'
-alias 'l=ll'
-alias 'lll=ll'
-alias 'dir=ll'
-alias 'LL=ll'
-alias 'h=history'
-alias 'm=more'
-alias 'morel=more'
-alias 'rm=rm -i'
+# Unset LESS:
+unset LESS
 
-# Make sure that "which" is the shell function:
-alias which >&/dev/null && unalias which
-
-# Other ZSH parameters:
-HISTSIZE=10000
-HISTFILE=$HOME/.env/.zsh-history
-SAVEHIST=10000
-DIRSTACKSIZE=20
-
-# No coredumps, thanks:
-ulimit -c 0
-
-# Function to set up pyenv path correctly so
-# that /usr/bin/ comes after the local shims:
-pyenvpathsetup() {
-    export PATH=`ruby -e 'puts ENV["PATH"].split(/:/).reverse.join(":")'`
-}
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# Set environment for Golang:
+export GOPATH=$HOME/.tools/go
+export GOBIN=$GOPATH/bin
