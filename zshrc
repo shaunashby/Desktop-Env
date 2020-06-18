@@ -4,7 +4,7 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set fpath to load completions from $ZS
+# Set fpath to load completions from \$ZSH:
 export fpath=($HOME/.env/zshfunctions $fpath)
 
 # Set name of the theme to load --- if set to "random", it will
