@@ -129,4 +129,8 @@ unset LESS
 
 # Set environment for Golang:
 export GOPATH=$HOME/.tools/go
-export GOBIN=$GOPATH/bin
+# Default install location for Go binaries:
+export GOBIN=${GOPATH}/bin
+export PATH=${PATH}:${GOBIN}
+# Use compound GOPATH:
+export GOPATH=${GOPATH}:$HOME/Desktop/Workspace/Dashboard/Infrastructure/applications/Go
