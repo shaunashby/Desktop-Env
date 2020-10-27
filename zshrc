@@ -115,6 +115,9 @@ source $ZSH/oh-my-zsh.sh
 
 test -e "${HOME}/.env/iterm2/.iterm2_shell_integration.zsh" && source "${HOME}/.env/iterm2/.iterm2_shell_integration.zsh"
 
+# RVM:
+test -f /etc/profile.d/rvm.sh && source /etc/profile.d/rvm.sh
+
 # Change prompt for VS Code terminal windows:
 case $TERM_PROGRAM in
     vscode)
