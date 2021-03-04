@@ -135,5 +135,3 @@ export GOPATH=$HOME/.tools/go
 # Default install location for Go binaries:
 export GOBIN=${GOPATH}/bin
 export PATH=${PATH}:${GOBIN}
-# Use compound GOPATH:
-export GOPATH=${GOPATH}:$HOME/Desktop/Workspace/Dashboard/Infrastructure/applications/Go
