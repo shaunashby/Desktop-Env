@@ -132,3 +132,5 @@ export GOPATH=$HOME/.tools/go
 # Default install location for Go binaries:
 export GOBIN=${GOPATH}/bin
 export PATH=${PATH}:${GOBIN}
+# Add tfenv:
+export PATH=${PATH}:${HOME}/.tfenv/bin
