@@ -81,8 +81,6 @@ plugins=(
     docker-compose
     kubectl
     terraform
-    vagrant
-    vault
 )
 
 source $ZSH/oh-my-zsh.sh
