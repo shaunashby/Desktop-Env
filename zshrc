@@ -80,7 +80,11 @@ plugins=(
     docker
     docker-compose
     kubectl
+    kubectx
+    argocd
+    fluxcd
     terraform
+    aws
 )
 
 source $ZSH/oh-my-zsh.sh
