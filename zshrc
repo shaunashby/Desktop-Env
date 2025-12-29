@@ -75,15 +75,15 @@ plugins=(
     git
     python
     golang
-    ruby
-    rvm
     docker
-    docker-compose
     kubectl
     kubectx
-    argocd
     fluxcd
     terraform
+    aws
+    helm
+    macports
+    mvn
 )
 
 source $ZSH/oh-my-zsh.sh
