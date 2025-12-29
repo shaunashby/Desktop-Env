@@ -84,7 +84,6 @@ plugins=(
     argocd
     fluxcd
     terraform
-    aws
 )
 
 source $ZSH/oh-my-zsh.sh
