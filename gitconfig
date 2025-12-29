@@ -1,0 +1,16 @@
+[user]
+	name = Shaun Ashby
+	email = shaun.ashby@gmail.com
+[alias]
+        stat = status
+	mwps = push -o merge_request.create -o merge_request.target=develop -o merge_request.merge_when_pipeline_succeeds
+[color]
+        ui = true
+[http]
+	sslCAInfo = ~/.gitconfig.d/tls/CA.pem
+[push]
+        default = current
+[pull]
+	rebase = true
+[includeIf "gitdir:~/Library/Mobile Documents/com~apple~CloudDocs/Desktop/WIP/infra/"]
+	path = ~/.env/pro.gitconfig
